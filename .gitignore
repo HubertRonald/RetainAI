@@ -216,3 +216,23 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# RetainAI local data and artifacts
+data/raw/*
+data/processed/*
+data/train/*
+data/validation/*
+data/test/*
+data/prediction_input/*
+artifacts/*
+mlruns/
+mlflow/
+*.db
+
+# Keep directory structure
+!data/**/.gitkeep
+!artifacts/.gitkeep
+
+# Kaggle credentials
+kaggle.json
+.kaggle/
