@@ -207,7 +207,7 @@ This approach ensures reproducibility across Linux, Windows, and macOS environme
 - Resume Intelligence
 - Psychometric Intelligence
 - Amazon Bedrock Integration
-- HR Copilot
+- Retention Advisor
 
 ## Author
 
