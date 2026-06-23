@@ -36,8 +36,12 @@
 <a href="https://www.docker.com/" target="_blank">
 <img src="https://img.shields.io/badge/Docker-Containers-2496ED?style=flat-square&logo=docker&logoColor=white" />
 </a>
+<a href="./LICENSE" target="_blank">
 <img src="https://img.shields.io/github/license/HubertRonald/RetainAI?style=flat-square&color=success" />
-
+</a>
+<a href="./CONTRIBUTING.md" target="_blank">
+<img src="https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg" />
+</a>
 </p>
 
 # RetainAI
