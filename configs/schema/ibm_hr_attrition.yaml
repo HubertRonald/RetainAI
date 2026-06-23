@@ -1,0 +1,29 @@
+dataset: ibm_hr_attrition
+
+target: Attrition
+
+required_columns:
+
+  - Age
+  - Attrition
+  - Department
+  - Education
+  - Gender
+  - JobRole
+  - MonthlyIncome
+  - OverTime
+
+categorical_columns:
+
+  - Attrition
+  - Department
+  - Gender
+  - JobRole
+  - OverTime
+
+numeric_columns:
+
+  - Age
+  - DailyRate
+  - DistanceFromHome
+  - MonthlyIncome
