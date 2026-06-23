@@ -1,0 +1,13 @@
+aws:
+
+  region: us-east-1
+
+  buckets:
+
+    raw: retainai-data-raw
+
+    staging: retainai-data-staging
+
+    analytics: retainai-data-analytics
+
+    artifacts: retainai-model-artifacts
