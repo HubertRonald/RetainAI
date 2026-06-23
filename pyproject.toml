@@ -1,0 +1,120 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "retainai"
+version = "0.1.0a0"
+description = "AI-ready Employee Retention Intelligence Platform"
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+license = { text = "MIT" }
+authors = [
+  { name = "Hubert Ronald", email = "h.mendozac@uniandes.edu.co" }
+]
+keywords = [
+  "employee-attrition",
+  "hr-analytics",
+  "mlops",
+  "survival-analysis",
+  "explainability",
+  "aws",
+  "bedrock"
+]
+dependencies = [
+  "numpy==1.26.4",
+  "pandas==2.2.3",
+  "scipy==1.13.1",
+  "scikit-learn==1.5.2",
+  "joblib==1.4.2",
+  "pyyaml==6.0.2",
+  "python-dotenv==1.0.1",
+  "openpyxl==3.1.5",
+  "matplotlib==3.9.2",
+  "seaborn==0.13.2",
+  "plotly==5.24.1",
+  "kaggle==1.6.17"
+]
+
+[project.optional-dependencies]
+classification = [
+  "xgboost==2.1.4"
+]
+
+survival = [
+  "lifelines==0.30.0"
+]
+
+explainability = [
+  "shap==0.49.1"
+]
+
+mlops = [] #  "mlflow==2.17.2"
+
+api = [
+  "fastapi==0.115.5",
+  "uvicorn[standard]==0.32.1",
+  "pydantic==2.10.2"
+]
+
+dashboard = [
+  "streamlit==1.40.2",
+  "altair==5.5.0"
+]
+
+# "awswrangler==3.10.1", "pulumi==3.142.0", "pulumi-aws==6.62.0"
+aws = [
+  "boto3==1.35.71",
+  "botocore==1.35.71"
+]
+
+ai = [
+  "pypdf==5.1.0",
+  "sentence-transformers==3.3.1"
+]
+
+notebooks = [
+  "jupyter==1.1.1",
+  "ipykernel==6.29.5",
+  "nbformat==5.10.4"
+]
+
+dev = [
+  "black==24.10.0",
+  "ruff==0.8.1",
+  "isort==5.13.2",
+  "pre-commit==4.0.1"
+]
+
+test = [
+  "pytest==8.3.4",
+  "pytest-cov==6.0.0"
+]
+
+all = [
+  "retainai[classification,survival,explainability,mlops,api,dashboard,aws,ai,notebooks,dev,test]"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra --cov=retainai --cov-report=term-missing"
