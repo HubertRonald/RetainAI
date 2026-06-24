@@ -1,16 +1,22 @@
-# Initial Findings
+# EDA Findings
 
-Initial findings should be updated after running the EDA notebooks.
+This document summarizes interpreted findings from the exploratory data analysis layer.
 
-Expected areas of interest include:
+Evidence is generated in:
 
-- overtime;
-- job role;
-- department;
-- monthly income;
-- business travel;
-- years at company;
-- job satisfaction;
-- work-life balance.
+```text
+artifacts/reports/eda_summary.md
+```
 
-This document should summarize analytical observations, not model conclusions.
+The current document should not copy every table from the generated artifact. Instead, it should summarize:
+
+- dataset readiness;
+- missing data implications;
+- data quality observations;
+- attrition patterns;
+- candidate feature engineering implications;
+- modeling considerations.
+
+## Status
+
+Pending update after reviewing the generated EDA summary artifact.
