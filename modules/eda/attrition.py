@@ -15,7 +15,11 @@ def attrition_rate_by_category(
         positive_class: str = "Yes",
     ) -> pd.DataFrame:
     grouped = (
-        df.groupby(column, dropna=False)[target]
+        df.groupby(
+            column,
+            dropna=False,
+            observed=False,
+        )[target]
         .apply(lambda values: (values == positive_class).mean() * 100)
         .reset_index(name="attrition_rate_pct")
     )
