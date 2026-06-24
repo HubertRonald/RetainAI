@@ -1,29 +1,91 @@
 dataset: ibm_hr_attrition
-
+file_name: WA_Fn-UseC_-HR-Employee-Attrition.csv
 target: Attrition
 
 required_columns:
-
   - Age
   - Attrition
+  - BusinessTravel
+  - DailyRate
   - Department
+  - DistanceFromHome
   - Education
+  - EducationField
+  - EmployeeCount
+  - EmployeeNumber
+  - EnvironmentSatisfaction
   - Gender
+  - HourlyRate
+  - JobInvolvement
+  - JobLevel
   - JobRole
+  - JobSatisfaction
+  - MaritalStatus
   - MonthlyIncome
+  - MonthlyRate
+  - NumCompaniesWorked
+  - Over18
   - OverTime
+  - PercentSalaryHike
+  - PerformanceRating
+  - RelationshipSatisfaction
+  - StandardHours
+  - StockOptionLevel
+  - TotalWorkingYears
+  - TrainingTimesLastYear
+  - WorkLifeBalance
+  - YearsAtCompany
+  - YearsInCurrentRole
+  - YearsSinceLastPromotion
+  - YearsWithCurrManager
+
+target_values:
+  - "Yes"
+  - "No"
 
 categorical_columns:
-
   - Attrition
+  - BusinessTravel
   - Department
+  - EducationField
   - Gender
   - JobRole
+  - MaritalStatus
+  - Over18
   - OverTime
 
-numeric_columns:
+binary_categorical_values:
+  Attrition:
+    - "Yes"
+    - "No"
+  OverTime:
+    - "Yes"
+    - "No"
 
+numeric_columns:
   - Age
   - DailyRate
   - DistanceFromHome
+  - Education
+  - EmployeeCount
+  - EmployeeNumber
+  - EnvironmentSatisfaction
+  - HourlyRate
+  - JobInvolvement
+  - JobLevel
+  - JobSatisfaction
   - MonthlyIncome
+  - MonthlyRate
+  - NumCompaniesWorked
+  - PercentSalaryHike
+  - PerformanceRating
+  - RelationshipSatisfaction
+  - StandardHours
+  - StockOptionLevel
+  - TotalWorkingYears
+  - TrainingTimesLastYear
+  - WorkLifeBalance
+  - YearsAtCompany
+  - YearsInCurrentRole
+  - YearsSinceLastPromotion
+  - YearsWithCurrManager
