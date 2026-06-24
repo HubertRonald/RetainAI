@@ -3,10 +3,11 @@ from __future__ import annotations
 from modules.io.datasets import load_ibm_hr_dataset
 from modules.preprocessing.schema import load_schema
 from modules.preprocessing.validation import validate_schema
+from retainai.core.paths import IBM_HR_SCHEMA_FILE
 
 
 def main() -> None:
-    schema = load_schema("configs/schema/ibm_hr_attrition.yaml")
+    schema = load_schema(IBM_HR_SCHEMA_FILE)
     df = load_ibm_hr_dataset()
 
     report = validate_schema(df, schema)

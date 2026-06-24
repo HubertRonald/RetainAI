@@ -6,10 +6,18 @@ from modules.preprocessing.cleaning import clean_ibm_hr_dataset
 from modules.preprocessing.schema import load_schema
 from modules.preprocessing.splitting import save_splits, split_dataset
 from modules.preprocessing.validation import validate_schema
+from retainai.core.paths import (
+    DATA_DIR,
+    IBM_HR_PROCESSED_FILE,
+    IBM_HR_SCHEMA_FILE,
+    ensure_data_directories,
+)
 
 
 def main() -> None:
-    schema = load_schema("configs/schema/ibm_hr_attrition.yaml")
+    ensure_data_directories()
+
+    schema = load_schema(IBM_HR_SCHEMA_FILE)
 
     df = load_ibm_hr_dataset()
     report = validate_schema(df, schema)
@@ -23,7 +31,7 @@ def main() -> None:
 
     cleaned = clean_ibm_hr_dataset(df)
 
-    save_dataframe(cleaned, "data/processed/ibm_hr_attrition_processed.csv")
+    save_dataframe(cleaned, IBM_HR_PROCESSED_FILE)
 
     train_df, validation_df, test_df = split_dataset(
         cleaned,
@@ -34,7 +42,7 @@ def main() -> None:
         random_state=42,
     )
 
-    save_splits(train_df, validation_df, test_df)
+    save_splits(train_df, validation_df, test_df, output_root=DATA_DIR)
 
     print("Dataset preparation completed successfully.")
     print(f"Processed shape: {cleaned.shape}")
