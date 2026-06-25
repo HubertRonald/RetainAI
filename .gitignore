@@ -224,17 +224,22 @@ data/train/*
 data/validation/*
 data/test/*
 data/prediction_input/*
-artifacts/*
+
+artifacts/reports/*.csv
+artifacts/reports/*.json
+artifacts/models/*.pkl
+!artifacts/.gitkeep
+!artifacts/reports/.gitkeep
+!artifacts/reports/*.md
+# !artifacts/models/
+!artifacts/models/.gitkeep
+
 mlruns/
 mlflow/
 *.db
 
 # Keep directory structure
 !data/**/.gitkeep
-!artifacts/.gitkeep
-!artifacts/reports/eda_summary.md
-!artifacts/reports/classification_report.md
-!artifacts/models/.gitkeep
 
 # Kaggle credentials
 kaggle.json
