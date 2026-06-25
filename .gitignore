@@ -232,6 +232,7 @@ mlflow/
 # Keep directory structure
 !data/**/.gitkeep
 !artifacts/.gitkeep
+!artifacts/reports/
 
 # Kaggle credentials
 kaggle.json
