@@ -194,5 +194,3 @@ The strongest exploratory signals appear in:
 * business travel;
 * department;
 * marital status.
-
-The next sprint should focus on feature engineering and classification baselines while preserving the interpretability and MLOps structure established in the data foundation and EDA stages.
