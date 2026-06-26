@@ -178,13 +178,25 @@ This approach ensures reproducibility across Linux, Windows, and macOS environme
 
 ## Roadmap
 
-### v0.1
+## Current Status
+
+Current development branch:
+
+feature/mlops-foundation
+
+Current milestone:
+
+### RetainAI v0.1 (Completed)
 
 - Repository foundation
 - Data ingestion
 - Baseline EDA
 - Classification pipeline
 - MLflow integration
+
+Next milestone:
+
+RetainAI v0.2
 
 ### v0.2
 

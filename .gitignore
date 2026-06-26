@@ -234,6 +234,11 @@ artifacts/models/*.pkl
 # !artifacts/models/
 !artifacts/models/.gitkeep
 
+!artifacts/figures/
+!artifacts/figures/.gitkeep
+!artifacts/figures/**/
+!artifacts/figures/**/*.png
+
 mlruns/
 mlflow/
 *.db
