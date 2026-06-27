@@ -3,118 +3,169 @@
 <a href="https://www.python.org/" target="_blank">
 <img src="https://img.shields.io/badge/Python-3.10.11-3670A0?style=flat-square&logo=python&logoColor=ffdd54" />
 </a>
+
 <a href="https://scikit-learn.org/" target="_blank">
 <img src="https://img.shields.io/badge/scikit--learn-ML-orange?style=flat-square&logo=scikit-learn&logoColor=white" />
 </a>
+
 <a href="https://xgboost.readthedocs.io/" target="_blank">
 <img src="https://img.shields.io/badge/XGBoost-Gradient%20Boosting-FF6600?style=flat-square" />
 </a>
+
 <a href="https://lifelines.readthedocs.io/" target="_blank">
-<img src="https://img.shields.io/badge/Survival%20Analysis-lifelines-4B8BBE?style=flat-square" />
+<img src="https://img.shields.io/badge/lifelines-Survival%20Analysis-4B8BBE?style=flat-square" />
 </a>
+
 <a href="https://shap.readthedocs.io/" target="_blank">
 <img src="https://img.shields.io/badge/SHAP-Explainability-8A2BE2?style=flat-square" />
 </a>
+
 <a href="https://mlflow.org/" target="_blank">
-<img src="https://img.shields.io/badge/MLflow-Tracking-0194E2?style=flat-square&logo=mlflow&logoColor=white" />
+<img src="https://img.shields.io/badge/MLflow-Experiment%20Tracking-0194E2?style=flat-square&logo=mlflow&logoColor=white" />
 </a>
+
 <a href="https://fastapi.tiangolo.com/" target="_blank">
 <img src="https://img.shields.io/badge/FastAPI-Serving-009688?style=flat-square&logo=fastapi&logoColor=white" />
 </a>
+
 <a href="https://streamlit.io/" target="_blank">
 <img src="https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" />
 </a>
+
 <a href="https://aws.amazon.com/" target="_blank">
 <img src="https://img.shields.io/badge/AWS-Cloud-232F3E?style=flat-square&logo=amazonaws&logoColor=white" />
 </a>
+
 <a href="https://www.pulumi.com/" target="_blank">
-<img src="https://img.shields.io/badge/Pulumi-Python%20IaC-8A3391?style=flat-square&logo=pulumi&logoColor=white" />
+<img src="https://img.shields.io/badge/Pulumi-IaC-8A3391?style=flat-square&logo=pulumi&logoColor=white" />
 </a>
+
 <a href="https://github.com/features/actions" target="_blank">
 <img src="https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-2088FF?style=flat-square&logo=githubactions&logoColor=white" />
 </a>
+
 <a href="https://www.docker.com/" target="_blank">
 <img src="https://img.shields.io/badge/Docker-Containers-2496ED?style=flat-square&logo=docker&logoColor=white" />
 </a>
-<a href="./LICENSE" target="_blank">
-<img src="https://img.shields.io/github/license/HubertRonald/RetainAI?style=flat-square&color=success" />
-</a>
-<a href="./CONTRIBUTING.md" target="_blank">
-<img src="https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg" />
-</a>
+
+<img src="https://img.shields.io/github/license/HubertRonald/RetainAI?style=flat-square&color=success"/>
+
+<img src="https://img.shields.io/badge/status-active-success?style=flat-square"/>
+
 </p>
 
 # RetainAI
 
-> AI-ready Employee Retention Intelligence Platform
+> Decision Intelligence Platform for Employee Retention
 
-RetainAI is an AWS-native MLOps and analytics platform for employee retention intelligence.
+RetainAI is an end-to-end Machine Learning and MLOps platform for employee retention analytics.
 
-The project combines:
-
-- employee attrition prediction;
-- survival analysis;
-- model explainability;
-- dashboard-driven decision support;
-- MLOps lifecycle management;
-- future AI capabilities based on resumes, psychometric assessments, RAG, and Amazon Bedrock.
-
-The first public version uses the IBM HR Analytics Employee Attrition dataset from Kaggle as a reproducible benchmark dataset.
+Rather than providing only employee attrition prediction, RetainAI combines predictive modeling, survival analysis, explainable AI, reproducible experimentation, and future AI-assisted decision support into a modular analytics platform for Human Resources.
 
 ---
 
-## Project Vision
+# Project Vision
 
 RetainAI is designed as a Decision Intelligence System for Human Resources.
 
-The platform evolves beyond traditional attrition prediction by incorporating:
+The long-term objective is to evolve from traditional employee attrition prediction toward an explainable AI platform capable of supporting workforce planning, retention strategies, and HR decision making.
 
-- predictive analytics;
-- retention intelligence;
-- explainable machine learning;
-- survival modeling;
-- monitoring and drift detection;
-- AI-assisted workforce analytics.
+The architecture is intentionally designed to evolve toward Amazon Bedrock-powered assistants without requiring major repository redesign.
 
 ---
 
-## Core Capabilities
+# Current Capabilities
 
-### Classification
+✔ Employee Attrition Classification
 
-Predict whether an employee is likely to leave the organization.
+✔ Survival Analysis
 
-### Survival Analysis
+✔ Explainable AI (SHAP)
 
-Estimate expected employee tenure and retention probability over time.
+✔ Experiment-ready MLflow architecture
 
-### Explainability
+✔ Reproducible Data Pipeline
 
-Understand which variables influence employee attrition risk.
+✔ Modular preprocessing pipeline
 
-### Dashboard Analytics
+✔ Notebook-driven research workflow
 
-Provide HR stakeholders with actionable insights through an interactive Streamlit dashboard.
+✔ Production-oriented package architecture
 
-### MLOps
-
-Enable reproducible training, experiment tracking, deployment, monitoring, and retraining workflows.
+✔ AWS-ready deployment architecture
 
 ---
 
-## Public Dataset
+# Analytical Pipeline
+
+```text
+Kaggle Dataset
+        │
+        ▼
+Dataset Acquisition
+        │
+        ▼
+Validation
+        │
+        ▼
+Preprocessing
+        │
+        ▼
+EDA
+        │
+        ▼
+Classification
+        │
+        ▼
+Survival Analysis
+        │
+        ▼
+Explainability
+        │
+        ▼
+Dashboard
+        │
+        ▼
+Future AI Components
+```
+
+---
+
+# Repository Architecture
+
+```text
+RetainAI/
+
+├── configs/
+├── data/
+├── docs/
+├── modules/
+├── notebooks/
+├── artifacts/
+├── figures/
+├── requirements/
+├── src/
+├── tests/
+└── .devcontainer/
+```
+
+The repository follows a layered architecture.
+
+- **modules/** contains reusable analytical logic.
+- **src/** contains production pipelines.
+- **notebooks/** remain declarative and consume reusable modules.
+- **artifacts/** stores reproducible analytical outputs.
+- **docs/** contains architectural and methodological documentation.
+
+---
+
+# Public Dataset
 
 RetainAI uses the IBM HR Analytics Employee Attrition dataset as an initial benchmark.
 
-Dataset:
+The dataset is **not redistributed** by this repository.
 
-https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset
-
-This repository does not redistribute the dataset.
-
-Users must download it directly from Kaggle.
-
-Expected local structure:
+Expected directory structure:
 
 ```text
 data/
@@ -123,107 +174,112 @@ data/
         └── WA_Fn-UseC_-HR-Employee-Attrition.csv
 ```
 
-Download example:
+Dataset download:
 
 ```bash
-mkdir -p data/raw/ibm_hr_attrition
+python -m retainai.data.download_ibm_hr
+```
 
+or manually:
+
+```bash
 kaggle datasets download \
-  -d pavansubhasht/ibm-hr-analytics-attrition-dataset \
-  -p data/raw/ibm_hr_attrition \
-  --unzip
+-d pavansubhasht/ibm-hr-analytics-attrition-dataset \
+-p data/raw/ibm_hr_attrition \
+--unzip
 ```
 
-## Repository Structure
+---
 
-```text
-retainai/
-├── apps/
-├── artifacts/
-├── configs/
-├── data/
-├── docs/
-├── figs/
-├── infra/
-├── modules/
-├── notebooks/
-├── requirements/
-├── services/
-├── src/
-├── tests/
-├── utils/
-├── pyproject.toml
-├── tox.ini
-└── README.md
-```
+# Development Environment
 
-## Architecture
+Recommended environment:
 
-The detailed architecture specification is available in:
-
-```text
-docs/architecture/architecture_specification_v0.1.md
-```
-
-## Development Environment
-
-The recommended development environment is:
-
+- Python 3.10
 - VS Code
 - Dev Containers
 - Docker
-- Python 3.10
 
-This approach ensures reproducibility across Linux, Windows, and macOS environments.
+The development container provides a reproducible Linux environment independent of the host operating system, avoiding common dependency issues on macOS and Windows.
 
-## Roadmap
+---
 
-## Current Status
+# Project Status
 
 Current development branch:
 
+```text
 feature/mlops-foundation
+```
 
-Current milestone:
+Completed milestones:
 
-### RetainAI v0.1 (Completed)
+## v0.1
 
-- Repository foundation
-- Data ingestion
-- Baseline EDA
-- Classification pipeline
-- MLflow integration
+- Repository Foundation
+- Data Foundation
+- Exploratory Data Analysis
+- Classification Pipeline
+- MLflow-ready Architecture
 
-Next milestone:
-
-RetainAI v0.2
-
-### v0.2
+## v0.2
 
 - Survival Analysis
 - Explainability (SHAP)
 
-### v0.3
+---
+
+# Roadmap
+
+## v0.3
 
 - Streamlit Dashboard
+- Executive Analytics
+- Individual Employee Prediction
+- Batch Prediction
 
-### v0.4
+## v0.4
 
 - AWS Deployment
 - Pulumi Infrastructure
+- FastAPI Production Services
 
-### v0.5
+## v0.5
 
-- Monitoring
+- Model Monitoring
 - Drift Detection
 - Automated Retraining
 
-### v1.0
+## v1.0
 
 - Resume Intelligence
 - Psychometric Intelligence
 - Amazon Bedrock Integration
 - Retention Advisor
+
+---
+
+# Documentation
+
+Architecture specifications are available under:
+
+```text
+docs/architecture/
+```
+
+Methodology documentation:
+
+```text
+docs/modeling/
+```
+
+Analytical documentation:
+
+```text
+docs/eda/
+```
+
+---
 
 ## Author
 
@@ -231,5 +287,4 @@ RetainAI v0.2
 
 ## License
 
-The source code in this repository is distributed under the MIT License. See
-[LICENSE](./LICENSE) for more details.
+Distributed under the MIT License. See [LICENSE](./LICENSE) for more details.
