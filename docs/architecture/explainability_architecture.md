@@ -278,3 +278,64 @@ artifacts/
 
         shap_values.joblib
 ```
+
+---
+
+
+# Explainability Architecture
+
+Version: v0.1
+
+Status: Draft
+
+## 1. Purpose
+
+The Explainability layer complements predictive modeling by providing interpretable explanations of employee attrition predictions.
+
+## 2. Analytical Objective
+
+Explain why a model predicts employee attrition using global and local explanation artifacts.
+
+## 3. Initial Strategy
+
+RetainAI v0.2 uses SHAP to explain:
+
+- Logistic Regression
+- Random Forest
+- XGBoost
+
+## 4. Module Architecture
+
+```text
+modules/explainability/
+├── preprocessing.py
+├── explainers.py
+├── shap_values.py
+├── feature_importance.py
+├── visualization.py
+└── report.py
+```
+
+## 5. Source Package
+
+```text
+src/retainai/explainability/run_explainability.py
+```
+
+## 6. Generated Artifacts
+
+```text
+artifacts/reports/explainability_report.md
+artifacts/figures/explainability/
+artifacts/explanations/
+```
+
+## 7. Notebook
+
+```text
+notebooks/06_explainability.ipynb
+```
+
+## 8. Dashboard Integration
+
+The dashboard should consume generated explainability artifacts without recalculating SHAP values.
