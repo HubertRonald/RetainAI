@@ -228,11 +228,18 @@ data/prediction_input/*
 artifacts/reports/*.csv
 artifacts/reports/*.json
 artifacts/models/*.pkl
+
+artifacts/explanations/**/*.joblib
+artifacts/explanations/**/*.parquet
+
 !artifacts/.gitkeep
 !artifacts/reports/.gitkeep
 !artifacts/reports/*.md
-# !artifacts/models/
 !artifacts/models/.gitkeep
+!artifacts/explanations/
+!artifacts/explanations/**/
+!artifacts/explanations/**/metadata.json
+!artifacts/explanations/.gitkeep
 
 !artifacts/figures/
 !artifacts/figures/.gitkeep
