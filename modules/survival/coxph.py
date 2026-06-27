@@ -5,11 +5,11 @@ from lifelines import CoxPHFitter
 
 
 def fit_cox_ph(
-        cox_df: pd.DataFrame,
-        duration_col: str = "duration",
-        event_col: str = "event",
-        penalizer: float = 0.1,
-    ) -> CoxPHFitter:
+    cox_df: pd.DataFrame,
+    duration_col: str = "duration",
+    event_col: str = "event",
+    penalizer: float = 0.1,
+) -> CoxPHFitter:
     model = CoxPHFitter(penalizer=penalizer)
     model.fit(
         cox_df,

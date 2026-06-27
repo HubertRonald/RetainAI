@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import pandas as pd
 
-pd.set_option('display.max_rows', 200)
-pd.set_option('display.max_columns', None)
-pd.set_option('display.width', None)
-pd.set_option('max_colwidth', None)
+pd.set_option("display.max_rows", 200)
+pd.set_option("display.max_columns", None)
+pd.set_option("display.width", None)
+pd.set_option("max_colwidth", None)
 
 
 def missing_summary(df: pd.DataFrame) -> pd.DataFrame:

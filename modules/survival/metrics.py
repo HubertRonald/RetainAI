@@ -5,11 +5,11 @@ from lifelines.utils import concordance_index
 
 
 def cox_concordance_index(
-        df: pd.DataFrame,
-        predicted_partial_hazard,
-        duration_col: str = "duration",
-        event_col: str = "event",
-    ) -> float:
+    df: pd.DataFrame,
+    predicted_partial_hazard,
+    duration_col: str = "duration",
+    event_col: str = "event",
+) -> float:
     return float(
         concordance_index(
             event_times=df[duration_col],

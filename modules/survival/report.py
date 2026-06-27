@@ -18,11 +18,11 @@ def _markdown_table(df: pd.DataFrame, max_rows: int | None = None) -> str:
 
 
 def generate_survival_report(
-        survival_probabilities: pd.DataFrame,
-        hazard_summary: pd.DataFrame,
-        concordance_index: float,
-        output_path: str | Path,
-    ) -> Path:
+    survival_probabilities: pd.DataFrame,
+    hazard_summary: pd.DataFrame,
+    concordance_index: float,
+    output_path: str | Path,
+) -> Path:
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
 

@@ -10,7 +10,10 @@ from modules.survival.kaplan_meier import (
     survival_probabilities,
 )
 from modules.survival.metrics import cox_concordance_index
-from modules.survival.preprocessing import prepare_cox_features, prepare_survival_dataset
+from modules.survival.preprocessing import (
+    prepare_cox_features,
+    prepare_survival_dataset,
+)
 from modules.survival.report import generate_survival_report
 from modules.survival.visualization import (
     save_group_kaplan_meier_plot,

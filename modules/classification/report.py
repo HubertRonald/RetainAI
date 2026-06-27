@@ -6,9 +6,9 @@ import pandas as pd
 
 
 def generate_classification_report(
-        results: pd.DataFrame,
-        output_path: str | Path = "artifacts/reports/classification_report.md",
-    ) -> Path:
+    results: pd.DataFrame,
+    output_path: str | Path = "artifacts/reports/classification_report.md",
+) -> Path:
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
 

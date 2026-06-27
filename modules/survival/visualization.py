@@ -6,14 +6,14 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from lifelines import KaplanMeierFitter
 
-plt.style.use('seaborn-v0_8')
+plt.style.use("seaborn-v0_8")
 plt.rcParams.update({"legend.frameon": True})
 
 
 def save_kaplan_meier_plot(
-        kmf: KaplanMeierFitter,
-        output_path: str | Path,
-    ) -> Path:
+    kmf: KaplanMeierFitter,
+    output_path: str | Path,
+) -> Path:
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -30,10 +30,10 @@ def save_kaplan_meier_plot(
 
 
 def save_group_kaplan_meier_plot(
-        models: dict[str, KaplanMeierFitter],
-        output_path: str | Path,
-        title: str,
-    ) -> Path:
+    models: dict[str, KaplanMeierFitter],
+    output_path: str | Path,
+    title: str,
+) -> Path:
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -54,10 +54,10 @@ def save_group_kaplan_meier_plot(
 
 
 def save_hazard_ratio_plot(
-        hazard_summary: pd.DataFrame,
-        output_path: str | Path,
-        top_n: int = 15,
-    ) -> Path:
+    hazard_summary: pd.DataFrame,
+    output_path: str | Path,
+    top_n: int = 15,
+) -> Path:
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
 

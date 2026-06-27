@@ -20,7 +20,7 @@ def compute_shap_values(explainer, X):
 def get_expected_value(explainer):
     expected = explainer.expected_value
 
-    if isinstance(expected, (list, tuple)):
+    if isinstance(expected, list | tuple):
         return expected[1]
 
     expected = np.asarray(expected)

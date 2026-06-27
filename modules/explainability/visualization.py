@@ -8,10 +8,10 @@ import shap
 
 
 def save_feature_importance_plot(
-        importance_df: pd.DataFrame,
-        output_path: str | Path,
-        top_n: int = 20,
-    ) -> Path:
+    importance_df: pd.DataFrame,
+    output_path: str | Path,
+    top_n: int = 20,
+) -> Path:
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -41,13 +41,13 @@ def save_beeswarm_plot(shap_values, X, feature_names, output_path: str | Path) -
 
 
 def save_waterfall_plot(
-        shap_values,
-        expected_value,
-        X,
-        feature_names,
-        output_path: str | Path,
-        sample_index: int = 0,
-    ) -> Path:
+    shap_values,
+    expected_value,
+    X,
+    feature_names,
+    output_path: str | Path,
+    sample_index: int = 0,
+) -> Path:
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
 

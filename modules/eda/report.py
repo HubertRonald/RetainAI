@@ -16,7 +16,11 @@ from modules.eda.profiling import (
     dataset_overview,
     numeric_profile,
 )
-from modules.eda.quality import constant_columns, high_cardinality_columns, target_distribution
+from modules.eda.quality import (
+    constant_columns,
+    high_cardinality_columns,
+    target_distribution,
+)
 
 
 def _markdown_table(df: pd.DataFrame, max_rows: int | None = None) -> str:
@@ -36,10 +40,10 @@ def _section(title: str, body: str) -> str:
 
 
 def generate_eda_summary(
-        df: pd.DataFrame,
-        output_path: str | Path = "artifacts/reports/eda_summary.md",
-        target: str = "Attrition",
-    ) -> Path:
+    df: pd.DataFrame,
+    output_path: str | Path = "artifacts/reports/eda_summary.md",
+    target: str = "Attrition",
+) -> Path:
     """Generate a markdown EDA summary artifact.
 
     This artifact is intended to capture reproducible evidence from notebooks
@@ -59,14 +63,35 @@ def generate_eda_summary(
     ]
 
     sections.append(_section("Dataset Overview", _markdown_table(dataset_overview(df))))
-    sections.append(_section("Target Distribution", _markdown_table(target_distribution(df, target=target))))
-    sections.append(_section("Column Profile", _markdown_table(column_profile(df), max_rows=40)))
-    sections.append(_section("Numeric Profile", _markdown_table(numeric_profile(df), max_rows=40)))
-    sections.append(_section("Categorical Profile", _markdown_table(categorical_profile(df), max_rows=40)))
-    sections.append(_section("Missing Data Summary", _markdown_table(missing_summary(df), max_rows=40)))
+    sections.append(
+        _section(
+            "Target Distribution",
+            _markdown_table(target_distribution(df, target=target)),
+        )
+    )
+    sections.append(
+        _section("Column Profile", _markdown_table(column_profile(df), max_rows=40))
+    )
+    sections.append(
+        _section("Numeric Profile", _markdown_table(numeric_profile(df), max_rows=40))
+    )
+    sections.append(
+        _section(
+            "Categorical Profile", _markdown_table(categorical_profile(df), max_rows=40)
+        )
+    )
+    sections.append(
+        _section(
+            "Missing Data Summary", _markdown_table(missing_summary(df), max_rows=40)
+        )
+    )
 
     constants = constant_columns(df)
-    constant_body = "\n".join(f"- `{column}`" for column in constants) if constants else "_No constant columns detected._"
+    constant_body = (
+        "\n".join(f"- `{column}`" for column in constants)
+        if constants
+        else "_No constant columns detected._"
+    )
     sections.append(_section("Constant Columns", constant_body))
 
     sections.append(
@@ -76,22 +101,40 @@ def generate_eda_summary(
         )
     )
 
-    for column in ["Department", "JobRole", "OverTime", "BusinessTravel", "MaritalStatus", "Gender"]:
+    for column in [
+        "Department",
+        "JobRole",
+        "OverTime",
+        "BusinessTravel",
+        "MaritalStatus",
+        "Gender",
+    ]:
         if column in df.columns:
             sections.append(
                 _section(
                     f"Attrition Rate by {column}",
-                    _markdown_table(attrition_rate_by_category(df, column=column, target=target), max_rows=20),
+                    _markdown_table(
+                        attrition_rate_by_category(df, column=column, target=target),
+                        max_rows=20,
+                    ),
                 )
             )
 
-    for column in ["MonthlyIncome", "Age", "YearsAtCompany", "DistanceFromHome", "TotalWorkingYears"]:
+    for column in [
+        "MonthlyIncome",
+        "Age",
+        "YearsAtCompany",
+        "DistanceFromHome",
+        "TotalWorkingYears",
+    ]:
         if column in df.columns:
             sections.append(
                 _section(
                     f"Attrition Rate by {column} Bins",
                     _markdown_table(
-                        attrition_rate_by_numeric_bins(df, column=column, target=target),
+                        attrition_rate_by_numeric_bins(
+                            df, column=column, target=target
+                        ),
                         max_rows=20,
                     ),
                 )

@@ -5,10 +5,10 @@ from lifelines import KaplanMeierFitter
 
 
 def fit_kaplan_meier(
-        survival_df: pd.DataFrame,
-        duration_col: str = "duration",
-        event_col: str = "event",
-    ) -> KaplanMeierFitter:
+    survival_df: pd.DataFrame,
+    duration_col: str = "duration",
+    event_col: str = "event",
+) -> KaplanMeierFitter:
     kmf = KaplanMeierFitter()
     kmf.fit(
         durations=survival_df[duration_col],
@@ -19,9 +19,9 @@ def fit_kaplan_meier(
 
 
 def survival_probabilities(
-        kmf: KaplanMeierFitter,
-        times: list[float],
-    ) -> pd.DataFrame:
+    kmf: KaplanMeierFitter,
+    times: list[float],
+) -> pd.DataFrame:
     rows = []
 
     for time in times:
@@ -36,11 +36,11 @@ def survival_probabilities(
 
 
 def fit_kaplan_meier_by_group(
-        survival_df: pd.DataFrame,
-        group_col: str,
-        duration_col: str = "duration",
-        event_col: str = "event",
-    ) -> dict[str, KaplanMeierFitter]:
+    survival_df: pd.DataFrame,
+    group_col: str,
+    duration_col: str = "duration",
+    event_col: str = "event",
+) -> dict[str, KaplanMeierFitter]:
     models = {}
 
     for group_value, group_df in survival_df.groupby(group_col, dropna=False):

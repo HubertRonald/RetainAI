@@ -6,11 +6,11 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
 def build_feature_target(
-        df: pd.DataFrame,
-        target: str = "Attrition",
-        positive_class: str = "Yes",
-        drop_columns: list[str] | None = None,
-    ) -> tuple[pd.DataFrame, pd.Series]:
+    df: pd.DataFrame,
+    target: str = "Attrition",
+    positive_class: str = "Yes",
+    drop_columns: list[str] | None = None,
+) -> tuple[pd.DataFrame, pd.Series]:
     drop_columns = drop_columns or []
     columns_to_drop = [target, *[c for c in drop_columns if c in df.columns]]
 
@@ -27,6 +27,10 @@ def build_preprocessor(X: pd.DataFrame) -> ColumnTransformer:
     return ColumnTransformer(
         transformers=[
             ("numeric", StandardScaler(), numeric_columns),
-            ("categorical", OneHotEncoder(handle_unknown="ignore"), categorical_columns),
+            (
+                "categorical",
+                OneHotEncoder(handle_unknown="ignore"),
+                categorical_columns,
+            ),
         ]
     )

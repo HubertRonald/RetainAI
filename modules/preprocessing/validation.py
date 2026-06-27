@@ -14,18 +14,18 @@ class ValidationReport:
 
 
 def validate_required_columns(
-        df: pd.DataFrame,
-        required_columns: list[str],
-    ) -> list[str]:
+    df: pd.DataFrame,
+    required_columns: list[str],
+) -> list[str]:
     missing = [column for column in required_columns if column not in df.columns]
     return [f"Missing required column: {column}" for column in missing]
 
 
 def validate_target_column(
-        df: pd.DataFrame,
-        target: str,
-        allowed_values: list[str] | None = None,
-    ) -> list[str]:
+    df: pd.DataFrame,
+    target: str,
+    allowed_values: list[str] | None = None,
+) -> list[str]:
     errors: list[str] = []
 
     if target not in df.columns:

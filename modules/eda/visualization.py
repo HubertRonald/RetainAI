@@ -3,14 +3,14 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import pandas as pd
 
-plt.style.use('seaborn-v0_8')
+plt.style.use("seaborn-v0_8")
 plt.rcParams.update({"legend.frameon": True})
 
 
 def plot_target_distribution(
-        df: pd.DataFrame,
-        target: str = "Attrition",
-    ) -> None:
+    df: pd.DataFrame,
+    target: str = "Attrition",
+) -> None:
     counts = df[target].value_counts()
 
     fig, ax = plt.subplots(figsize=(6, 4))
@@ -22,10 +22,10 @@ def plot_target_distribution(
 
 
 def plot_attrition_by_category(
-        df: pd.DataFrame,
-        column: str,
-        target: str = "Attrition",
-    ) -> None:
+    df: pd.DataFrame,
+    column: str,
+    target: str = "Attrition",
+) -> None:
     crosstab = pd.crosstab(df[column], df[target], normalize="index") * 100
 
     fig, ax = plt.subplots(figsize=(8, 4))

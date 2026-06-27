@@ -2,10 +2,11 @@ from __future__ import annotations
 
 import pandas as pd
 
-pd.set_option('display.max_rows', 200)
-pd.set_option('display.max_columns', None)
-pd.set_option('display.width', None)
-pd.set_option('max_colwidth', None)
+pd.set_option("display.max_rows", 200)
+pd.set_option("display.max_columns", None)
+pd.set_option("display.width", None)
+pd.set_option("max_colwidth", None)
+
 
 def dataset_overview(df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(
@@ -42,12 +43,16 @@ def categorical_profile(df: pd.DataFrame) -> pd.DataFrame:
             {
                 "column": column,
                 "unique_count": categorical[column].nunique(dropna=True),
-                "top_value": categorical[column].mode(dropna=True).iloc[0]
-                if not categorical[column].mode(dropna=True).empty
-                else None,
-                "top_frequency": categorical[column].value_counts(dropna=True).iloc[0]
-                if not categorical[column].value_counts(dropna=True).empty
-                else 0,
+                "top_value": (
+                    categorical[column].mode(dropna=True).iloc[0]
+                    if not categorical[column].mode(dropna=True).empty
+                    else None
+                ),
+                "top_frequency": (
+                    categorical[column].value_counts(dropna=True).iloc[0]
+                    if not categorical[column].value_counts(dropna=True).empty
+                    else 0
+                ),
             }
         )
 

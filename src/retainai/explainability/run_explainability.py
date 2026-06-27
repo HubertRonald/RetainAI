@@ -3,7 +3,6 @@ from __future__ import annotations
 import json
 
 import joblib
-import pandas as pd
 
 from modules.classification.preprocessing import build_feature_target
 from modules.explainability.explainers import build_shap_explainer

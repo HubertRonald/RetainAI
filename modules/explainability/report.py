@@ -6,10 +6,10 @@ import pandas as pd
 
 
 def generate_explainability_report(
-        model_name: str,
-        feature_importance: pd.DataFrame,
-        output_path: str | Path,
-    ) -> Path:
+    model_name: str,
+    feature_importance: pd.DataFrame,
+    output_path: str | Path,
+) -> Path:
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
 

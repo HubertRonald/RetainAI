@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import pandas as pd
 
-pd.set_option('display.max_rows', 200)
-pd.set_option('display.max_columns', None)
-pd.set_option('display.width', None)
-pd.set_option('max_colwidth', None)
+pd.set_option("display.max_rows", 200)
+pd.set_option("display.max_columns", None)
+pd.set_option("display.width", None)
+pd.set_option("max_colwidth", None)
 
 
 def constant_columns(df: pd.DataFrame) -> list[str]:
@@ -13,9 +13,9 @@ def constant_columns(df: pd.DataFrame) -> list[str]:
 
 
 def high_cardinality_columns(
-        df: pd.DataFrame,
-        threshold: int = 30,
-    ) -> pd.DataFrame:
+    df: pd.DataFrame,
+    threshold: int = 30,
+) -> pd.DataFrame:
     rows = []
 
     for column in df.select_dtypes(exclude="number").columns:
@@ -33,9 +33,9 @@ def high_cardinality_columns(
 
 
 def target_distribution(
-        df: pd.DataFrame,
-        target: str = "Attrition",
-    ) -> pd.DataFrame:
+    df: pd.DataFrame,
+    target: str = "Attrition",
+) -> pd.DataFrame:
     counts = df[target].value_counts(dropna=False)
     pct = df[target].value_counts(normalize=True, dropna=False) * 100
 

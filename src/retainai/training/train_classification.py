@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 import joblib
 import yaml
@@ -9,7 +8,10 @@ from sklearn.pipeline import Pipeline
 
 from modules.classification.metrics import evaluate_classifier, metrics_to_dataframe
 from modules.classification.models import build_model
-from modules.classification.preprocessing import build_feature_target, build_preprocessor
+from modules.classification.preprocessing import (
+    build_feature_target,
+    build_preprocessor,
+)
 from modules.classification.report import generate_classification_report
 from modules.io.storage import load_dataframe
 from retainai.core.paths import PROJECT_ROOT
@@ -109,9 +111,7 @@ def main() -> None:
                         "positive_class": positive_class,
                     }
                 )
-                mlflow.log_metrics(
-                    {k: v for k, v in metrics.items() if k != "model"}
-                )
+                mlflow.log_metrics({k: v for k, v in metrics.items() if k != "model"})
                 mlflow.log_artifact(str(model_path))
 
         finally:
