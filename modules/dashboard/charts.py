@@ -4,6 +4,10 @@ import pandas as pd
 import plotly.express as px
 from plotly.graph_objects import Figure
 
+COLOR_NO = "#2f7df6"
+COLOR_YES = "#ec4899"
+COLOR_MAP = {"No": COLOR_NO, "Yes": COLOR_YES}
+
 
 def style_fig(fig: Figure) -> Figure:
     fig.update_layout(
