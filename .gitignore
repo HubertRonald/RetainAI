@@ -225,6 +225,10 @@ data/validation/*
 data/test/*
 data/prediction_input/*
 
+# Local uploaded files from dashboard testing
+data/prediction_input/uploads/*
+!data/prediction_input/uploads/.gitkeep
+
 artifacts/reports/*.csv
 artifacts/reports/*.json
 artifacts/models/*.pkl
@@ -246,6 +250,11 @@ artifacts/explanations/**/*.parquet
 !artifacts/figures/**/
 !artifacts/figures/**/*.png
 
+# Dashboard generated exports
+artifacts/figures/dashboard/*.png
+artifacts/figures/dashboard/*.html
+!artifacts/figures/dashboard/.gitkeep
+
 mlruns/
 mlflow/
 *.db
@@ -256,3 +265,7 @@ mlflow/
 # Kaggle credentials
 kaggle.json
 .kaggle/
+
+# RetainAI dashboard runtime artifacts
+apps/dashboard/streamlit-app/.streamlit/secrets.toml
+apps/dashboard/streamlit-app/.streamlit/credentials.toml
