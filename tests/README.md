@@ -133,6 +133,7 @@ python -m tox -e dashboard
 python -m pip install -e ".[api]"
 python -m tox -e api
 
+python -m tox -e format
 python -m tox -e lint
 python -m tox -e format
 
