@@ -120,3 +120,22 @@ python -m tox -e format
 python -m tox
 python -m tox -e behavior
 ```
+
+## Dashboard foundation tests
+
+Sprint 6 adds dashboard foundation tests.
+
+Run:
+
+```bash
+python -m pip install -e ".[dashboard]"
+python -m tox -e dashboard
+python -m pip install -e ".[api]"
+python -m tox -e api
+
+python -m tox -e lint
+python -m tox -e format
+
+python -m tox
+python -m tox -e behavior
+```
