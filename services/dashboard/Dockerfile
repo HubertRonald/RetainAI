@@ -12,6 +12,7 @@ COPY pyproject.toml README.md ./
 COPY src ./src
 COPY modules ./modules
 COPY apps/dashboard ./apps/dashboard
+COPY .streamlit ./.streamlit
 COPY artifacts ./artifacts
 COPY data ./data
 
