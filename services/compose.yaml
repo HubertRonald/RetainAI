@@ -1,0 +1,29 @@
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: services/api/Dockerfile
+    container_name: retainai-api
+    environment:
+      - RETAINAI_RUNTIME=local
+    ports:
+      - "8001:8001"
+    volumes:
+      - ../artifacts:/app/artifacts
+      - ../data:/app/data
+
+  dashboard:
+    build:
+      context: ..
+      dockerfile: services/dashboard/Dockerfile
+    container_name: retainai-dashboard
+    environment:
+      - RETAINAI_DASHBOARD_MODE=api
+      - RETAINAI_API_URL=http://api:8001
+    ports:
+      - "8501:8501"
+    volumes:
+      - ../artifacts:/app/artifacts
+      - ../data:/app/data
+    depends_on:
+      - api
