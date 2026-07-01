@@ -281,6 +281,26 @@ docs/eda/
 
 ---
 
+# Config
+
+```bash
+source .venv/bin/activate
+
+python -m pip install --upgrade pip setuptools wheel
+
+# python -m pip uninstall -y shap numba llvmlite pyarrow cryptography
+
+python -m pip install --no-cache-dir --only-binary=:all: \
+  "llvmlite==0.43.0" \
+  "numba==0.60.0" \
+  "pyarrow==14.0.2" \
+  "cryptography==45.0.7"
+
+python -m pip install -e ".[all]"
+```
+
+---
+
 ## Author
 
 - **Hubert Ronald** - Initial Work - [HubertRonald](https://github.com/HubertRonald)
