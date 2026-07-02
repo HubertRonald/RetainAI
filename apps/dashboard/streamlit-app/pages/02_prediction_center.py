@@ -12,6 +12,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from components.cards import kpi_card  # noqa: E402
 from components.layout import configure_page, render_footer, render_page_shell  # noqa: E402
+from components.tables import render_dataframe  # noqa: E402
 from modules.dashboard.inference import explain_linear_prediction, load_model, predict_dataframe  # noqa: E402
 
 configure_page()
@@ -79,7 +80,7 @@ if input_df is None:
     st.stop()
 
 st.markdown("### Input Preview")
-st.dataframe(input_df.head(25), use_container_width=True)
+render_dataframe(input_df, title=None, max_rows=25)
 
 if not model_path.exists():
     st.error("Model artifact not available. Train classification models first.")
@@ -112,7 +113,7 @@ with m3:
     kpi_card("Records Predicted", f"{records:,}", "Scored rows", "🧾", "#60a5fa")
 
 st.markdown("### Prediction Results")
-st.dataframe(results, use_container_width=True)
+render_dataframe(results)
 
 st.download_button(
     "Download predictions",
@@ -145,6 +146,6 @@ else:
         """,
         unsafe_allow_html=True,
     )
-    st.dataframe(explanation, use_container_width=True)
+    render_dataframe(explanation)
 
 render_footer()

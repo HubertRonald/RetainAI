@@ -67,17 +67,17 @@ avg_years = filtered["TotalWorkingYears"].mean() if total else 0
 
 k1, k2, k3, k4, k5, k6 = st.columns(6)
 with k1:
-    kpi_card("Total Employees", f"{total:,}", "Filtered workforce", "👥", "#8b5cf6")
+    kpi_card("Total Employees", f"{total:,}", "Filtered workforce", "👥", "#8b5cf6", svg_icon="data.svg")
 with k2:
-    kpi_card("Attrition Cases", f"{attrition:,}", "Employees who left", "🧍", "#fb923c")
+    kpi_card("Attrition Cases", f"{attrition:,}", "Employees who left", "🧍", "#fb923c", svg_icon="prediction.svg")
 with k3:
-    kpi_card("Attrition Rate", f"{rate:.2%}", "Current segment risk", "📈", "#ec4899")
+    kpi_card("Attrition Rate", f"{rate:.2%}", "Current segment risk", "📈", "#ec4899", svg_icon="overview.svg")
 with k4:
-    kpi_card("Active / Non-Attrition", f"{active:,}", "Retention base", "✅", "#22c55e")
+    kpi_card("Active / Non-Attrition", f"{active:,}", "Retention base", "✅", "#22c55e", svg_icon="survival.svg")
 with k5:
-    kpi_card("Avg Monthly Income", f"{avg_income/1000:.0f}K", "Across segment", "💳", "#60a5fa")
+    kpi_card("Avg Monthly Income", f"{avg_income/1000:.0f}K", "Across segment", "💳", "#60a5fa", svg_icon="model.svg")
 with k6:
-    kpi_card("Avg Working Years", f"{avg_years:.1f}", "Experience proxy", "📅", "#a78bfa")
+    kpi_card("Avg Working Years", f"{avg_years:.1f}", "Experience proxy", "📅", "#a78bfa", svg_icon="api.svg")
 
 row1_left, row1_mid, row1_right = st.columns([1.25, 1.25, 1])
 with row1_left:

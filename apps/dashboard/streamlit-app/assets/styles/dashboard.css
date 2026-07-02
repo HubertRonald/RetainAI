@@ -427,3 +427,36 @@ header {
 [data-testid="stStatusWidget"] {
   display: none;
 }
+
+/* Page link product styling */
+[data-testid="stPageLink"] a {
+  border-radius: 10px;
+  padding: 0.48rem 0.65rem;
+  color: #e2e8f0 !important;
+}
+
+[data-testid="stPageLink"] a:hover {
+  background: rgba(97, 95, 255, 0.14);
+}
+
+[data-testid="stPageLink"] a[aria-current="page"] {
+  background: linear-gradient(90deg, rgba(97,95,255,.38), rgba(139,92,246,.20));
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+/* Keep sidebar bottom content visible with better spacing */
+.retainai-sidebar-footer-card {
+  margin-bottom: 1.25rem;
+}
+
+/* Make material icons and page icons visually aligned */
+[data-testid="stPageLink"] svg,
+[data-testid="stPageLink"] span {
+  vertical-align: middle;
+}
+
+/* Avoid huge white boxes around static images when still used */
+[data-testid="stImage"] {
+  border-radius: 16px;
+  overflow: hidden;
+}
