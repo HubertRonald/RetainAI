@@ -29,3 +29,24 @@ Does API mode have a clear fallback?
 [ ] Sidebar controls do not duplicate page-level controls.
 [ ] Mockup can be validated before Streamlit implementation.
 ```
+
+---
+
+# Product Dashboard Iteration Notes
+
+This iteration fixes three implementation gaps:
+
+1. Dashboard chart functions must be importable from `modules.dashboard.charts`.
+2. Streamlit widgets used across sidebar and pages must define unique keys.
+3. Navigation should use visible icons and a product-oriented sidebar.
+
+Additional dashboard validation checks:
+
+```text
+[ ] attrition_rate_by_category is available.
+[ ] histogram_by_attrition is available.
+[ ] Explainability model selector has a unique key.
+[ ] Sidebar model selector has a unique key.
+[ ] Data Dictionary page is linked from sidebar.
+[ ] Survival Analytics uses interactive Plotly charts.
+```
