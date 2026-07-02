@@ -38,7 +38,12 @@ default_model = st.session_state.get("selected_model", models[0])
 if default_model not in models:
     default_model = models[0]
 
-model = st.selectbox("Model", models, index=models.index(default_model))
+model = st.selectbox(
+    "Model",
+    models,
+    index=models.index(default_model),
+    key="explainability_model_selector",
+)
 paths = get_explainability_figures(figures, model)
 
 metadata_path = base / model / "metadata.json"

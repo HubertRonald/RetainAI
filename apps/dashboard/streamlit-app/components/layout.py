@@ -70,11 +70,36 @@ def render_sidebar(active_page: str = "") -> None:
         )
 
         st.markdown('<div class="retainai-nav-label">Navigation</div>', unsafe_allow_html=True)
-        st.page_link("app.py", label="Home", icon="🏠")
-        st.page_link("pages/01_executive_overview.py", label="Executive Overview", icon="📊")
-        st.page_link("pages/02_prediction_center.py", label="Prediction Center", icon="🎯")
-        st.page_link("pages/03_explainability_explorer.py", label="Explainability Explorer", icon="🧩")
-        st.page_link("pages/04_survival_analytics.py", label="Survival Analytics", icon="⏳")
+
+        st.page_link("app.py", label="Home", icon=":material/home:")
+        st.page_link(
+            "pages/01_executive_overview.py",
+            label="Executive Overview",
+            icon=":material/dashboard:",
+        )
+        st.page_link(
+            "pages/02_prediction_center.py",
+            label="Prediction Center",
+            icon=":material/target:",
+        )
+        st.page_link(
+            "pages/03_explainability_explorer.py",
+            label="Explainability Explorer",
+            icon=":material/psychology:",
+        )
+        st.page_link(
+            "pages/04_survival_analytics.py",
+            label="Survival Analytics",
+            icon=":material/timeline:",
+        )
+
+        dictionary_page = Path(__file__).resolve().parents[1] / "pages/05_data_dictionary.py"
+        if dictionary_page.exists():
+            st.page_link(
+                "pages/05_data_dictionary.py",
+                label="Data Dictionary",
+                icon=":material/dictionary:",
+            )
 
         st.markdown('<div class="retainai-nav-label">System</div>', unsafe_allow_html=True)
 
@@ -82,6 +107,7 @@ def render_sidebar(active_page: str = "") -> None:
             "Model",
             ["logistic_regression", "random_forest", "xgboost"],
             index=["logistic_regression", "random_forest", "xgboost"].index(model),
+            key="sidebar_model_selector",
         )
 
         st.markdown(
@@ -109,6 +135,20 @@ def render_sidebar(active_page: str = "") -> None:
             unsafe_allow_html=True,
         )
 
+        st.markdown(
+            """
+            <div class="retainai-sidebar-card retainai-sidebar-footer-card">
+                <div style="font-weight:700;color:#e2e8f0;">RetainAI Dashboard v0.3.0</div>
+                <div style="color:#94a3b8;font-size:.78rem;margin-top:.3rem;">
+                    Product dashboard foundation
+                </div>
+                <div style="margin-top:.9rem;color:#94a3b8;font-size:.78rem;">
+                    Need help? Review dashboard docs.
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
 def render_page_header(
         title: str,
