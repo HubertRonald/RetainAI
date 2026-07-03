@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 from modules.api.prediction_service import assign_risk_level
-from services.api.app.schemas.prediction import PredictionRecordRequest
+from apps.api.schemas.prediction import PredictionRecordRequest
 
 router = APIRouter(prefix="/api/v1/predict", tags=["prediction"])
 
