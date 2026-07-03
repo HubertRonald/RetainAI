@@ -24,14 +24,14 @@ def _svg_data_uri(name: str | None) -> str:
     return f"data:image/svg+xml;base64,{encoded}"
 
 
-def kpi_card(
-    label: str,
-    value: str | int | float,
-    helper: str = "",
-    icon: str = "●",
-    accent: str = "#615fff",
-    svg_icon: str | None = None,
-) -> None:
+def kpi_card_html(
+        label: str,
+        value: str | int | float,
+        helper: str = "",
+        icon: str = "●",
+        accent: str = "#615fff",
+        svg_icon: str | None = None,
+    ) -> str:
     svg_uri = _svg_data_uri(svg_icon)
 
     icon_html = (
@@ -40,21 +40,60 @@ def kpi_card(
         else f'<span style="font-size:1.45rem;">{html.escape(icon)}</span>'
     )
 
-    st.markdown(
-        f"""
-        <div class="retainai-card retainai-kpi-card">
-            <div class="retainai-kpi-icon" style="color:{accent};">
-                {icon_html}
-            </div>
-            <div>
-                <div class="retainai-kpi-label">{html.escape(label)}</div>
-                <div class="retainai-kpi-value">{html.escape(str(value))}</div>
-                <div class="retainai-kpi-help" style="color:{accent};">{html.escape(helper)}</div>
-            </div>
+    return f"""
+    <div class="retainai-card retainai-kpi-card">
+        <div class="retainai-kpi-icon" style="color:{accent};">
+            {icon_html}
         </div>
-        """,
+        <div>
+            <div class="retainai-kpi-label">{html.escape(label)}</div>
+            <div class="retainai-kpi-value">{html.escape(str(value))}</div>
+            <div class="retainai-kpi-help" style="color:{accent};">{html.escape(helper)}</div>
+        </div>
+    </div>
+    """
+
+
+def kpi_card(
+        label: str,
+        value: str | int | float,
+        helper: str = "",
+        icon: str = "●",
+        accent: str = "#615fff",
+        svg_icon: str | None = None,
+    ) -> None:
+    st.markdown(
+        kpi_card_html(
+            label=label,
+            value=value,
+            helper=helper,
+            icon=icon,
+            accent=accent,
+            svg_icon=svg_icon,
+        ),
         unsafe_allow_html=True,
     )
+
+
+def kpi_grid(items: list[dict]) -> None:
+    cards = [
+        kpi_card_html(
+            label=item["label"],
+            value=item["value"],
+            helper=item.get("helper", ""),
+            icon=item.get("icon", "●"),
+            accent=item.get("accent", "#615fff"),
+            svg_icon=item.get("svg_icon"),
+        )
+        for item in items
+    ]
+
+    html_markup = '<div class="retainai-kpi-grid">' + "".join(cards) + "</div>"
+
+    if hasattr(st, "html"):
+        st.html(html_markup)
+    else:
+        st.markdown(html_markup, unsafe_allow_html=True)
 
 
 def info_tip(message: str) -> None:
