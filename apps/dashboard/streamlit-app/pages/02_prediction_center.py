@@ -10,10 +10,15 @@ PROJECT_ROOT = Path(__file__).resolve().parents[4]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from components.cards import kpi_card  # noqa: E402
+from components.cards import kpi_grid  # noqa: E402
 from components.layout import configure_page, render_footer, render_page_shell  # noqa: E402
 from components.tables import render_dataframe  # noqa: E402
-from modules.dashboard.inference import explain_linear_prediction, load_model, predict_dataframe  # noqa: E402
+from modules.dashboard.explanation_payloads import (  # noqa: E402
+    build_bedrock_ready_payload,
+    payload_to_json,
+)
+from modules.dashboard.inference import load_model, predict_dataframe  # noqa: E402
+from modules.dashboard.local_explanations import explain_prediction_row  # noqa: E402
 
 configure_page()
 
@@ -24,16 +29,18 @@ render_page_shell(
     subtitle="Upload employee records, score attrition risk and inspect row-level drivers",
     icon="prediction.svg",
     active_page="prediction",
-    chips=[("Mode", "local inference", "green"), ("Model", selected_model, "purple")],
+    chips=[
+        ("Mode", "local inference", "green"),
+        ("Model", selected_model, "purple"),
+    ],
 )
 
 sample_path = PROJECT_ROOT / "data/prediction_input/ibm_hr_attrition_prediction_sample.csv"
-model_path = PROJECT_ROOT / "artifacts/models" / f"{selected_model}.pkl"
+model_path = PROJECT_ROOT / "artifacts/models" / f"{st.session_state.get('selected_model', selected_model)}.pkl"
 
-top_left, top_mid, top_right = st.columns([1, 1.4, 1])
+top_left, top_mid, top_right = st.columns([1, 1.4, 1], gap="medium")
 
 with top_left:
-    st.markdown('<div class="retainai-card">', unsafe_allow_html=True)
     st.markdown("### Template")
     if sample_path.exists():
         st.download_button(
@@ -44,22 +51,20 @@ with top_left:
         )
     else:
         st.warning("Prediction sample not found.")
-    st.markdown("</div>", unsafe_allow_html=True)
 
 with top_mid:
-    st.markdown('<div class="retainai-card">', unsafe_allow_html=True)
     st.markdown("### Upload")
-    uploaded = st.file_uploader("Upload CSV/XLSX", type=["csv", "xlsx"])
-    st.markdown("</div>", unsafe_allow_html=True)
+    uploaded = st.file_uploader("Upload CSV/XLSX", type=["csv", "xlsx"], key="prediction_upload")
 
 with top_right:
-    st.markdown('<div class="retainai-card">', unsafe_allow_html=True)
     st.markdown("### Model")
     if model_path.exists():
-        st.success(f"Loaded: {selected_model}")
+        st.success(f"Loaded: {model_path.stem}")
     else:
         st.error(f"Missing model: {model_path.name}")
-    st.markdown("</div>", unsafe_allow_html=True)
+
+with st.expander("Use demo prediction sample", expanded=False):
+    use_demo = st.button("Load demo sample", key="load_demo_prediction_sample")
 
 input_df: pd.DataFrame | None = None
 
@@ -69,18 +74,15 @@ if uploaded:
         input_df = pd.read_csv(uploaded)
     else:
         input_df = pd.read_excel(uploaded)
-elif sample_path.exists():
-    with st.expander("Use demo prediction sample", expanded=False):
-        if st.button("Load demo sample"):
-            input_df = pd.read_csv(sample_path)
+elif use_demo and sample_path.exists():
+    input_df = pd.read_csv(sample_path)
 
 if input_df is None:
     st.info("Upload a file or load the demo sample to run predictions.")
     render_footer()
     st.stop()
 
-st.markdown("### Input Preview")
-render_dataframe(input_df, title=None, max_rows=25)
+render_dataframe(input_df, title="Input Preview", max_rows=25)
 
 if not model_path.exists():
     st.error("Model artifact not available. Train classification models first.")
@@ -104,20 +106,41 @@ high_risk = int((results["risk_level"] == "High").sum())
 avg_probability = float(results["attrition_probability"].mean())
 records = len(results)
 
-m1, m2, m3 = st.columns(3)
-with m1:
-    kpi_card("Predicted High Risk", f"{high_risk:,}", "Rows above high-risk threshold", "⚠️", "#ef4444")
-with m2:
-    kpi_card("Average Risk Probability", f"{avg_probability:.2%}", "Mean predicted attrition probability", "📈", "#ec4899")
-with m3:
-    kpi_card("Records Predicted", f"{records:,}", "Scored rows", "🧾", "#60a5fa")
+kpi_grid(
+    [
+        {
+            "label": "Predicted High Risk",
+            "value": f"{high_risk:,}",
+            "helper": "Rows above high-risk threshold",
+            "icon": "⚠️",
+            "accent": "#ef4444",
+            "svg_icon": "prediction.svg",
+        },
+        {
+            "label": "Average Risk Probability",
+            "value": f"{avg_probability:.2%}",
+            "helper": "Mean predicted attrition probability",
+            "icon": "📈",
+            "accent": "#ec4899",
+            "svg_icon": "overview.svg",
+        },
+        {
+            "label": "Records Predicted",
+            "value": f"{records:,}",
+            "helper": "Scored rows",
+            "icon": "🧾",
+            "accent": "#60a5fa",
+            "svg_icon": "data.svg",
+        },
+    ]
+)
 
-st.markdown("### Prediction Results")
-render_dataframe(results)
+render_dataframe(results, title="Prediction Results")
 
+csv_buffer = results.to_csv(index=False).encode("utf-8")
 st.download_button(
     "Download predictions",
-    data=results.to_csv(index=False).encode("utf-8"),
+    data=csv_buffer,
     file_name="retainai_predictions.csv",
     mime="text/csv",
 )
@@ -127,25 +150,66 @@ st.markdown("### Row-level Explanation")
 row_index = st.selectbox(
     "Select row to explain",
     list(range(len(results))),
-    format_func=lambda i: f"Row {i} — Risk: {results.iloc[i]['risk_level']} — Prob: {results.iloc[i]['attrition_probability']:.2%}",
+    format_func=lambda i: (
+        f"Row {i} — Risk: {results.iloc[i]['risk_level']} — "
+        f"Prob: {results.iloc[i]['attrition_probability']:.2%}"
+    ),
+    key="prediction_row_explanation_selector",
 )
 
 required = bundle.required_columns
-row_df = results.iloc[[row_index]][required]
-explanation = explain_linear_prediction(row_df, pipeline)
+row_df = bundle.input_df.iloc[[row_index]][required]
+background_df = bundle.input_df[required].head(min(len(bundle.input_df), 100))
+
+try:
+    explanation = explain_prediction_row(
+        row_df=row_df,
+        pipeline=pipeline,
+        background_df=background_df,
+        top_n=12,
+    )
+except Exception as exc:
+    st.warning(f"Local explanation could not be generated: {exc}")
+    explanation = pd.DataFrame()
 
 if explanation.empty:
-    st.info("No local explanation available for this model.")
+    st.info("No local explanation available for this row/model.")
 else:
     st.markdown(
         """
-        <div class="retainai-card">
+        <div class="retainai-explanation-note">
             <strong>Practical interpretation:</strong>
-            the table below shows the strongest feature contributions for the selected uploaded row.
+            this table shows the strongest drivers for the selected uploaded row.
+            For Logistic Regression, RetainAI uses linear feature contributions.
+            For Random Forest and XGBoost, RetainAI uses row-level SHAP values.
         </div>
         """,
         unsafe_allow_html=True,
     )
     render_dataframe(explanation)
+
+    prediction_payload = {
+        "prediction": int(results.iloc[row_index]["prediction"]),
+        "attrition_probability": float(results.iloc[row_index]["attrition_probability"]),
+        "risk_level": str(results.iloc[row_index]["risk_level"]),
+    }
+
+    payload = build_bedrock_ready_payload(
+        employee_record=input_df.iloc[row_index].to_dict(),
+        prediction=prediction_payload,
+        drivers=explanation,
+        model_name=model_path.stem,
+    )
+
+    payload_json = payload_to_json(payload)
+
+    with st.expander("Bedrock-ready structured explanation payload", expanded=False):
+        st.json(payload)
+        st.download_button(
+            "Download explanation payload JSON",
+            data=payload_json.encode("utf-8"),
+            file_name=f"retainai_explanation_row_{row_index}.json",
+            mime="application/json",
+        )
 
 render_footer()
