@@ -21,6 +21,7 @@ services:
     container_name: retainai-dashboard
     environment:
       - RETAINAI_DASHBOARD_MODE=api
+      - RETAINAI_PREDICTION_MODE=api
       - RETAINAI_API_URL=http://api:8001
     ports:
       - "8501:8501"
