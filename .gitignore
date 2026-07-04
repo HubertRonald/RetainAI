@@ -269,3 +269,11 @@ kaggle.json
 # RetainAI dashboard runtime artifacts
 apps/dashboard/streamlit-app/.streamlit/secrets.toml
 apps/dashboard/streamlit-app/.streamlit/credentials.toml
+
+# Dashboard generated exports and local explanation payloads
+artifacts/dashboard/exports/*
+!artifacts/dashboard/exports/.gitkeep
+
+artifacts/explanations/samples/*.json
+!artifacts/explanations/samples/sample_*.json
+!artifacts/explanations/samples/.gitkeep

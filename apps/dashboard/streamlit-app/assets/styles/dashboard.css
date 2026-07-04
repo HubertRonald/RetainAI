@@ -572,3 +572,38 @@ button[data-baseweb="tab"][aria-selected="true"] {
 .retainai-sidebar-footer-card {
   margin-bottom: 1.25rem;
 }
+
+/* Sprint 6.1 closeout refinements */
+.retainai-header {
+  margin-bottom: 1.4rem;
+}
+
+.retainai-kpi-grid {
+  margin-top: 1.25rem;
+  margin-bottom: 1.6rem;
+}
+
+.retainai-card,
+.stPlotlyChart {
+  backdrop-filter: blur(12px);
+}
+
+.retainai-page-icon,
+.retainai-brand-icon,
+.retainai-kpi-icon {
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.04),
+    0 0 24px rgba(97,95,255,0.16);
+}
+
+.retainai-toolbar .retainai-chip {
+  min-height: 34px;
+}
+
+[data-testid="stSidebar"] {
+  min-width: 285px;
+}
+
+.retainai-footer {
+  margin-bottom: 1rem;
+}
