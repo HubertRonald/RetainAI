@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -19,10 +20,14 @@ from modules.dashboard.explanation_payloads import (  # noqa: E402
 )
 from modules.dashboard.inference import load_model, predict_dataframe  # noqa: E402
 from modules.dashboard.local_explanations import explain_prediction_row  # noqa: E402
+from modules.dashboard.payload_store import save_explanation_payload_sample  # noqa: E402
+from modules.dashboard.retention_advisor_prompts import build_retention_advisor_prompt  # noqa: E402
+from modules.dashboard.api_client import RetainAIApiClient  # noqa: E402
 
 configure_page()
 
 selected_model = st.session_state.get("selected_model", "logistic_regression")
+prediction_mode = os.getenv("RETAINAI_PREDICTION_MODE", "local").lower()
 
 render_page_shell(
     title="Prediction Center",
@@ -30,7 +35,7 @@ render_page_shell(
     icon="prediction.svg",
     active_page="prediction",
     chips=[
-        ("Mode", "local inference", "green"),
+        ("Mode", prediction_mode, "green"),
         ("Model", selected_model, "purple"),
     ],
 )
@@ -100,7 +105,16 @@ if bundle.missing_columns:
     render_footer()
     st.stop()
 
-results = bundle.output_df
+if prediction_mode == "api":
+    try:
+        api_client = RetainAIApiClient()
+        results = api_client.predict(bundle.input_df, model_name=model_path.stem)
+        st.success("Predictions generated through RetainAI API.")
+    except Exception as exc:  # noqa: BLE001
+        st.warning(f"API prediction failed. Falling back to local mode. Details: {exc}")
+        results = bundle.output_df
+else:
+    results = bundle.output_df
 
 high_risk = int((results["risk_level"] == "High").sum())
 avg_probability = float(results["attrition_probability"].mean())
@@ -210,6 +224,24 @@ else:
             data=payload_json.encode("utf-8"),
             file_name=f"retainai_explanation_row_{row_index}.json",
             mime="application/json",
+        )
+        
+        if st.button("Persist payload sample locally", key="persist_explanation_payload"):
+            saved_path = save_explanation_payload_sample(
+                payload=payload,
+                row_id=row_index,
+                prefix=f"{model_path.stem}_employee",
+            )
+            st.success(f"Payload persisted to {saved_path}")
+            
+    with st.expander("Retention Advisor prompt preview", expanded=False):
+        advisor_prompt = build_retention_advisor_prompt(payload)
+        st.code(advisor_prompt, language="text")
+        st.download_button(
+            "Download Retention Advisor prompt",
+            data=advisor_prompt.encode("utf-8"),
+            file_name=f"retainai_retention_advisor_prompt_row_{row_index}.txt",
+            mime="text/plain",
         )
 
 render_footer()
