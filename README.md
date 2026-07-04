@@ -58,45 +58,39 @@
 
 > Decision Intelligence Platform for Employee Retention
 
-RetainAI is an end-to-end Machine Learning and MLOps platform for employee retention analytics.
+RetainAI is an end-to-end Machine Learning, Explainable AI and MLOps platform for employee retention analytics.
 
-Rather than providing only employee attrition prediction, RetainAI combines predictive modeling, survival analysis, explainable AI, reproducible experimentation, and future AI-assisted decision support into a modular analytics platform for Human Resources.
+Rather than providing only employee attrition prediction, RetainAI combines predictive modeling, survival analysis, explainable AI, dashboard-driven decision support, reproducible experimentation and future AI-assisted retention guidance into a modular analytics platform for Human Resources.
 
 ---
 
-# Project Vision
+## Project Vision
 
 RetainAI is designed as a Decision Intelligence System for Human Resources.
 
-The long-term objective is to evolve from traditional employee attrition prediction toward an explainable AI platform capable of supporting workforce planning, retention strategies, and HR decision making.
+The long-term objective is to evolve from traditional employee attrition prediction toward an explainable AI platform capable of supporting workforce planning, retention strategy design and responsible HR decision making.
 
 The architecture is intentionally designed to evolve toward Amazon Bedrock-powered assistants without requiring major repository redesign.
 
 ---
 
-# Current Capabilities
+## Current Capabilities
 
-✔ Employee Attrition Classification
-
-✔ Survival Analysis
-
-✔ Explainable AI (SHAP)
-
-✔ Experiment-ready MLflow architecture
-
-✔ Reproducible Data Pipeline
-
-✔ Modular preprocessing pipeline
-
-✔ Notebook-driven research workflow
-
-✔ Production-oriented package architecture
-
-✔ AWS-ready deployment architecture
+- Employee attrition classification.
+- Survival analysis.
+- Explainable AI with SHAP.
+- MLflow-ready experiment architecture.
+- Reproducible data acquisition and preprocessing pipeline.
+- Declarative notebook workflow.
+- Product-oriented Streamlit dashboard.
+- FastAPI service foundation.
+- Docker Compose local orchestration.
+- Bedrock-ready structured explanation payload foundation.
+- Modular architecture for future AWS deployment.
 
 ---
 
-# Analytical Pipeline
+## Analytical Pipeline
 
 ```text
 Kaggle Dataset
@@ -123,47 +117,149 @@ Survival Analysis
 Explainability
         │
         ▼
-Dashboard
+Dashboard + API
         │
         ▼
-Future AI Components
+Future Retention Advisor
 ```
 
 ---
 
-# Repository Architecture
+## Repository Architecture
 
 ```text
 RetainAI/
-
+├── apps/
+│   ├── api/
+│   └── dashboard/
+│       └── streamlit-app/
+├── artifacts/
+│   ├── dashboard/
+│   ├── explanations/
+│   ├── figures/
+│   ├── models/
+│   └── reports/
 ├── configs/
 ├── data/
 ├── docs/
+│   ├── architecture/
+│   ├── dashboard/
+│   ├── data/
+│   ├── eda/
+│   ├── modeling/
+│   └── prompts/
 ├── modules/
+│   ├── classification/
+│   ├── dashboard/
+│   ├── eda/
+│   ├── explainability/
+│   ├── io/
+│   ├── preprocessing/
+│   └── survival/
 ├── notebooks/
-├── artifacts/
-├── figures/
 ├── requirements/
+├── services/
+│   ├── api/
+│   ├── dashboard/
+│   └── compose.yaml
 ├── src/
+│   └── retainai/
 ├── tests/
-└── .devcontainer/
+├── pyproject.toml
+└── tox.ini
 ```
 
-The repository follows a layered architecture.
+The repository follows a layered architecture:
 
-- **modules/** contains reusable analytical logic.
-- **src/** contains production pipelines.
-- **notebooks/** remain declarative and consume reusable modules.
-- **artifacts/** stores reproducible analytical outputs.
-- **docs/** contains architectural and methodological documentation.
+- `apps/` contains application code such as the FastAPI service and Streamlit dashboard.
+- `services/` contains local container and Docker Compose definitions.
+- `modules/` contains reusable analytical and dashboard logic.
+- `src/retainai/` contains executable package pipelines.
+- `notebooks/` remain declarative and consume reusable modules.
+- `artifacts/` stores reproducible analytical outputs and generated local artifacts.
+- `docs/` contains architecture, methodology and product documentation.
+- `tests/` validates reusable logic, dashboard contracts and behavior-level expectations.
 
 ---
 
-# Public Dataset
+## Applications
+
+### Streamlit Dashboard
+
+The dashboard lives under:
+
+```text
+apps/dashboard/streamlit-app/
+```
+
+Current pages:
+
+```text
+Home
+Executive Overview
+Prediction Center
+Explainability Explorer
+Survival Analytics
+Data Dictionary
+```
+
+Run locally:
+
+```bash
+streamlit run apps/dashboard/streamlit-app/app.py
+```
+
+### FastAPI Service
+
+The API application lives under:
+
+```text
+apps/api/
+```
+
+Run locally:
+
+```bash
+uvicorn apps.api.main:app --host 0.0.0.0 --port 8001
+```
+
+Useful endpoints:
+
+```text
+/
+ /health
+/docs
+/openapi.json
+```
+
+### Docker Compose
+
+Run dashboard and API together:
+
+```bash
+docker compose -f services/compose.yaml down --remove-orphans || true
+docker rm -f retainai-api retainai-dashboard || true
+docker network prune -f
+docker compose -f services/compose.yaml build --no-cache
+docker compose -f services/compose.yaml up
+```
+
+Expected URLs:
+
+```text
+Dashboard: http://localhost:8501
+API:       http://localhost:8001
+API Docs:  http://localhost:8001/docs
+Health:    http://localhost:8001/health
+```
+
+---
+
+## Public Dataset
 
 RetainAI uses the IBM HR Analytics Employee Attrition dataset as an initial benchmark.
 
-The dataset is **not redistributed** by this repository.
+The dataset is not redistributed by this repository.
 
 Expected directory structure:
 
@@ -180,31 +276,107 @@ Dataset download:
 python -m retainai.data.download_ibm_hr
 ```
 
-or manually:
+Manual download:
 
 ```bash
-kaggle datasets download \
--d pavansubhasht/ibm-hr-analytics-attrition-dataset \
--p data/raw/ibm_hr_attrition \
---unzip
+kaggle datasets download   -d pavansubhasht/ibm-hr-analytics-attrition-dataset   -p data/raw/ibm_hr_attrition   --unzip
+```
+
+Prepare processed datasets:
+
+```bash
+python -m retainai.data.prepare_dataset
+python -m retainai.data.validate_dataset
 ```
 
 ---
 
-# Development Environment
+## Main Pipelines
 
-Recommended environment:
+### EDA Report
 
-- Python 3.10
-- VS Code
-- Dev Containers
-- Docker
+```bash
+python -m retainai.eda.generate_report
+```
 
-The development container provides a reproducible Linux environment independent of the host operating system, avoiding common dependency issues on macOS and Windows.
+### Classification Training
+
+```bash
+python -m retainai.training.train_classification
+```
+
+### Survival Analysis
+
+```bash
+python -m retainai.survival.run_survival_analysis
+```
+
+### Explainability
+
+```bash
+python -m retainai.explainability.run_explainability
+```
 
 ---
 
-# Project Status
+## Development Environment
+
+Recommended environment:
+
+- Python 3.10.
+- VS Code.
+- Dev Containers.
+- Docker.
+
+The development container provides a reproducible Linux environment independent of the host operating system, avoiding common dependency issues on macOS and Windows.
+
+Local virtual environment:
+
+```bash
+python3.10 -m venv .venv
+. .venv/bin/activate
+
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -e ".[dev,test]"
+```
+
+Full development install:
+
+```bash
+python -m pip install -e ".[all]"
+```
+
+macOS compatibility note:
+
+```bash
+python -m pip install --no-cache-dir --only-binary=:all:   "llvmlite==0.43.0"   "numba==0.60.0"   "pyarrow==14.0.2"   "cryptography==45.0.7"
+```
+
+For SHAP, XGBoost and survival dependencies, the Dev Container is the recommended environment.
+
+---
+
+## Testing
+
+Run the full suite:
+
+```bash
+python -m tox
+```
+
+Selected environments:
+
+```bash
+python -m tox -e lint
+python -m tox -e format
+python -m tox -e behavior
+python -m tox -e survival
+python -m tox -e explainability
+```
+
+---
+
+## Project Status
 
 Current development branch:
 
@@ -214,96 +386,104 @@ feature/mlops-foundation
 
 Completed milestones:
 
-## v0.1
+### v0.1
 
-- Repository Foundation
-- Data Foundation
-- Exploratory Data Analysis
-- Classification Pipeline
-- MLflow-ready Architecture
+- Repository Foundation.
+- Data Foundation.
+- Exploratory Data Analysis.
+- Classification Pipeline.
+- MLflow-ready Architecture.
 
-## v0.2
+### v0.2
 
-- Survival Analysis
-- Explainability (SHAP)
+- Survival Analysis.
+- Explainability with SHAP.
 
----
+### v0.3
 
-# Roadmap
-
-## v0.3
-
-- Streamlit Dashboard
-- Executive Analytics
-- Individual Employee Prediction
-- Batch Prediction
-
-## v0.4
-
-- AWS Deployment
-- Pulumi Infrastructure
-- FastAPI Production Services
-
-## v0.5
-
-- Model Monitoring
-- Drift Detection
-- Automated Retraining
-
-## v1.0
-
-- Resume Intelligence
-- Psychometric Intelligence
-- Amazon Bedrock Integration
-- Retention Advisor
+- Streamlit Dashboard Foundation.
+- FastAPI Service Foundation.
+- Docker Compose Local Orchestration.
+- Executive Overview.
+- Prediction Center.
+- Explainability Explorer.
+- Survival Analytics.
+- Data Dictionary.
 
 ---
 
-# Documentation
+## Roadmap
 
-Architecture specifications are available under:
+### v0.3.1
+
+- Visual dashboard export as PNG/PDF or ZIP bundle.
+- API-backed prediction mode hardening.
+- Retention Advisor prompt templates.
+- Persisted explanation payload samples.
+- Additional dashboard CSS refinements.
+- Dashboard and API integration tests.
+
+### v0.4
+
+- AWS Deployment.
+- Pulumi Infrastructure.
+- S3-backed dashboard data source.
+- Container deployment strategy.
+- Cloud model/artifact storage strategy.
+
+### v0.5
+
+- Model Monitoring.
+- Drift Detection.
+- Automated Retraining.
+- Dashboard validation reports.
+
+### v1.0
+
+- Resume Intelligence.
+- Psychometric Intelligence.
+- Amazon Bedrock Integration.
+- Retention Advisor.
+
+---
+
+## Documentation
+
+Architecture specifications:
 
 ```text
 docs/architecture/
 ```
 
-Methodology documentation:
+Modeling methodology:
 
 ```text
 docs/modeling/
 ```
 
-Analytical documentation:
+EDA documentation:
 
 ```text
 docs/eda/
 ```
 
----
+Dashboard documentation:
 
-# Config
+```text
+docs/dashboard/
+```
 
-```bash
-source .venv/bin/activate
+Prompt and AI-assistant documentation:
 
-python -m pip install --upgrade pip setuptools wheel
-
-# python -m pip uninstall -y shap numba llvmlite pyarrow cryptography
-
-python -m pip install --no-cache-dir --only-binary=:all: \
-  "llvmlite==0.43.0" \
-  "numba==0.60.0" \
-  "pyarrow==14.0.2" \
-  "cryptography==45.0.7"
-
-python -m pip install -e ".[all]"
+```text
+docs/prompts/
 ```
 
 ---
 
 ## Author
 
-- **Hubert Ronald** - Initial Work - [HubertRonald](https://github.com/HubertRonald)
+- **Hubert Ronald** — Initial Work — [HubertRonald](https://github.com/HubertRonald)
 
 ## License
 
