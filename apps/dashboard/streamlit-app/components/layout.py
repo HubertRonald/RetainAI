@@ -14,6 +14,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[4]
 ASSETS_DIR = APP_DIR / "assets"
 ICONS_DIR = ASSETS_DIR / "icons"
 STYLES_DIR = ASSETS_DIR / "styles"
+LANDING_PAGE = "https://hubertronald.github.io/"
 
 
 def configure_page() -> None:
@@ -211,12 +212,12 @@ def render_footer() -> None:
         <div class="retainai-footer">
             <p>
                 Coded with
-                <a href="https://hubertronald.github.io/" target="_blank" class="footer-heart">♥</a>
+                <a href="{LANDING_PAGE}" target="_blank" class="footer-heart">♥</a>
                 by
-                <a href="https://hubertronald.github.io/" target="_blank">Hubert Ronald</a>
+                <a href="{LANDING_PAGE}" target="_blank">Hubert Ronald</a>
                 <br>
                 © Copyright {year}
-                <a href="https://hubertronald.github.io/" target="_blank">[-] Liasoft</a>
+                <a href="{LANDING_PAGE}" target="_blank">[-] Liasoft</a>
                 - All Rights Reserved
             </p>
         </div>
