@@ -23,7 +23,9 @@ from modules.dashboard.export import (  # noqa: E402
     dashboard_snapshot_to_markdown,
     dataframe_to_csv_bytes,
 )
+from modules.dashboard.visual_export import build_visual_dashboard_zip  # noqa: E402
 from modules.io.storage import load_dataframe  # noqa: E402
+
 
 configure_page()
 render_page_shell(
@@ -135,7 +137,28 @@ kpi_grid(
     ]
 )
 
-export_cols = st.columns([1, 1, 3], gap="small")
+fig_department = attrition_by_category(filtered, "Department", title="Attrition by Department")
+fig_jobrole = attrition_by_category(filtered, "JobRole", title="Attrition by Job Role")
+fig_distribution = attrition_distribution(filtered)
+fig_overtime = attrition_by_category(filtered, "OverTime", title="Attrition by OverTime")
+fig_marital = attrition_by_category(filtered, "MaritalStatus", title="Attrition by Marital Status")
+fig_education = attrition_by_category(
+    filtered,
+    "EducationField",
+    title="Attrition by Education Field",
+    orientation="h",
+)
+
+visual_figures = {
+    "attrition_by_department": fig_department,
+    "attrition_by_job_role": fig_jobrole,
+    "attrition_distribution": fig_distribution,
+    "attrition_by_overtime": fig_overtime,
+    "attrition_by_marital_status": fig_marital,
+    "attrition_by_education_field": fig_education,
+}
+
+export_cols = st.columns([1.15, 1.15, 1.15, 1.35], gap="small")
 with export_cols[0]:
     st.download_button(
         "Export snapshot MD",
@@ -158,23 +181,41 @@ with export_cols[2]:
         mime="application/json",
     )
 
+with export_cols[3]:
+    try:
+        visual_zip = build_visual_dashboard_zip(
+            figures=visual_figures,
+            snapshot_payload=snapshot,
+            filtered_df=filtered,
+            image_format="png",
+        )
+        st.download_button(
+            "Export visual ZIP",
+            data=visual_zip,
+            file_name="retainai_dashboard_visual_export.zip",
+            mime="application/zip",
+        )
+    except RuntimeError as exc:
+        st.caption(str(exc))
+
 st.markdown('<div class="retainai-section-break"></div>', unsafe_allow_html=True)
+
 
 row1_left, row1_mid, row1_right = st.columns([1.25, 1.25, 1], gap="medium")
 with row1_left:
-    st.plotly_chart(attrition_by_category(filtered, "Department", title="Attrition by Department"), use_container_width=True)
+    st.plotly_chart(fig_department, use_container_width=True)
 with row1_mid:
-    st.plotly_chart(attrition_by_category(filtered, "JobRole", title="Attrition by Job Role"), use_container_width=True)
+    st.plotly_chart(fig_jobrole, use_container_width=True)
 with row1_right:
-    st.plotly_chart(attrition_distribution(filtered), use_container_width=True)
+    st.plotly_chart(fig_distribution, use_container_width=True)
 
 row2_left, row2_mid, row2_right = st.columns([1, 1, 1], gap="medium")
 with row2_left:
-    st.plotly_chart(attrition_by_category(filtered, "OverTime", title="Attrition by OverTime"), use_container_width=True)
+    st.plotly_chart(fig_overtime, use_container_width=True)
 with row2_mid:
-    st.plotly_chart(attrition_by_category(filtered, "MaritalStatus", title="Attrition by Marital Status"), use_container_width=True)
+    st.plotly_chart(fig_marital, use_container_width=True)
 with row2_right:
-    st.plotly_chart(attrition_by_category(filtered, "EducationField", title="Attrition by Education Field", orientation="h"), use_container_width=True)
+    st.plotly_chart(fig_education, use_container_width=True)
 
 with st.expander("Income & Career Progression Analysis", expanded=False):
     c1, c2 = st.columns(2, gap="medium")
