@@ -1,0 +1,12 @@
+dataset:
+  name: ibm_hr_attrition
+
+target:
+  column: Attrition
+
+split:
+  train_size: 0.70
+  validation_size: 0.15
+  test_size: 0.15
+
+random_state: 42

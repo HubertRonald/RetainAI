@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+
+title: "RetainAI"
+
+message: >
+  If you use RetainAI in academic work, teaching,
+  demonstrations, or derivative projects,
+  please cite the repository.
+
+type: software
+
+authors:
+  - family-names: "Ronald"
+    given-names: "Hubert"
+
+repository-code: "https://github.com/HubertRonald/RetainAI"
+
+license: "MIT"
+
+abstract: >
+  RetainAI is an AI-ready employee retention intelligence platform
+  combining classification, survival analysis, explainability,
+  dashboard analytics, MLOps, and future AI capabilities
+  for workforce intelligence systems.
+
+keywords:
+  - employee attrition
+  - hr analytics
+  - retention intelligence
+  - machine learning
+  - survival analysis
+  - explainability
+  - mlops
+  - aws
+  - bedrock
+
+version: "0.1.0a0"

@@ -1,0 +1,21 @@
+classification:
+  target: Attrition
+  positive_class: 'Yes'
+  random_state: 42
+  drop_columns:
+    - EmployeeNumber
+    - EmployeeCount
+    - Over18
+    - StandardHours
+  models:
+    - logistic_regression
+    - random_forest
+    - xgboost
+  mlflow:
+    enabled: true
+    experiment_name: retainai-classification
+    tracking_uri: artifacts/mlflow
+    registry_enabled: true
+    registered_model_prefix: retainai
+    log_model_signature: true
+    log_input_example: true

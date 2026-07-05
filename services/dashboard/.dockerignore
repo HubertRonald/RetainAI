@@ -1,0 +1,12 @@
+.git
+.github
+.venv
+.tox
+__pycache__
+*.pyc
+*.pyo
+mlruns
+mlflow
+data/raw
+artifacts/explanations/**/*.joblib
+artifacts/explanations/**/*.parquet

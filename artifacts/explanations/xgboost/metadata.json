@@ -1,0 +1,6 @@
+{
+  "model_name": "xgboost",
+  "dataset": "ibm_hr_attrition_validation",
+  "n_samples": 220,
+  "n_features": 51
+}

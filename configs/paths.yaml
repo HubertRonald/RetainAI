@@ -1,0 +1,13 @@
+local:
+
+  raw: data/raw
+
+  processed: data/processed
+
+  train: data/train
+
+  validation: data/validation
+
+  test: data/test
+
+  prediction_input: data/prediction_input
