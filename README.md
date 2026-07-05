@@ -79,7 +79,7 @@ The architecture is intentionally designed to evolve toward Amazon Bedrock-power
 - Employee attrition classification.
 - Survival analysis.
 - Explainable AI with SHAP.
-- MLflow-ready experiment architecture.
+- Operational MLflow experiment tracking and local model versioning.
 - Reproducible data acquisition and preprocessing pipeline.
 - Declarative notebook workflow.
 - Product-oriented Streamlit dashboard.
@@ -317,6 +317,74 @@ python -m retainai.survival.run_survival_analysis
 python -m retainai.explainability.run_explainability
 ```
 
+
+---
+
+## MLOps Tracking and Model Versioning
+
+RetainAI uses MLflow for local experiment tracking and model artifact versioning.
+
+Training is configured through:
+
+```text
+configs/training.yaml
+```
+
+The classification training pipeline logs:
+
+```text
+parameters
+metrics
+model artifacts
+model signatures
+input examples
+classification reports
+registered model names
+```
+
+Run classification training with MLflow tracking:
+
+```bash
+python -m retainai.training.train_classification
+```
+
+Open the MLflow UI:
+
+```bash
+mlflow ui --backend-store-uri artifacts/mlflow --port 5000
+```
+
+Then open:
+
+```text
+http://localhost:5000
+```
+
+Model artifacts are stored in two complementary ways:
+
+```text
+artifacts/models/<model_name>.pkl
+artifacts/mlflow/
+```
+
+RetainAI also maintains a lightweight local model registry manifest:
+
+```text
+artifacts/models/model_registry.json
+```
+
+Inspect the current model registry manifest:
+
+```bash
+python -m retainai.mlops.show_model_registry
+```
+
+The MLflow tracking design is documented in:
+
+```text
+docs/mlops/mlflow_tracking.md
+```
+
 ---
 
 ## Development Environment
@@ -392,7 +460,7 @@ Completed milestones:
 - Data Foundation.
 - Exploratory Data Analysis.
 - Classification Pipeline.
-- MLflow-ready Architecture.
+- Operational MLflow Tracking and Model Versioning.
 
 ### v0.2
 
