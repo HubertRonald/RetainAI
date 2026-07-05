@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820" role="img" aria-labelledby="title desc">
+  <title id="title">RetainAI Decision Intelligence Architecture</title>
+  <desc id="desc">High-level architecture connecting attrition classification, survival analysis, explainability, hiring simulation and decision intelligence.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="48%" stop-color="#111c33"/>
+      <stop offset="100%" stop-color="#1d293d"/>
+    </linearGradient>
+
+    <linearGradient id="blue" x1="0" x2="1">
+      <stop offset="0%" stop-color="#2f7df6"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+
+    <linearGradient id="purple" x1="0" x2="1">
+      <stop offset="0%" stop-color="#615fff"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+
+    <linearGradient id="pink" x1="0" x2="1">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+
+    <filter id="softShadow">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#020617" flood-opacity="0.38"/>
+    </filter>
+
+    <style>
+      .title { font: 800 54px Inter, Arial, sans-serif; fill: #e2e8f0; letter-spacing: -1.5px; }
+      .subtitle { font: 400 20px Inter, Arial, sans-serif; fill: #94a3b8; }
+      .label { font: 800 26px Inter, Arial, sans-serif; fill: #ffffff; }
+      .small { font: 500 17px Inter, Arial, sans-serif; fill: #cbd5e1; }
+      .tiny { font: 500 14px Inter, Arial, sans-serif; fill: #94a3b8; }
+      .impact { font: 800 26px Inter, Arial, sans-serif; fill: #e2e8f0; }
+      .muted { fill: #94a3b8; }
+      .card { stroke: rgba(226,232,240,0.18); stroke-width: 1.4; filter: url(#softShadow); }
+    </style>
+  </defs>
+
+  <rect width="1280" height="820" fill="url(#bg)"/>
+
+  <circle cx="1080" cy="95" r="180" fill="#ec4899" opacity="0.07"/>
+  <circle cx="180" cy="170" r="220" fill="#615fff" opacity="0.09"/>
+  <circle cx="690" cy="710" r="260" fill="#0ea5e9" opacity="0.06"/>
+
+  <text x="90" y="92" class="title">Retain<tspan fill="#8b5cf6">AI</tspan></text>
+  <text x="92" y="126" class="subtitle">Decision Intelligence Platform for Employee Retention</text>
+
+  <g transform="translate(190,185)">
+    <rect class="card" x="0" y="0" width="315" height="120" rx="22" fill="#334155" opacity="0.78"/>
+    <text x="157" y="48" text-anchor="middle" class="label" fill="#cbd5e1">Binary Classification</text>
+    <text x="157" y="82" text-anchor="middle" class="small">&gt; 3 months attrition risk</text>
+  </g>
+
+  <g transform="translate(535,185)">
+    <rect class="card" x="0" y="0" width="315" height="120" rx="22" fill="url(#blue)"/>
+    <text x="157" y="54" text-anchor="middle" class="label">Survival Analysis</text>
+    <text x="157" y="84" text-anchor="middle" class="small">time-to-event retention view</text>
+  </g>
+
+  <g transform="translate(880,185)">
+    <rect class="card" x="0" y="0" width="230" height="300" rx="22" fill="url(#purple)"/>
+    <text x="115" y="127" text-anchor="middle" class="label">Hiring</text>
+    <text x="115" y="162" text-anchor="middle" class="label">Simulator</text>
+    <text x="115" y="205" text-anchor="middle" class="small">future scenario layer</text>
+  </g>
+
+  <g transform="translate(190,330)">
+    <rect class="card" x="0" y="0" width="660" height="115" rx="22" fill="url(#pink)"/>
+    <text x="330" y="58" text-anchor="middle" class="label">Explainability</text>
+    <text x="330" y="88" text-anchor="middle" class="small">SHAP, drivers, local payloads and responsible interpretation</text>
+  </g>
+
+  <g transform="translate(160,500)">
+    <rect class="card" x="0" y="0" width="985" height="120" rx="24" fill="#0ea5e9" opacity="0.96"/>
+    <text x="492" y="52" text-anchor="middle" class="label">Decision Intelligence System</text>
+    <text x="492" y="84" text-anchor="middle" class="small">dashboard + API + MLOps tracking + future Bedrock Retention Advisor</text>
+  </g>
+
+  <g transform="translate(95,665)">
+    <rect x="0" y="0" width="250" height="92" rx="14" fill="#334155" opacity="0.88"/>
+    <text x="125" y="40" text-anchor="middle" class="impact">Expected</text>
+    <text x="125" y="72" text-anchor="middle" class="impact">Impact</text>
+  </g>
+
+  <g transform="translate(375,665)">
+    <rect x="0" y="0" width="770" height="92" rx="14" fill="#334155" opacity="0.88"/>
+    <text x="40" y="26" class="small">• reduce early attrition through interpretable risk signals</text>
+    <text x="40" y="53" class="small">• improve hiring and compensation discussions with evidence</text>
+    <text x="40" y="76" class="small">• support responsible HR decisions without automated employment decisions</text>
+  </g>
+
+  <path d="M347 305 L347 330" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  <path d="M692 305 L692 330" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  <path d="M1010 485 L1010 500" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  <path d="M520 445 L520 500" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+
+  <text x="95" y="790" class="tiny">RetainAI v0.3.1-alpha — Local Product Hardening → AWS Deployment Foundation</text>
+</svg>

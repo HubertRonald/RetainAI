@@ -3,53 +3,40 @@
 <a href="https://www.python.org/" target="_blank">
 <img src="https://img.shields.io/badge/Python-3.10.11-3670A0?style=flat-square&logo=python&logoColor=ffdd54" />
 </a>
-
 <a href="https://scikit-learn.org/" target="_blank">
 <img src="https://img.shields.io/badge/scikit--learn-ML-orange?style=flat-square&logo=scikit-learn&logoColor=white" />
 </a>
-
 <a href="https://xgboost.readthedocs.io/" target="_blank">
 <img src="https://img.shields.io/badge/XGBoost-Gradient%20Boosting-FF6600?style=flat-square" />
 </a>
-
 <a href="https://lifelines.readthedocs.io/" target="_blank">
 <img src="https://img.shields.io/badge/lifelines-Survival%20Analysis-4B8BBE?style=flat-square" />
 </a>
-
 <a href="https://shap.readthedocs.io/" target="_blank">
 <img src="https://img.shields.io/badge/SHAP-Explainability-8A2BE2?style=flat-square" />
 </a>
-
 <a href="https://mlflow.org/" target="_blank">
 <img src="https://img.shields.io/badge/MLflow-Experiment%20Tracking-0194E2?style=flat-square&logo=mlflow&logoColor=white" />
 </a>
-
 <a href="https://fastapi.tiangolo.com/" target="_blank">
 <img src="https://img.shields.io/badge/FastAPI-Serving-009688?style=flat-square&logo=fastapi&logoColor=white" />
 </a>
-
 <a href="https://streamlit.io/" target="_blank">
 <img src="https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" />
 </a>
-
 <a href="https://aws.amazon.com/" target="_blank">
 <img src="https://img.shields.io/badge/AWS-Cloud-232F3E?style=flat-square&logo=amazonaws&logoColor=white" />
 </a>
-
 <a href="https://www.pulumi.com/" target="_blank">
 <img src="https://img.shields.io/badge/Pulumi-IaC-8A3391?style=flat-square&logo=pulumi&logoColor=white" />
 </a>
-
 <a href="https://github.com/features/actions" target="_blank">
 <img src="https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-2088FF?style=flat-square&logo=githubactions&logoColor=white" />
 </a>
-
 <a href="https://www.docker.com/" target="_blank">
 <img src="https://img.shields.io/badge/Docker-Containers-2496ED?style=flat-square&logo=docker&logoColor=white" />
 </a>
-
 <img src="https://img.shields.io/github/license/HubertRonald/RetainAI?style=flat-square&color=success"/>
-
 <img src="https://img.shields.io/badge/status-active-success?style=flat-square"/>
 
 </p>
@@ -74,6 +61,51 @@ The architecture is intentionally designed to evolve toward Amazon Bedrock-power
 
 ---
 
+## Concept Architecture
+
+RetainAI is organized as a layered decision-intelligence system. The current local foundation already covers attrition classification, survival analysis, explainability, dashboard consumption, API services and MLOps tracking. The next AWS sprint will move this foundation toward S3-backed data, container deployment, Pulumi infrastructure and cloud artifact storage.
+
+<p align="center">
+  <img src="./figs/retainai_decision_intelligence_architecture.svg" alt="RetainAI decision intelligence architecture" width="900"/>
+</p>
+
+```mermaid
+flowchart TB
+    A[IBM HR Analytics Dataset] --> B[Data Validation<br>and Preprocessing]
+    B --> C[Binary Classification<br/>Attrition Risk > 3 Months]
+    B --> D[Survival Analysis<br/>Time-at-Company Retention View]
+    C --> E[Explainability<br/>SHAP Global and Local<br>Drivers]
+    D --> E
+    E --> F[Decision Intelligence System]
+    G[Future Hiring Simulator] --> F
+    F --> H[Streamlit Dashboard]
+    F --> I[FastAPI Service]
+    F --> J[MLflow Tracking and<br>Model Registry]
+    F --> K[Future Bedrock<br>Retention Advisor]
+    H --> L[Expected Impact<br/>Reduce attrition,<br>improve hiring quality,<br>support HR decisions]
+    I --> L
+    J --> L
+```
+
+### Analytical Layers
+
+| Layer | Purpose | Current Status |
+|---|---|---|
+| Binary Classification | Predict employee attrition risk using supervised ML. | Available locally. |
+| Survival Analysis | Estimate retention over time using `YearsAtCompany` as proxy duration. | Available locally. |
+| Explainability | Explain global and row-level model behavior with SHAP and structured payloads. | Available locally. |
+| Hiring Simulator | Simulate hiring and compensation scenarios. | Future extension. |
+| Decision Intelligence System | Combine dashboard, API, MLOps tracking and future AI guidance. | Local foundation available. |
+
+### Expected Impact
+
+- Reduce early attrition through evidence-based risk signals.
+- Improve hiring and compensation discussions with interpretable model outputs.
+- Support HR decisions with transparent analytics and responsible AI boundaries.
+
+
+---
+
 ## Current Capabilities
 
 - Employee attrition classification.
@@ -86,6 +118,8 @@ The architecture is intentionally designed to evolve toward Amazon Bedrock-power
 - FastAPI service foundation.
 - Docker Compose local orchestration.
 - Bedrock-ready structured explanation payload foundation.
+- Retention Advisor prompt templates for future Bedrock integration.
+- Local visual dashboard export foundation.
 - Modular architecture for future AWS deployment.
 
 ---
@@ -148,6 +182,7 @@ RetainAI/
 │   ├── eda/
 │   ├── modeling/
 │   └── prompts/
+├── figs/
 ├── modules/
 │   ├── classification/
 │   ├── dashboard/
@@ -477,6 +512,16 @@ Completed milestones:
 - Explainability Explorer.
 - Survival Analytics.
 - Data Dictionary.
+
+### v0.3.1
+
+- Local Product Hardening.
+- Visual dashboard export foundation.
+- API-backed prediction mode foundation.
+- Retention Advisor prompt templates.
+- Persisted explanation payload samples.
+- MLflow tracking and local model versioning documentation.
+- Dashboard/API local execution cleanup.
 
 ---
 
