@@ -277,3 +277,10 @@ artifacts/dashboard/exports/*
 artifacts/explanations/samples/*.json
 !artifacts/explanations/samples/sample_*.json
 !artifacts/explanations/samples/.gitkeep
+
+# MLflow local tracking store
+artifacts/mlflow/*
+!artifacts/mlflow/.gitkeep
+
+# Local model binaries
+artifacts/models/*.pkl
