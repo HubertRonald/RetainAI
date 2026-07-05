@@ -21,7 +21,14 @@ def build_model(model_name: str, random_state: int = 42):
         )
 
     if model_name == "xgboost":
-        from xgboost import XGBClassifier
+        try:
+            from xgboost import XGBClassifier
+        except Exception as exc:  # noqa: BLE001
+            raise ImportError(
+                "XGBoost could not be imported. On macOS this usually means "
+                "`libomp.dylib` is missing. Install it with `sudo port install libomp` "
+                "or `brew install libomp`, or run training inside the DevContainer."
+            ) from exc
 
         return XGBClassifier(
             n_estimators=300,
@@ -29,8 +36,10 @@ def build_model(model_name: str, random_state: int = 42):
             max_depth=4,
             subsample=0.9,
             colsample_bytree=0.9,
+            objective="binary:logistic",
             eval_metric="logloss",
             random_state=random_state,
+            n_jobs=-1,
         )
 
-    raise ValueError(f"Unsupported model: {model_name}")
+    raise ValueError(f"Unsupported model name: {model_name}")
