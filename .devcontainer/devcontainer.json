@@ -1,33 +1,77 @@
 {
-    "name": "retainai-dev",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "context": ".."
+  "name": "retainai-multicloud-dev",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/workspace,consistency=cached",
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "moby": false
     },
-    "workspaceFolder": "/workspace",
-    "mounts": [
-        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
-    ],
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "python.defaultInterpreterPath": "/usr/local/bin/python",
-                "python.testing.pytestEnabled": true,
-                "python.testing.pytestArgs": [
-                    "tests"
-                ],
-                "editor.formatOnSave": true,
-                "ruff.organizeImports": true
-            },
-            "extensions": [
-                "ms-python.python",
-                "ms-python.vscode-pylance",
-                "ms-toolsai.jupyter",
-                "charliermarsh.ruff",
-                "ms-azuretools.vscode-docker"
-            ]
-        }
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "mounts": [
+    "type=volume,source=retainai-devcontainer-venv,target=/workspace/.venv",
+    "type=bind,source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,consistency=cached",
+    "type=bind,source=${localEnv:HOME}/.config/gcloud,target=/home/vscode/.config/gcloud,consistency=cached",
+    "type=bind,source=${localEnv:HOME}/.config/gh,target=/home/vscode/.config/gh,consistency=cached",
+    "type=bind,source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,consistency=cached",
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
+  ],
+  "containerEnv": {
+    "AWS_PROFILE": "retainai-dev",
+    "AWS_REGION": "us-east-1",
+    "CLOUDSDK_CORE_DISABLE_PROMPTS": "1",
+    "PIP_DISABLE_PIP_VERSION_CHECK": "1"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/workspace/.venv/bin/python",
+        "python.testing.pytestEnabled": true,
+        "python.testing.pytestArgs": [
+          "tests"
+        ],
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true,
+        "ruff.organizeImports": true
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "charliermarsh.ruff",
+        "ms-azuretools.vscode-docker",
+        "amazonwebservices.aws-toolkit-vscode",
+        "GoogleCloudTools.cloudcode",
+        "bierner.markdown-mermaid",
+        "redhat.vscode-yaml",
+        "timonwong.shellcheck"
+      ]
+    }
+  },
+  "forwardPorts": [
+    8001,
+    8501,
+    8888,
+    5000
+  ],
+  "portsAttributes": {
+    "8001": {
+      "label": "RetainAI API"
     },
-    "postCreateCommand": "bash .devcontainer/post-create.sh",
-    "remoteUser": "root"
+    "8501": {
+      "label": "RetainAI Dashboard"
+    },
+    "5000": {
+      "label": "MLflow UI"
+    },
+    "8888": {
+      "label": "Jupyter"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh"
 }
