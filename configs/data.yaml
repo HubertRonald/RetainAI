@@ -1,12 +1,36 @@
+# RetainAI data configuration
+# Sprint 7.1 — Data Lake Contract and S3 Seed Foundation
+
 dataset:
-  name: ibm_hr_attrition
+  name: IBM HR Analytics Employee Attrition & Performance
+  source: Kaggle
+  kaggle_slug: pavansubhasht/ibm-hr-analytics-attrition-dataset
+  expected_file: WA_Fn-UseC_-HR-Employee-Attrition.csv
+  commit_dataset_to_repo: false
 
-target:
-  column: Attrition
+local_paths:
+  raw_dir: data/raw/ibm_hr_attrition
+  raw_file: data/raw/ibm_hr_attrition/WA_Fn-UseC_-HR-Employee-Attrition.csv
+  processed_dir: data/processed
+  train_dir: data/train
+  validation_dir: data/validation
+  test_dir: data/test
+  prediction_input_dir: data/prediction_input
 
-split:
-  train_size: 0.70
-  validation_size: 0.15
-  test_size: 0.15
+s3_mapping:
+  bucket: retainai-dev-data
+  raw: s3://retainai-dev-data/raw/
+  staging: s3://retainai-dev-data/staging/
+  analytics: s3://retainai-dev-data/analytics/
+  features: s3://retainai-dev-data/features/
+  model_artifacts: s3://retainai-dev-data/model-artifacts/
+  monitoring: s3://retainai-dev-data/monitoring/
+  dashboard_exports: s3://retainai-dev-data/dashboard-exports/
 
-random_state: 42
+kaggle:
+  credentials_path: ~/.kaggle/kaggle.json
+  local_download_command: >-
+    kaggle datasets download
+    -d pavansubhasht/ibm-hr-analytics-attrition-dataset
+    -p data/raw/ibm_hr_attrition
+    --unzip

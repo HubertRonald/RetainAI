@@ -1,13 +1,31 @@
-aws:
+# RetainAI AWS configuration
+# Sprint 7.1 — Data Lake Contract and S3 Seed Foundation
+# This file must not contain credentials.
 
+aws:
+  profile: retainai-dev
   region: us-east-1
 
-  buckets:
+s3:
+  data_bucket: retainai-dev-data
+  data_bucket_uri: s3://retainai-dev-data
 
-    raw: retainai-data-raw
+  zones:
+    raw: raw/
+    staging: staging/
+    analytics: analytics/
+    features: features/
+    model_artifacts: model-artifacts/
+    monitoring: monitoring/
+    dashboard_exports: dashboard-exports/
 
-    staging: retainai-data-staging
+cloud_execution:
+  s3_seed_enabled_by_default: false
+  require_dry_run_first: true
+  require_explicit_operator_confirmation: true
 
-    analytics: retainai-data-analytics
-
-    artifacts: retainai-model-artifacts
+future_services:
+  glue_catalog_enabled: false
+  glue_jobs_enabled: false
+  athena_enabled: false
+  step_functions_enabled: false
