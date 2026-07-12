@@ -1,0 +1,66 @@
+# RetainAI RAG configuration
+# Sprint 7.2 — RAG Document Generation Foundation
+# This file must not contain provider credentials.
+
+rag:
+  enabled: false
+
+  local:
+    documents_path: artifacts/rag/documents/
+    manifest_path: artifacts/rag/manifest.json
+
+  s3:
+    documents_prefix: s3://retainai-dev-data/model-artifacts/rag/documents/
+    vector_index_prefix: s3://retainai-dev-data/model-artifacts/rag/vector-index/faiss/
+
+  source_artifacts:
+    model_registry: artifacts/models/model_registry.json
+    reports_dir: artifacts/reports/
+    explanations_dir: artifacts/explanations/
+
+  document_types:
+    responsible_use:
+      enabled: true
+      required: true
+
+    model_registry:
+      enabled: true
+      required: false
+
+    reports:
+      enabled: true
+      required: false
+
+    explanations:
+      enabled: true
+      required: false
+
+    global_drivers:
+      enabled: true
+      required: false
+
+  vector_store:
+    default: disabled
+    supported:
+      - disabled
+      - faiss_s3
+      - bedrock_kb
+
+  embedding_provider:
+    default: disabled
+    supported:
+      - disabled
+      - bedrock_titan
+      - gemini
+
+  advisor_provider:
+    default: disabled
+    supported:
+      - disabled
+      - bedrock
+      - gemini
+
+  controls:
+    ai_disabled_by_default: true
+    require_quota_before_provider_call: true
+    require_responsible_use_document: true

@@ -289,3 +289,10 @@ artifacts/models/*.pkl
 artifacts/models/model_registry.json
 
 *.bak*
+*.bak*artifacts/rag/documents/*.md
+artifacts/rag/manifest.json
+
+# RetainAI generated RAG artifacts
+artifacts/rag/documents/*.md
+artifacts/rag/manifest.json
+artifacts/rag/vector-index/
