@@ -1,0 +1,33 @@
+# Copy this file to terraform.tfvars for local use.
+# Do not commit terraform.tfvars if it contains project-specific or sensitive values.
+
+project_id  = "existing-billed-gcp-project-id"
+region      = "us-east4"
+environment = "dev"
+
+artifact_repository_id = "retainai-dashboard"
+dashboard_service_name = "retainai-dashboard"
+
+dashboard_image_uri = "us-east4-docker.pkg.dev/existing-billed-gcp-project-id/retainai-dashboard/retainai-dashboard:sprint7-4"
+
+# Replace this later with the real AWS API Gateway or Lambda Function URL.
+dashboard_api_url = "https://placeholder-api.example.com"
+
+dashboard_allow_public = true
+
+dashboard_min_instances = 0
+dashboard_max_instances = 1
+
+dashboard_container_port = 8501
+dashboard_cpu_limit      = "1"
+dashboard_memory_limit   = "1Gi"
+
+# Optional. Leave null in Sprint 7.4 unless Secret Manager is ready.
+dashboard_backend_token_secret_id = null
+
+labels = {
+  app      = "retainai"
+  env      = "dev"
+  platform = "decision-intelligence"
+  managed  = "terraform"
+}

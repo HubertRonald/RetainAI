@@ -296,3 +296,16 @@ artifacts/rag/manifest.json
 artifacts/rag/documents/*.md
 artifacts/rag/manifest.json
 artifacts/rag/vector-index/
+
+# RetainAI GCP Terraform local files
+infra/gcp-terraform/.terraform/
+infra/gcp-terraform/.terraform.lock.hcl
+infra/gcp-terraform/terraform.tfstate
+infra/gcp-terraform/terraform.tfstate.*
+infra/gcp-terraform/*.tfvars
+infra/gcp-terraform/*.tfvars.json
+infra/gcp-terraform/*.tfplan
+infra/gcp-terraform/crash.log
+infra/gcp-terraform/crash.*.log
+infra/gcp-terraform/terraform.tfstate.backup
+infra/gcp-terraform/terraform.tfvars

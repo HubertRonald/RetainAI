@@ -1,4 +1,0 @@
-pulumi==3.142.0
-pulumi-aws==6.62.0
-pulumi-gcp==8.8.0
-pulumi-docker==4.6.1
