@@ -1,0 +1,31 @@
+# Copy this file to terraform.tfvars for local use.
+# Do not commit terraform.tfvars because it may contain tokens or project-specific values.
+
+aws_region  = "us-east-1"
+environment = "dev"
+
+ecr_repository_name = "retainai-api-lambda"
+lambda_function_name = "retainai-api-backend"
+
+# Replace with the image URI pushed to ECR.
+lambda_image_uri = "XXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com/retainai-api-lambda:sprint7-5"
+
+lambda_memory_size     = 1024
+lambda_timeout_seconds = 60
+
+backend_auth_enabled = true
+
+# Dev-only placeholder. Prefer AWS Secrets Manager or CI/CD secrets later.
+backend_token = "replace-me-with-dev-token"
+
+api_name = "retainai-api-http"
+
+# Replace "*" with the Cloud Run URL after Sprint 7.4 deployment if desired.
+cors_allow_origins = ["*"]
+
+tags = {
+  app      = "retainai"
+  env      = "dev"
+  platform = "decision-intelligence"
+  managed  = "terraform"
+}
