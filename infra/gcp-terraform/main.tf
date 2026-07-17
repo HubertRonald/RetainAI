@@ -123,6 +123,7 @@ resource "google_cloud_run_v2_service" "dashboard" {
   depends_on = [
     google_project_service.services,
     google_artifact_registry_repository.dashboard,
+    google_secret_manager_secret_iam_member.dashboard_backend_token_accessor,
   ]
 }
 

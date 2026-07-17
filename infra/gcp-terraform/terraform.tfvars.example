@@ -22,8 +22,8 @@ dashboard_container_port = 8501
 dashboard_cpu_limit      = "1"
 dashboard_memory_limit   = "1Gi"
 
-# Optional. Leave null in Sprint 7.4 unless Secret Manager is ready.
-dashboard_backend_token_secret_id = null
+# Sprint 7.6 — Backend token stored in Secret Manager.
+dashboard_backend_token_secret_id = "retainai-backend-token"
 
 labels = {
   app      = "retainai"

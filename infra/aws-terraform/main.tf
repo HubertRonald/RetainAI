@@ -8,6 +8,12 @@ locals {
       RETAINAI_ENABLE_RAG           = "false"
       RETAINAI_VECTOR_STORE         = "disabled"
       RETAINAI_LOG_LEVEL            = "INFO"
+      RETAINAI_QUOTA_ENABLED        = tostring(var.quota_enabled)
+      RETAINAI_QUOTA_BACKEND        = var.quota_enabled ? "dynamodb" : "disabled"
+      RETAINAI_QUOTA_TABLE          = local.quota_table_name
+      RETAINAI_QUOTA_LIMIT          = tostring(var.quota_limit)
+      RETAINAI_QUOTA_WINDOW_SECONDS = tostring(var.quota_window_seconds)
+      RETAINAI_AI_ENDPOINT_PREFIXES = join(",", var.ai_endpoint_prefixes)
     },
     var.backend_token == null ? {} : {
       RETAINAI_BACKEND_TOKEN = var.backend_token
@@ -102,6 +108,7 @@ resource "aws_lambda_function" "backend" {
   depends_on = [
     aws_cloudwatch_log_group.lambda,
     aws_iam_role_policy_attachment.lambda_basic_execution,
+    aws_iam_role_policy.lambda_quota,
   ]
 }
 

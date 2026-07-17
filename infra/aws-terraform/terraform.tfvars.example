@@ -29,3 +29,16 @@ tags = {
   platform = "decision-intelligence"
   managed  = "terraform"
 }
+
+# Sprint 7.6 — Cross-cloud auth and quota
+quota_enabled        = true
+quota_table_name     = null
+quota_limit          = 3
+quota_window_seconds = 86400
+
+ai_endpoint_prefixes = [
+  "/advisor",
+  "/api/advisor",
+  "/ai",
+  "/rag",
+]
