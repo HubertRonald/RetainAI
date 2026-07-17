@@ -1195,8 +1195,12 @@ Deliverables:
 ```text
 services/dashboard/Dockerfile review
 docs/multicloud/cloud_run_dashboard.md
-infra/multicloud-pulumi-python/retainai_infra/gcp_artifact_registry.py
-infra/multicloud-pulumi-python/retainai_infra/gcp_cloud_run.py
+infra/gcp-terraform/versions.tf
+infra/gcp-terraform/providers.tf
+infra/gcp-terraform/variables.tf
+infra/gcp-terraform/main.tf
+infra/gcp-terraform/outputs.tf
+infra/gcp-terraform/terraform.tfvars.example
 ```
 
 Acceptance criteria:
@@ -1217,9 +1221,12 @@ Deliverables:
 apps/api/lambda_handler.py
 services/api-lambda/Dockerfile
 docs/multicloud/aws_lambda_backend.md
-infra/multicloud-pulumi-python/retainai_infra/aws_ecr.py
-infra/multicloud-pulumi-python/retainai_infra/aws_lambda_api.py
-infra/multicloud-pulumi-python/retainai_infra/aws_api_gateway.py
+infra/aws-terraform/versions.tf
+infra/aws-terraform/providers.tf
+infra/aws-terraform/variables.tf
+infra/aws-terraform/main.tf
+infra/aws-terraform/outputs.tf
+infra/aws-terraform/terraform.tfvars.example
 ```
 
 Acceptance criteria:
@@ -1240,8 +1247,8 @@ Deliverables:
 modules/security/usage_quota.py
 apps/api/middleware or router guard
 docs/multicloud/security_and_cost_controls.md
-infra/multicloud-pulumi-python/retainai_infra/aws_quota.py
-infra/multicloud-pulumi-python/retainai_infra/gcp_secrets.py
+infra/aws-terraform/quota.tf
+infra/gcp-terraform/secrets.tf
 ```
 
 Acceptance criteria:
