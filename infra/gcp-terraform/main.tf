@@ -115,6 +115,16 @@ resource "google_cloud_run_v2_service" "dashboard" {
   }
 
   lifecycle {
+    precondition {
+      condition     = var.dashboard_min_instances == 0
+      error_message = "The RetainAI MVP must keep dashboard_min_instances equal to 0."
+    }
+
+    precondition {
+      condition     = var.dashboard_max_instances == 1
+      error_message = "The RetainAI MVP must keep dashboard_max_instances equal to 1."
+    }
+
     ignore_changes = [
       template[0].containers[0].image,
     ]

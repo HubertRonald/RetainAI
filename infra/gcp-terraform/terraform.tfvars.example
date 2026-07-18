@@ -31,3 +31,4 @@ labels = {
   platform = "decision-intelligence"
   managed  = "terraform"
 }
+dashboard_custom_domain = "retainai.hubertronald.dev"

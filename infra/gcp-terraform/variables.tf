@@ -53,6 +53,11 @@ variable "dashboard_max_instances" {
   description = "Maximum Cloud Run instances for low-cost portfolio traffic."
   type        = number
   default     = 1
+
+  validation {
+    condition     = var.dashboard_max_instances == 1
+    error_message = "The RetainAI MVP must keep dashboard_max_instances equal to 1."
+  }
 }
 
 variable "dashboard_container_port" {
@@ -89,5 +94,16 @@ variable "labels" {
     env      = "dev"
     platform = "decision-intelligence"
     managed  = "terraform"
+  }
+}
+
+variable "dashboard_custom_domain" {
+  description = "Custom domain mapped directly to the RetainAI Cloud Run dashboard."
+  type        = string
+  default     = "retainai.hubertronald.dev"
+
+  validation {
+    condition     = trimspace(var.dashboard_custom_domain) != ""
+    error_message = "dashboard_custom_domain must not be empty."
   }
 }
