@@ -11,7 +11,7 @@ dashboard_service_name = "retainai-dashboard"
 dashboard_image_uri = "us-east4-docker.pkg.dev/existing-billed-gcp-project-id/retainai-dashboard/retainai-dashboard:sprint7-4"
 
 # Replace this later with the real AWS API Gateway or Lambda Function URL.
-dashboard_api_url = "https://placeholder-api.example.com"
+dashboard_api_url = "https://api.retainai.hubertronald.dev"
 
 dashboard_allow_public = true
 

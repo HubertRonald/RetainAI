@@ -42,3 +42,6 @@ ai_endpoint_prefixes = [
   "/ai",
   "/rag",
 ]
+
+api_custom_domain = "api.retainai.hubertronald.dev"
+dashboard_allowed_origin = "https://retainai.hubertronald.dev"
