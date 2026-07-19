@@ -203,6 +203,8 @@ def render_page_header(
         unsafe_allow_html=True,
     )
 
+AUTHOR_PAGE = "https://hubertronald.dev/"
+RETAINAI_PAGE = "https://retainai.hubertronald.dev/"
 
 def render_footer() -> None:
     year = datetime.now(timezone(timedelta(hours=-5))).year
@@ -211,20 +213,32 @@ def render_footer() -> None:
         f"""
         <div class="retainai-footer">
             <p>
-                Coded with
-                <a href="{LANDING_PAGE}" target="_blank" class="footer-heart">♥</a>
-                by
-                <a href="{LANDING_PAGE}" target="_blank">Hubert Ronald</a>
+                Designed and built with
+                <a
+                    href="{AUTHOR_PAGE}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-heart"
+                >♥</a>
+                and AI assistance by
+                <a
+                    href="{AUTHOR_PAGE}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >Hubert Ronald</a>
                 <br>
-                © Copyright {year}
-                <a href="{LANDING_PAGE}" target="_blank">[-] Liasoft</a>
-                - All Rights Reserved
+                © {year}
+                <a
+                    href="{RETAINAI_PAGE}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >RetainAI</a>
+                — All rights reserved
             </p>
         </div>
         """,
         unsafe_allow_html=True,
     )
-
 
 def render_page_shell(
         title: str,
