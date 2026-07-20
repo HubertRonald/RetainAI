@@ -68,56 +68,43 @@ are satisfied.
 | Retention Advisor foundation | Route validated evidence to optional Gemini or Bedrock adapters |
 | Monitoring roadmap | Add data quality, performance, drift, and validation reports |
 
+<!-- retainai-architecture-visuals:start -->
+
 ## Concept architecture
 
-RetainAI is organized as a layered decision-intelligence system. Its analytical
+RetainAI is organized as a layered decision-intelligence system. The analytical
 foundation already covers data preparation, attrition classification, survival
-analysis, explainability, model artifacts, API services, dashboard consumption,
-and experiment tracking.
+analysis, SHAP explainability, reproducible experiments, model artifacts, API
+services, and dashboard-driven decision support.
 
-The advisor and vector-knowledge layers extend this foundation; they do not
-replace it.
+The monitoring, retrieval, and advisor layers extend this foundation; they do
+not replace it. Solid elements in the diagram represent the implemented or
+deployed foundation. Dashed elements represent planned or disabled
+capabilities.
 
 [![RetainAI decision-intelligence architecture](./figs/retainai_decision_intelligence_architecture.png)](./figs/retainai_decision_intelligence_architecture.svg)
 
-[View the editable Mermaid source](./docs/architecture/diagrams/decision_intelligence.mmd)
+[Architecture details](./docs/architecture/README.md#decision-intelligence-architecture)
 
 ## Current deployed multicloud architecture
 
-The `v0.4` runtime is deployed and operational:
+The `v0.4` runtime is deployed and operational. Google Cloud hosts the public
+product experience, while AWS owns the controlled backend boundary for
+authentication, quota, prediction, explainability, and logging.
 
-```text
-User
-  ↓
-retainai.hubertronald.dev
-  ↓
-Google Cloud Run — Streamlit dashboard
-  ↓ server-side HTTPS with bearer token
-api.retainai.hubertronald.dev
-  ↓
-AWS API Gateway HTTP API
-  ↓
-AWS Lambda container backend
-  ├── authentication guard
-  ├── DynamoDB quota
-  ├── prediction and explanation services
-  └── CloudWatch logging
-```
-
-[![RetainAI deployed multicloud runtime](./figs/architecture/retainai_multicloud_runtime_v0_4.png)](./figs/architecture/retainai_multicloud_runtime_v0_4.svg)
-
-[View the editable Mermaid source](./docs/architecture/diagrams/multicloud_runtime_v0_4.mmd)
-
-### Current runtime boundaries
+[![RetainAI v0.4 deployed multicloud runtime](./figs/architecture/retainai_multicloud_runtime_v0_4.png)](./figs/architecture/retainai_multicloud_runtime_v0_4.svg)
 
 ```text
 The browser never receives the backend bearer token.
-Cloud Run calls the AWS backend from server-side Python only.
-AI provider credentials never exist in browser-side code.
+Cloud Run calls the AWS API from server-side Python only.
 Lambda owns authentication, quota, logging, and provider routing.
-Gemini and Bedrock are disabled by default.
-Application delivery is separated from Terraform infrastructure delivery.
+Gemini and Bedrock remain disabled by default.
+Application delivery is separate from Terraform infrastructure delivery.
 ```
+
+[Runtime architecture details](./docs/architecture/README.md#current-deployed-multicloud-runtime)
+
+<!-- retainai-architecture-visuals:end -->
 
 ## Live endpoints
 

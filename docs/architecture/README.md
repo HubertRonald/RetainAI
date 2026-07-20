@@ -1,5 +1,54 @@
 # RetainAI Architecture
 
+<!-- retainai-architecture-gallery:start -->
+
+## Architecture views
+
+RetainAI uses multiple views because no single image can explain the product,
+analytical lifecycle, runtime topology, delivery model, and request sequence
+without becoming unreadable.
+
+| View | Purpose | Status |
+|---|---|---|
+| Decision Intelligence | Product and analytical capabilities | Current foundation + planned evolution |
+| Multicloud runtime | GCP dashboard and AWS backend operating in `v0.4` | Deployed |
+| Data, model, evidence, and advisor | Analytical lifecycle and governed RAG evolution | Current + planned |
+| Delivery architecture | Application delivery versus Terraform infrastructure delivery | Current + next milestone |
+| Runtime sequence | Authentication, quota, prediction, explanation, and optional AI flow | Current + disabled branch |
+
+### Visual status convention
+
+```text
+solid border and connector
+  implemented or deployed
+
+dashed border and connector
+  planned, disabled, or post-v0.4
+```
+
+## Decision-intelligence architecture
+
+[![RetainAI decision-intelligence architecture](../../figs/retainai_decision_intelligence_architecture.png)](../../figs/retainai_decision_intelligence_architecture.svg)
+
+## Current deployed multicloud runtime
+
+[![RetainAI v0.4 deployed multicloud runtime](../../figs/architecture/retainai_multicloud_runtime_v0_4.png)](../../figs/architecture/retainai_multicloud_runtime_v0_4.svg)
+
+## Data, model, evidence, and advisor evolution
+
+[![RetainAI data, model, evidence, and advisor pipeline](../../figs/architecture/retainai_data_model_evidence_pipeline.png)](../../figs/architecture/retainai_data_model_evidence_pipeline.svg)
+
+## Application and infrastructure delivery
+
+[![RetainAI application and infrastructure delivery](../../figs/architecture/retainai_delivery_architecture.png)](../../figs/architecture/retainai_delivery_architecture.svg)
+
+## Runtime request sequence
+
+[![RetainAI runtime request sequence](../../figs/architecture/retainai_runtime_sequence.png)](../../figs/architecture/retainai_runtime_sequence.svg)
+
+<!-- retainai-architecture-gallery:end -->
+
+
 This document is the canonical architecture guide for RetainAI.
 
 It separates:
