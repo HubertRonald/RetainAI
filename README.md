@@ -1,25 +1,123 @@
 # RetainAI
 
-<img src="https://img.shields.io/badge/Python-3.10.11-3670A0?style=flat-square&logo=python&logoColor=ffdd54" />
-<img src="https://img.shields.io/badge/scikit--learn-ML-orange?style=flat-square&logo=scikit-learn&logoColor=white" />
-<img src="https://img.shields.io/badge/XGBoost-Gradient%20Boosting-FF6600?style=flat-square" />
-<img src="https://img.shields.io/badge/lifelines-Survival%20Analysis-4B8BBE?style=flat-square" />
-<img src="https://img.shields.io/badge/SHAP-Explainability-8A2BE2?style=flat-square" />
-<img src="https://img.shields.io/badge/MLflow-Experiment%20Tracking-0194E2?style=flat-square&logo=mlflow&logoColor=white" />
-<img src="https://img.shields.io/badge/FastAPI-Serving-009688?style=flat-square&logo=fastapi&logoColor=white" />
-<img src="https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" />
-<img src="https://img.shields.io/badge/AWS-Cloud-232F3E?style=flat-square&logo=amazonaws&logoColor=white" />
-<img src="https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-2088FF?style=flat-square&logo=githubactions&logoColor=white" />
-<img src="https://img.shields.io/badge/Docker-Containers-2496ED?style=flat-square&logo=docker&logoColor=white" />
-<img src="https://img.shields.io/github/license/HubertRonald/RetainAI?style=flat-square&color=success"/>
-<img src="https://img.shields.io/badge/status-active-success?style=flat-square"/>
+<p align="left">
+  <img src="https://img.shields.io/badge/Python-3.10.11-3670A0?style=flat-square&logo=python&logoColor=ffdd54" />
+  <img src="https://img.shields.io/badge/scikit--learn-ML-orange?style=flat-square&logo=scikit-learn&logoColor=white" />
+  <img src="https://img.shields.io/badge/XGBoost-Gradient%20Boosting-FF6600?style=flat-square" />
+  <img src="https://img.shields.io/badge/lifelines-Survival%20Analysis-4B8BBE?style=flat-square" />
+  <img src="https://img.shields.io/badge/SHAP-Explainability-8A2BE2?style=flat-square" />
+  <img src="https://img.shields.io/badge/MLflow-Experiment%20Tracking-0194E2?style=flat-square&logo=mlflow&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-Serving-009688?style=flat-square&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" />
+  <img src="https://img.shields.io/badge/AWS-Cloud-232F3E?style=flat-square&logo=amazonaws&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-2088FF?style=flat-square&logo=githubactions&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-Containers-2496ED?style=flat-square&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/github/license/HubertRonald/RetainAI?style=flat-square&color=success"/>
+  <img src="https://img.shields.io/badge/status-active-success?style=flat-square"/>
+</p>
 
-**RetainAI** is a multicloud retention-intelligence platform combining
-explainable analytics, secure serverless delivery, and bounded AI-assisted
-decision support.
+### Decision Intelligence Platform for Employee Retention
+
+**RetainAI** is an end-to-end Machine Learning, Explainable AI, MLOps, and
+secure multicloud platform for employee-retention analytics.
+
+Rather than providing only employee attrition prediction, RetainAI combines:
+
+- attrition classification;
+- survival and time-to-event analysis;
+- SHAP-based global and local explainability;
+- reproducible experimentation and artifact tracking;
+- API-backed prediction services;
+- dashboard-driven decision support;
+- validation and monitoring foundations;
+- provider-neutral AI-assisted retention guidance.
+
+The product is designed as a **Decision Intelligence System for Human
+Resources**: analytical evidence remains reviewable, AI providers remain
+optional, and high-impact employment decisions remain under human
+accountability.
 
 Product design, architecture, and AI-assisted development by
 [Hubert Ronald](https://hubertronald.dev/).
+
+## Project vision
+
+RetainAI evolves traditional attrition prediction into an explainable,
+multilingual, and provider-neutral retention-intelligence platform.
+
+The long-term direction is to support workforce planning, retention-strategy
+design, and responsible HR decision-making without coupling the product to a
+single cloud or AI provider.
+
+Amazon Bedrock and Google Gemini are treated as interchangeable advisor
+adapters behind a controlled backend. They are not the product itself, and
+remain disabled by default until evaluation, quota, privacy, and cost controls
+are satisfied.
+
+## Core capabilities
+
+| Capability | Purpose |
+|---|---|
+| Attrition classification | Estimate employee attrition risk using supervised models |
+| Survival analysis | Estimate retention duration and time-to-event behavior |
+| Explainable AI | Surface SHAP drivers, feature importance, and evidence |
+| Experiment tracking | Preserve reproducible runs, metrics, and artifacts |
+| Prediction API | Expose controlled inference and explanation contracts |
+| Streamlit dashboard | Present model evidence and decision-support outputs |
+| Multicloud delivery | Run the public dashboard on GCP and the backend on AWS |
+| Retention Advisor foundation | Route validated evidence to optional Gemini or Bedrock adapters |
+| Monitoring roadmap | Add data quality, performance, drift, and validation reports |
+
+## Concept architecture
+
+RetainAI is organized as a layered decision-intelligence system. Its analytical
+foundation already covers data preparation, attrition classification, survival
+analysis, explainability, model artifacts, API services, dashboard consumption,
+and experiment tracking.
+
+The advisor and vector-knowledge layers extend this foundation; they do not
+replace it.
+
+[![RetainAI decision-intelligence architecture](./figs/retainai_decision_intelligence_architecture.png)](./figs/retainai_decision_intelligence_architecture.svg)
+
+[View the editable Mermaid source](./docs/architecture/diagrams/decision_intelligence.mmd)
+
+## Current deployed multicloud architecture
+
+The `v0.4` runtime is deployed and operational:
+
+```text
+User
+  ↓
+retainai.hubertronald.dev
+  ↓
+Google Cloud Run — Streamlit dashboard
+  ↓ server-side HTTPS with bearer token
+api.retainai.hubertronald.dev
+  ↓
+AWS API Gateway HTTP API
+  ↓
+AWS Lambda container backend
+  ├── authentication guard
+  ├── DynamoDB quota
+  ├── prediction and explanation services
+  └── CloudWatch logging
+```
+
+[![RetainAI deployed multicloud runtime](./figs/architecture/retainai_multicloud_runtime_v0_4.png)](./figs/architecture/retainai_multicloud_runtime_v0_4.svg)
+
+[View the editable Mermaid source](./docs/architecture/diagrams/multicloud_runtime_v0_4.mmd)
+
+### Current runtime boundaries
+
+```text
+The browser never receives the backend bearer token.
+Cloud Run calls the AWS backend from server-side Python only.
+AI provider credentials never exist in browser-side code.
+Lambda owns authentication, quota, logging, and provider routing.
+Gemini and Bedrock are disabled by default.
+Application delivery is separated from Terraform infrastructure delivery.
+```
 
 ## Live endpoints
 
@@ -33,29 +131,15 @@ Product design, architecture, and AI-assisted development by
 
 `v0.4.0` establishes the multicloud product foundation:
 
-- Cloud Run dashboard with branded HTTPS.
-- API Gateway and Lambda container backend.
-- Terraform-managed AWS and GCP infrastructure.
-- Server-side bearer-token authentication.
-- DynamoDB request quotas.
-- AI providers disabled by default.
-- Cloud Run scale-to-zero and maximum one instance.
-- Application delivery separated from infrastructure delivery.
-
-## Architecture
-
-```mermaid
-flowchart TD
-    U[User] --> D[retainai.hubertronald.dev]
-    D --> CR[Cloud Run dashboard]
-    CR -->|Server-side bearer token| API[api.retainai.hubertronald.dev]
-    API --> GW[API Gateway HTTP API]
-    GW --> L[AWS Lambda container]
-    L --> Q[DynamoDB quota]
-    L -. disabled by default .-> AI[Gemini or Bedrock adapter]
-```
-
-The browser never receives the backend bearer token.
+- branded dashboard and API domains with managed HTTPS;
+- Cloud Run dashboard and Lambda container backend;
+- Terraform-managed AWS and GCP infrastructure;
+- server-side bearer-token authentication;
+- DynamoDB request quotas;
+- Cloud Run scale-to-zero with a one-instance maximum;
+- AI, RAG, and vector providers disabled by default;
+- application delivery separated from infrastructure delivery;
+- product documentation organized by architectural domain.
 
 ## Documentation
 
@@ -79,13 +163,20 @@ Additional project files:
 
 ## Roadmap
 
-- **v0.5:** monitoring, validation reports, and drift detection.
-- **v0.6:** English/Spanish internationalization and provider abstraction.
-- **v0.7:** resume context, explainability, and evaluation.
-- **v1.0:** bilingual Retention Intelligence and Retention Advisor.
+- **v0.5 — Monitoring and validation:** data quality, model performance,
+  prediction drift, validation reports, and retraining readiness.
+- **v0.6 — Internationalization and provider abstraction:** English and Spanish
+  locale catalogs, structured localized explanations, Gemini adapter, and
+  Bedrock adapter.
+- **v0.7 — Talent context and evaluation:** Resume Intelligence, structured
+  context, explainability reports, evaluation datasets, and bias checks.
+- **v1.0 — Retention Intelligence:** bilingual Retention Advisor, Resume
+  Intelligence, monitoring, drift-aware evaluation, auditable explanations,
+  and secure automated delivery.
 
-Psychometric capabilities remain outside the committed roadmap until suitable
-data, validated methodology, privacy safeguards, and ethical review exist.
+Psychometric Intelligence remains outside the committed `v1.0` scope until
+RetainAI has appropriate data, validated instruments, methodological evidence,
+privacy and legal review, bias analysis, and qualified interpretation.
 
 ## Product credit
 
@@ -93,7 +184,6 @@ Designed and built with ♥ and AI assistance by
 [Hubert Ronald](https://hubertronald.dev/).
 
 © 2026 RetainAI — All rights reserved.
-
 
 ## License
 
