@@ -69,6 +69,27 @@ are satisfied.
 | Monitoring roadmap | Add data quality, performance, drift, and validation reports |
 
 <!-- retainai-architecture-visuals:start -->
+## Concept Architecture
+
+RetainAI is organized as a layered **Decision Intelligence System** rather than
+as a single attrition model or a cloud deployment demo. Its current foundation
+already covers reproducible data preparation, attrition classification,
+survival analysis, SHAP explainability, experiment tracking, evidence
+artifacts, controlled API services, and dashboard-driven decision support.
+
+The final layer shows the product evolution toward validation reports,
+monitoring, evidence retrieval, and a provider-neutral Retention Advisor.
+Planned or disabled components are intentionally separated from capabilities
+that are already implemented or deployed.
+
+<p align="center">
+    <img
+      src="./figs/retainai_decision_intelligence_core_architecture.svg"
+      alt="RetainAI Decision Intelligence Platform architecture"
+      width="100%"
+    />
+</p>
+
 
 ## Concept architecture
 
