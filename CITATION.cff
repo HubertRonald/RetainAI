@@ -1,37 +1,25 @@
 cff-version: 1.2.0
-
-title: "RetainAI"
-
-message: >
-  If you use RetainAI in academic work, teaching,
-  demonstrations, or derivative projects,
-  please cite the repository.
-
+message: "If you use RetainAI, please cite the software using these metadata."
+title: "RetainAI: Multicloud Retention Intelligence"
 type: software
-
+version: 0.4.0
+date-released: 2026-07-20
 authors:
-  - family-names: "Ronald"
-    given-names: "Hubert"
-
+  - family-names: "Mendoza Canales"
+    given-names: "Hubert Ronald"
 repository-code: "https://github.com/HubertRonald/RetainAI"
-
-license: "MIT"
-
-abstract: >
-  RetainAI is an AI-ready employee retention intelligence platform
-  combining classification, survival analysis, explainability,
-  dashboard analytics, MLOps, and future AI capabilities
-  for workforce intelligence systems.
-
+url: "https://retainai.hubertronald.dev"
+abstract: >-
+  RetainAI is a multicloud retention-intelligence platform combining
+  explainable analytics, secure serverless delivery, bounded AI-assisted
+  recommendations, and auditable security and cost controls.
 keywords:
-  - employee attrition
-  - hr analytics
   - retention intelligence
-  - machine learning
-  - survival analysis
-  - explainability
-  - mlops
-  - aws
-  - bedrock
-
-version: "0.1.0a0"
+  - decision intelligence
+  - explainable AI
+  - workforce analytics
+  - serverless
+  - multicloud
+  - Terraform
+  - AWS Lambda
+  - Google Cloud Run
