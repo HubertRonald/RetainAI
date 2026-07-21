@@ -69,41 +69,37 @@ are satisfied.
 | Monitoring roadmap | Add data quality, performance, drift, and validation reports |
 
 <!-- retainai-architecture-visuals:start -->
-## Concept Architecture
+## Architecture overview
 
-RetainAI is organized as a layered **Decision Intelligence System** rather than
-as a single attrition model or a cloud deployment demo. Its current foundation
-already covers reproducible data preparation, attrition classification,
-survival analysis, SHAP explainability, experiment tracking, evidence
-artifacts, controlled API services, and dashboard-driven decision support.
+RetainAI is a layered **Decision Intelligence System** that combines
+reproducible data preparation, attrition classification, survival analysis,
+SHAP explainability, experiment tracking, controlled API services, and
+dashboard-driven decision support.
 
-The final layer shows the product evolution toward validation reports,
-monitoring, evidence retrieval, and a provider-neutral Retention Advisor.
-Planned or disabled components are intentionally separated from capabilities
-that are already implemented or deployed.
+### Decision Intelligence core architecture
+
+The core architecture presents the product at a high level, from analytical
+foundations to decision support and the future advisor layer.
 
 <p align="center">
-    <img
-      src="./figs/retainai_decision_intelligence_core_architecture.svg"
-      alt="RetainAI Decision Intelligence Platform architecture"
-      width="100%"
-    />
+  <img
+    src="./figs/retainai_decision_intelligence_core_architecture.svg"
+    alt="RetainAI Decision Intelligence core architecture"
+    width="100%"
+  />
 </p>
 
+### Current foundation and product evolution
 
-## Concept architecture
+The detailed view expands the core architecture and distinguishes capabilities
+that are already implemented or deployed from those that remain planned,
+optional, or disabled.
 
-RetainAI is organized as a layered decision-intelligence system. The analytical
-foundation already covers data preparation, attrition classification, survival
-analysis, SHAP explainability, reproducible experiments, model artifacts, API
-services, and dashboard-driven decision support.
+Solid elements represent the current foundation. Dashed elements represent the
+evolution toward validation reports, monitoring and drift detection, evidence
+retrieval, provider-neutral AI adapters, and the Retention Advisor.
 
-The monitoring, retrieval, and advisor layers extend this foundation; they do
-not replace it. Solid elements in the diagram represent the implemented or
-deployed foundation. Dashed elements represent planned or disabled
-capabilities.
-
-[![RetainAI decision-intelligence architecture](./figs/retainai_decision_intelligence_architecture.png)](./figs/retainai_decision_intelligence_architecture.svg)
+[![RetainAI Decision Intelligence architecture](./figs/retainai_decision_intelligence_architecture.png)](./figs/retainai_decision_intelligence_architecture.svg)
 
 [Architecture details](./docs/architecture/README.md#decision-intelligence-architecture)
 
