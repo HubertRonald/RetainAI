@@ -444,44 +444,96 @@ Provider output must be schema-validated and evidence-aware.
 Sensitive employee data must be minimized or redacted.
 ```
 
-## Architecture decisions
+## Architectural principles and decisions
 
-### Decision 1 — RetainAI is a decision-intelligence product
+### RetainAI is a decision-intelligence platform
 
-The cloud topology supports the product but does not define its full scope.
+RetainAI combines predictive modeling, survival analysis, explainability,
+experiment tracking, controlled API services, dashboard-driven decision support,
+and an evolving advisor layer.
 
-The root description must include classification, survival analysis,
-explainability, experimentation, dashboard decision support, and the advisor
-foundation.
+The multicloud topology provides the runtime and delivery foundation for these
+capabilities, but it does not define the complete product scope.
 
-### Decision 2 — Terraform is the active IaC
+### Terraform is the active infrastructure-as-code standard
 
-Pulumi references and artifacts are historical and should not appear in the
-active architecture narrative.
+AWS and Google Cloud infrastructure is managed through Terraform modules located
+under:
 
-### Decision 3 — Direct Cloud Run domain mapping
+```text
+infra/aws-terraform
+infra/gcp-terraform
+```
 
-The current scale does not justify a GCP external load balancer.
+Earlier Pulumi experiments are part of the repository history but are not part
+of the active infrastructure architecture.
 
-### Decision 4 — Regional API Gateway custom domain
+### The dashboard uses direct Cloud Run domain mapping
 
-The branded API uses API Gateway and ACM without Route 53, CloudFront, or an
-AWS load balancer.
+The public dashboard is exposed through a direct Cloud Run domain mapping at:
 
-### Decision 5 — Application and infrastructure delivery are separate
+```text
+retainai.hubertronald.dev
+```
 
-Routine application releases create new container revisions without applying
-Terraform.
+This approach provides managed HTTPS and an appropriate operational footprint
+for the current product scale without introducing an external Google Cloud load
+balancer.
 
-### Decision 6 — AI providers are adapters
+### The backend uses an API Gateway regional custom domain
 
-Gemini and Bedrock implement a common advisor contract. Neither provider is the
-product architecture.
+The AWS backend is exposed through:
 
-### Decision 7 — Future components must be visually identified
+```text
+api.retainai.hubertronald.dev
+```
 
-RAG, vector stores, provider calls, monitoring, and automated delivery must be
-shown with dashed styling until implemented.
+The domain is implemented with API Gateway and AWS Certificate Manager. The
+current architecture does not require Route 53, CloudFront, or an AWS load
+balancer.
+
+### Application delivery and infrastructure delivery are independent
+
+Application releases build and deploy immutable container images without
+applying Terraform.
+
+Infrastructure changes follow a separate workflow based on formatting,
+validation, a saved Terraform plan, human review, and application of the
+reviewed plan.
+
+This separation prevents routine application releases from modifying cloud
+resources and prevents infrastructure changes from replacing application images
+as a side effect.
+
+### AI providers are implementation adapters
+
+Google Gemini and Amazon Bedrock are optional implementations of a common
+advisor-provider contract.
+
+Authentication, quota enforcement, evidence assembly, policy controls,
+localization, logging, and response validation remain part of RetainAI's backend
+orchestration rather than provider-specific logic.
+
+AI providers remain disabled by default.
+
+### Current and planned capabilities are documented separately
+
+Architecture diagrams use solid styling for implemented or deployed components
+and dashed styling for planned, optional, or disabled components.
+
+This convention applies to capabilities such as:
+
+```text
+monitoring and drift detection
+vector retrieval
+RAG evidence services
+Gemini and Bedrock integrations
+GitHub Actions delivery
+governed automated retraining
+```
+
+The visual distinction prevents roadmap components from being interpreted as
+part of the current production runtime.
 
 ## Internationalization boundary
 
