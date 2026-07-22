@@ -1,4 +1,19 @@
+# Copy this file to terraform.tfvars for local use.
+# Do not commit terraform.tfvars.
+
 project_id = "coplayground"
 region     = "us-east4"
 
-cloud_run_runtime_service_account_email = "REPLACE_WITH_CLOUD_RUN_RUNTIME_SERVICE_ACCOUNT"
+github_repository = "HubertRonald/RetainAI"
+github_branch_ref = "refs/heads/main"
+
+workload_identity_pool_id     = "retainai-github"
+workload_identity_provider_id = "retainai-main"
+deployment_service_account_id = "retainai-gh-release"
+
+# Existing runtime resources. This root does not create or replace them.
+artifact_repository_id = "retainai-dashboard"
+dashboard_service_name = "retainai-dashboard"
+
+# Existing identity configured on the Cloud Run service.
+cloud_run_runtime_service_account_email = "sa-retainai-dashboard@coplayground.iam.gserviceaccount.com"

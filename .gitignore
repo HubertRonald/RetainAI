@@ -346,3 +346,7 @@ infra/aws-terraform/github-actions-identity/crash.log
 infra/aws-terraform/github-actions-identity/crash.*.log
 infra/aws-terraform/github-actions-identity/terraform.tfstate.backup
 infra/aws-terraform/github-actions-identity/terraform.tfvars
+
+# Terraform saved plans
+**/tfplan
+**/*.tfplan

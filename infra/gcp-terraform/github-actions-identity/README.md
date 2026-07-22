@@ -1,17 +1,29 @@
-# RetainAI GitHub Actions Google Cloud identity
+# RetainAI GitHub Actions identity for Google Cloud
 
-This Terraform root creates:
+This directory is an independent Terraform root for GitHub Actions identity and
+least-privilege deployment permissions.
+
+It does not manage or replace the existing runtime root:
+
+```text
+infra/gcp-terraform/
+```
+
+It manages only:
 
 ```text
 Workload Identity Pool
-GitHub OIDC provider restricted to HubertRonald/RetainAI and main
-least-privilege deployment service account
-Artifact Registry writer permission
-Cloud Run developer permission
-actAs permission for the existing Cloud Run runtime identity
+GitHub OIDC Provider
+GitHub deployment service account
+Workload Identity User binding
+Artifact Registry repository-level writer binding
+Cloud Run service-level developer binding
+Cloud Run runtime service-account actAs binding
 ```
 
-It does not manage the Cloud Run service, domain mapping, secrets, Artifact
-Registry repository, or application image.
+The existing resources are referenced by name through
+`artifact_repository_id`, `dashboard_service_name`, and
+`cloud_run_runtime_service_account_email`.
 
-No service-account key is created.
+The root has its own local `terraform.tfvars`, separate from the parent runtime
+root. Neither local file should be committed.
