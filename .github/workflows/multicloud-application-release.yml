@@ -187,6 +187,9 @@ jobs:
         run: |
           set -Eeuo pipefail
 
+          python -m pip install ".[aws]"
+          python -c 'import boto3; print("boto3=" + boto3.__version__)'
+
           python -m pytest -q
 
       - name: Validate Dockerfiles exist
