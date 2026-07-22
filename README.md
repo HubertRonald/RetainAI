@@ -165,6 +165,29 @@ Additional project files:
 - [Contributing](CONTRIBUTING.md)
 - [Citation metadata](CITATION.cff)
 
+<!-- retainai-delivery-safety:start -->
+## Application delivery and data safety
+
+RetainAI separates application promotion, infrastructure management, and data
+processing into independent operational paths.
+
+Dashboard and backend images are promoted manually from `main` through GitHub
+Actions using short-lived cloud identity and immutable image references.
+Documentation-only changes do not qualify for an application release.
+
+Terraform remains the source of truth for cloud infrastructure, including
+domains, certificates, IAM, secrets, runtime configuration, quotas, and the
+future protected S3 data-lake foundation. Routine application releases do not
+run Terraform or perform S3 data operations.
+
+See:
+
+- [Manual multi-cloud application release](./docs/multicloud/manual_application_release.md)
+- [Multi-cloud architecture](./docs/multicloud/README.md)
+- [Data architecture](./docs/data/README.md)
+- [Architecture decisions](./docs/architecture/README.md)
+<!-- retainai-delivery-safety:end -->
+
 ## Roadmap
 
 - **v0.5 — Monitoring and validation:** data quality, model performance,

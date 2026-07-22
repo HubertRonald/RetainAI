@@ -121,3 +121,25 @@ dig +short CNAME api.retainai.hubertronald.dev
 - [Dashboard](../dashboard/README.md)
 - [MLOps](../mlops/README.md)
 - [Documentation index](../README.md)
+
+<!-- retainai-manual-release:start -->
+## Manual application promotion
+
+RetainAI uses a manually dispatched GitHub Actions workflow to promote immutable
+dashboard and backend images from the protected `main` branch.
+
+The workflow evaluates component-specific build inputs before cloud
+authentication. Documentation, diagrams, Markdown, and other non-runtime changes
+do not qualify by themselves.
+
+AWS authentication uses GitHub OIDC. Google Cloud authentication uses Workload
+Identity Federation. Long-lived AWS keys and Google service-account key files
+are not used.
+
+Application releases update only Cloud Run and Lambda image references. They do
+not run Terraform, manage S3, or recreate infrastructure.
+
+See
+[Manual multi-cloud application release](./manual_application_release.md)
+for the complete operating contract.
+<!-- retainai-manual-release:end -->

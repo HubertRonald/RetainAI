@@ -310,6 +310,19 @@ infra/gcp-terraform/crash.*.log
 infra/gcp-terraform/terraform.tfstate.backup
 infra/gcp-terraform/terraform.tfvars
 
+infra/gcp-terraform/github-actions-identity/.terraform/
+infra/gcp-terraform/github-actions-identity/.terraform.lock.hcl
+infra/gcp-terraform/github-actions-identity/terraform.tfstate
+infra/gcp-terraform/github-actions-identity/terraform.tfstate.*
+infra/gcp-terraform/github-actions-identity/*.tfvars
+infra/gcp-terraform/github-actions-identity/*.tfvars.json
+infra/gcp-terraform/github-actions-identity/*.tfplan
+infra/gcp-terraform/github-actions-identity/crash.log
+infra/gcp-terraform/github-actions-identity/crash.*.log
+infra/gcp-terraform/github-actions-identity/terraform.tfstate.backup
+infra/gcp-terraform/github-actions-identity/terraform.tfvars
+infra/gcp-terraform/github-actions-identity/terraform.tfvars.example
+
 # RetainAI AWS Terraform local files
 infra/aws-terraform/.terraform/
 infra/aws-terraform/.terraform.lock.hcl
@@ -322,3 +335,16 @@ infra/aws-terraform/crash.log
 infra/aws-terraform/crash.*.log
 infra/aws-terraform/terraform.tfstate.backup
 infra/aws-terraform/terraform.tfvars
+
+infra/aws-terraform/github-actions-identity/.terraform/
+infra/aws-terraform/github-actions-identity/.terraform.lock.hcl
+infra/aws-terraform/github-actions-identity/terraform.tfstate
+infra/aws-terraform/github-actions-identity/terraform.tfstate.*
+infra/aws-terraform/github-actions-identity/*.tfvars
+infra/aws-terraform/github-actions-identity/*.tfvars.json
+infra/aws-terraform/github-actions-identity/*.tfplan
+infra/aws-terraform/github-actions-identity/crash.log
+infra/aws-terraform/github-actions-identity/crash.*.log
+infra/aws-terraform/github-actions-identity/terraform.tfstate.backup
+infra/aws-terraform/github-actions-identity/terraform.tfvars
+infra/aws-terraform/github-actions-identity/terraform.tfvars.example
