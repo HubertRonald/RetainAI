@@ -4,6 +4,7 @@ from typing import Any
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from apps.api.middleware.security_quota import SecurityQuotaMiddleware
 from fastapi.responses import HTMLResponse
 
 from apps.api.routers import explainability, overview, prediction, survival
@@ -241,6 +242,8 @@ def index(_: Request) -> Any:
 def health() -> dict[str, str]:
     return {"status": "ok", "service": "retainai-api"}
 
+
+app.add_middleware(SecurityQuotaMiddleware)
 
 app.add_middleware(
     CORSMiddleware,

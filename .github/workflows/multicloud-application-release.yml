@@ -1,0 +1,517 @@
+name: RetainAI manual multi-cloud application release
+
+run-name: >-
+  RetainAI ${{ inputs.environment }} release ·
+  ${{ inputs.component }} ·
+  ${{ github.sha }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target GitHub environment
+        required: true
+        type: choice
+        options:
+          - dev
+          - prod
+      component:
+        description: Application component to evaluate and release
+        required: true
+        type: choice
+        options:
+          - dashboard
+          - backend
+          - both
+      release_reason:
+        description: Human-readable reason for the release
+        required: true
+        type: string
+      confirm_release:
+        description: Type RELEASE to authorize the run
+        required: true
+        type: string
+      force_release:
+        description: Release selected components even when no eligible changes are detected
+        required: true
+        default: false
+        type: boolean
+      run_tests:
+        description: Run the Python test suite before cloud authentication
+        required: true
+        default: true
+        type: boolean
+
+concurrency:
+  group: retainai-${{ inputs.environment }}-${{ inputs.component }}
+  cancel-in-progress: false
+
+jobs:
+  guard:
+    name: Validate manual release request
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Enforce workflow and branch contract
+        shell: bash
+        env:
+          CONFIRM_RELEASE: ${{ inputs.confirm_release }}
+          RELEASE_REASON: ${{ inputs.release_reason }}
+        run: |
+          set -Eeuo pipefail
+
+          if [[ "${GITHUB_EVENT_NAME}" != "workflow_dispatch" ]]; then
+            printf 'ERROR: only workflow_dispatch is permitted.\n' >&2
+            exit 2
+          fi
+
+          if [[ "${GITHUB_REF_TYPE}" != "branch" ]]; then
+            printf 'ERROR: releases must run from a branch, not a tag.\n' >&2
+            exit 2
+          fi
+
+          if [[ "${GITHUB_REF_NAME}" != "main" ]]; then
+            printf 'ERROR: releases are allowed only from main.\n' >&2
+            exit 2
+          fi
+
+          if [[ "${CONFIRM_RELEASE}" != "RELEASE" ]]; then
+            printf 'ERROR: confirm_release must be exactly RELEASE.\n' >&2
+            exit 2
+          fi
+
+          if [[ -z "${RELEASE_REASON// }" ]]; then
+            printf 'ERROR: release_reason cannot be empty.\n' >&2
+            exit 2
+          fi
+
+          printf 'Manual release request accepted for preflight evaluation.\n'
+
+  detect:
+    name: Detect eligible application changes
+    needs:
+      - guard
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      deploy_dashboard: ${{ steps.changes.outputs.deploy_dashboard }}
+      deploy_backend: ${{ steps.changes.outputs.deploy_backend }}
+      dashboard_base: ${{ steps.changes.outputs.dashboard_base }}
+      backend_base: ${{ steps.changes.outputs.backend_base }}
+    steps:
+      - name: Checkout repository and tags
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Detect component changes
+        id: changes
+        shell: bash
+        env:
+          RELEASE_COMPONENT: ${{ inputs.component }}
+          RELEASE_ENVIRONMENT: ${{ inputs.environment }}
+          FORCE_RELEASE: ${{ inputs.force_release }}
+        run: |
+          set -Eeuo pipefail
+
+          scripts/release/detect_application_changes.sh \
+            "${RELEASE_COMPONENT}" \
+            "${RELEASE_ENVIRONMENT}" \
+            "${FORCE_RELEASE}"
+
+      - name: Publish preflight summary
+        shell: bash
+        env:
+          DEPLOY_DASHBOARD: ${{ steps.changes.outputs.deploy_dashboard }}
+          DEPLOY_BACKEND: ${{ steps.changes.outputs.deploy_backend }}
+          DASHBOARD_BASE: ${{ steps.changes.outputs.dashboard_base }}
+          BACKEND_BASE: ${{ steps.changes.outputs.backend_base }}
+        run: |
+          {
+            printf '## RetainAI release preflight\n\n'
+            printf -- '- Environment: `%s`\n' '${{ inputs.environment }}'
+            printf -- '- Requested component: `%s`\n' '${{ inputs.component }}'
+            printf -- '- Dashboard baseline: `%s`\n' "${DASHBOARD_BASE}"
+            printf -- '- Backend baseline: `%s`\n' "${BACKEND_BASE}"
+            printf -- '- Deploy dashboard: `%s`\n' "${DEPLOY_DASHBOARD}"
+            printf -- '- Deploy backend: `%s`\n' "${DEPLOY_BACKEND}"
+            printf -- '- Reason: %s\n' '${{ inputs.release_reason }}'
+          } >> "${GITHUB_STEP_SUMMARY}"
+
+      - name: Stop cleanly when nothing qualifies
+        if: >-
+          steps.changes.outputs.deploy_dashboard != 'true' &&
+          steps.changes.outputs.deploy_backend != 'true'
+        shell: bash
+        run: |
+          printf '%s\n' \
+            'No eligible application build inputs changed.' \
+            'Nothing will be authenticated, built, pushed, or deployed.'
+
+  validate:
+    name: Validate application before cloud authentication
+    needs:
+      - detect
+    if: >-
+      needs.detect.outputs.deploy_dashboard == 'true' ||
+      needs.detect.outputs.deploy_backend == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        if: inputs.run_tests
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.10"
+          cache: pip
+
+      - name: Install test dependencies
+        if: inputs.run_tests
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[test]"
+
+      - name: Run tests
+        if: inputs.run_tests
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          python -m pytest -q
+
+      - name: Validate Dockerfiles exist
+        shell: bash
+        env:
+          DEPLOY_DASHBOARD: ${{ needs.detect.outputs.deploy_dashboard }}
+          DEPLOY_BACKEND: ${{ needs.detect.outputs.deploy_backend }}
+        run: |
+          set -Eeuo pipefail
+
+          if [[ "${DEPLOY_DASHBOARD}" == "true" ]]; then
+            test -s services/dashboard/Dockerfile
+          fi
+
+          if [[ "${DEPLOY_BACKEND}" == "true" ]]; then
+            test -s services/api-lambda/Dockerfile
+          fi
+
+  deploy-dashboard:
+    name: Release dashboard to Cloud Run
+    needs:
+      - detect
+      - validate
+    if: needs.detect.outputs.deploy_dashboard == 'true'
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    permissions:
+      contents: write
+      id-token: write
+    env:
+      GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+      GCP_REGION: ${{ vars.GCP_REGION }}
+      GCP_CLOUD_RUN_SERVICE: ${{ vars.GCP_CLOUD_RUN_SERVICE }}
+      GCP_ARTIFACT_REGISTRY_REPOSITORY: ${{ vars.GCP_ARTIFACT_REGISTRY_REPOSITORY }}
+      GCP_DASHBOARD_IMAGE_NAME: ${{ vars.GCP_DASHBOARD_IMAGE_NAME }}
+      GCP_WORKLOAD_IDENTITY_PROVIDER: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+      GCP_DEPLOY_SERVICE_ACCOUNT: ${{ vars.GCP_DEPLOY_SERVICE_ACCOUNT }}
+    steps:
+      - name: Checkout repository and tags
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Validate dashboard release variables
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          required=(
+            GCP_PROJECT_ID
+            GCP_REGION
+            GCP_CLOUD_RUN_SERVICE
+            GCP_ARTIFACT_REGISTRY_REPOSITORY
+            GCP_DASHBOARD_IMAGE_NAME
+            GCP_WORKLOAD_IDENTITY_PROVIDER
+            GCP_DEPLOY_SERVICE_ACCOUNT
+          )
+
+          for name in "${required[@]}"; do
+            if [[ -z "${!name:-}" ]]; then
+              printf 'ERROR: GitHub environment variable %s is missing.\n' \
+                "${name}" >&2
+              exit 2
+            fi
+          done
+
+      - name: Authenticate to Google Cloud with Workload Identity Federation
+        id: gcp-auth
+        uses: google-github-actions/auth@v3
+        with:
+          project_id: ${{ env.GCP_PROJECT_ID }}
+          workload_identity_provider: ${{ env.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ env.GCP_DEPLOY_SERVICE_ACCOUNT }}
+          create_credentials_file: true
+          export_environment_variables: true
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v3
+
+      - name: Configure Artifact Registry authentication
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          gcloud auth configure-docker \
+            "${GCP_REGION}-docker.pkg.dev" \
+            --quiet
+
+      - name: Build and push immutable dashboard image
+        id: dashboard-image
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          IMAGE_URI="${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${GCP_ARTIFACT_REGISTRY_REPOSITORY}/${GCP_DASHBOARD_IMAGE_NAME}:${GITHUB_SHA}"
+
+          docker build \
+            --platform linux/amd64 \
+            --file services/dashboard/Dockerfile \
+            --tag "${IMAGE_URI}" \
+            .
+
+          docker push "${IMAGE_URI}"
+
+          printf 'image_uri=%s\n' "${IMAGE_URI}" \
+            >> "${GITHUB_OUTPUT}"
+
+      - name: Update Cloud Run image only
+        shell: bash
+        env:
+          IMAGE_URI: ${{ steps.dashboard-image.outputs.image_uri }}
+        run: |
+          set -Eeuo pipefail
+
+          gcloud run services update \
+            "${GCP_CLOUD_RUN_SERVICE}" \
+            --image "${IMAGE_URI}" \
+            --region "${GCP_REGION}" \
+            --project "${GCP_PROJECT_ID}" \
+            --quiet
+
+      - name: Verify ready Cloud Run revision
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          gcloud run services describe \
+            "${GCP_CLOUD_RUN_SERVICE}" \
+            --region "${GCP_REGION}" \
+            --project "${GCP_PROJECT_ID}" \
+            --format='table(
+              status.latestReadyRevisionName,
+              status.url
+            )'
+
+      - name: Record successful dashboard deployment marker
+        shell: bash
+        env:
+          RELEASE_ENVIRONMENT: ${{ inputs.environment }}
+          IMAGE_URI: ${{ steps.dashboard-image.outputs.image_uri }}
+        run: |
+          set -Eeuo pipefail
+
+          SHORT_SHA="${GITHUB_SHA:0:12}"
+          TAG="deploy-dashboard-${RELEASE_ENVIRONMENT}-${SHORT_SHA}"
+
+          if git rev-parse --verify --quiet "refs/tags/${TAG}" >/dev/null; then
+            printf 'Deployment marker already exists: %s\n' "${TAG}"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email \
+              "41898282+github-actions[bot]@users.noreply.github.com"
+
+            git tag \
+              --annotate "${TAG}" \
+              --message "RetainAI dashboard deployment
+          environment=${RELEASE_ENVIRONMENT}
+          commit=${GITHUB_SHA}
+          image=${IMAGE_URI}
+          run=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+
+            git push origin "refs/tags/${TAG}"
+          fi
+
+      - name: Write dashboard deployment summary
+        shell: bash
+        env:
+          IMAGE_URI: ${{ steps.dashboard-image.outputs.image_uri }}
+        run: |
+          {
+            printf '## Dashboard deployment\n\n'
+            printf -- '- Commit: `%s`\n' "${GITHUB_SHA}"
+            printf -- '- Image: `%s`\n' "${IMAGE_URI}"
+            printf -- '- Cloud Run service: `%s`\n' "${GCP_CLOUD_RUN_SERVICE}"
+            printf -- '- Region: `%s`\n' "${GCP_REGION}"
+          } >> "${GITHUB_STEP_SUMMARY}"
+
+  deploy-backend:
+    name: Release backend to AWS Lambda
+    needs:
+      - detect
+      - validate
+    if: needs.detect.outputs.deploy_backend == 'true'
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    permissions:
+      contents: write
+      id-token: write
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      AWS_ROLE_TO_ASSUME: ${{ vars.AWS_ROLE_TO_ASSUME }}
+      AWS_ECR_REPOSITORY: ${{ vars.AWS_ECR_REPOSITORY }}
+      AWS_LAMBDA_FUNCTION_NAME: ${{ vars.AWS_LAMBDA_FUNCTION_NAME }}
+    steps:
+      - name: Checkout repository and tags
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Validate backend release variables
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          required=(
+            AWS_REGION
+            AWS_ROLE_TO_ASSUME
+            AWS_ECR_REPOSITORY
+            AWS_LAMBDA_FUNCTION_NAME
+          )
+
+          for name in "${required[@]}"; do
+            if [[ -z "${!name:-}" ]]; then
+              printf 'ERROR: GitHub environment variable %s is missing.\n' \
+                "${name}" >&2
+              exit 2
+            fi
+          done
+
+      - name: Configure temporary AWS credentials through OIDC
+        uses: aws-actions/configure-aws-credentials@v6.1.2
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: retainai-${{ inputs.environment }}-${{ github.run_id }}
+          mask-aws-account-id: true
+
+      - name: Log in to Amazon ECR
+        id: ecr-login
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and push immutable backend image
+        id: backend-image
+        shell: bash
+        env:
+          ECR_REGISTRY: ${{ steps.ecr-login.outputs.registry }}
+        run: |
+          set -Eeuo pipefail
+
+          IMAGE_URI="${ECR_REGISTRY}/${AWS_ECR_REPOSITORY}:${GITHUB_SHA}"
+
+          docker build \
+            --platform linux/amd64 \
+            --file services/api-lambda/Dockerfile \
+            --tag "${IMAGE_URI}" \
+            .
+
+          docker push "${IMAGE_URI}"
+
+          printf 'image_uri=%s\n' "${IMAGE_URI}" \
+            >> "${GITHUB_OUTPUT}"
+
+      - name: Update Lambda container image only
+        shell: bash
+        env:
+          IMAGE_URI: ${{ steps.backend-image.outputs.image_uri }}
+        run: |
+          set -Eeuo pipefail
+
+          aws lambda update-function-code \
+            --function-name "${AWS_LAMBDA_FUNCTION_NAME}" \
+            --image-uri "${IMAGE_URI}" \
+            --region "${AWS_REGION}" \
+            --output json
+
+          aws lambda wait function-updated-v2 \
+            --function-name "${AWS_LAMBDA_FUNCTION_NAME}" \
+            --region "${AWS_REGION}"
+
+      - name: Verify Lambda state
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          aws lambda get-function-configuration \
+            --function-name "${AWS_LAMBDA_FUNCTION_NAME}" \
+            --region "${AWS_REGION}" \
+            --query '{
+              FunctionName:FunctionName,
+              State:State,
+              LastUpdateStatus:LastUpdateStatus,
+              LastModified:LastModified
+            }' \
+            --output table
+
+      - name: Record successful backend deployment marker
+        shell: bash
+        env:
+          RELEASE_ENVIRONMENT: ${{ inputs.environment }}
+          IMAGE_URI: ${{ steps.backend-image.outputs.image_uri }}
+        run: |
+          set -Eeuo pipefail
+
+          SHORT_SHA="${GITHUB_SHA:0:12}"
+          TAG="deploy-backend-${RELEASE_ENVIRONMENT}-${SHORT_SHA}"
+
+          if git rev-parse --verify --quiet "refs/tags/${TAG}" >/dev/null; then
+            printf 'Deployment marker already exists: %s\n' "${TAG}"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email \
+              "41898282+github-actions[bot]@users.noreply.github.com"
+
+            git tag \
+              --annotate "${TAG}" \
+              --message "RetainAI backend deployment
+          environment=${RELEASE_ENVIRONMENT}
+          commit=${GITHUB_SHA}
+          image=${IMAGE_URI}
+          run=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+
+            git push origin "refs/tags/${TAG}"
+          fi
+
+      - name: Write backend deployment summary
+        shell: bash
+        env:
+          IMAGE_URI: ${{ steps.backend-image.outputs.image_uri }}
+        run: |
+          {
+            printf '## Backend deployment\n\n'
+            printf -- '- Commit: `%s`\n' "${GITHUB_SHA}"
+            printf -- '- Image: `%s`\n' "${IMAGE_URI}"
+            printf -- '- Lambda function: `%s`\n' "${AWS_LAMBDA_FUNCTION_NAME}"
+            printf -- '- Region: `%s`\n' "${AWS_REGION}"
+          } >> "${GITHUB_STEP_SUMMARY}"

@@ -1,106 +1,93 @@
 # Contributing to RetainAI
 
-Thank you for your interest in contributing to RetainAI.
+## Principles
 
-RetainAI is an experimental MLOps and employee retention intelligence platform focused on reproducibility, explainability, survival analysis, and AI-ready workforce analytics.
-
-## Development Environment
-
-The recommended development environment is:
-
-* VS Code
-* Dev Containers
-* Python 3.10
-
-After opening the project in the Dev Container:
-
-```bash
-pip install -e ".[dev,test]"
-```
-
-## Repository Philosophy
-
-RetainAI follows a modular architecture:
+Preserve:
 
 ```text
-modules/   → reusable analytical components
-src/       → application and product logic
-notebooks/ → exploratory and research workflows
-services/  → deployment and serving components
-apps/      → user-facing applications
+explainability
+human review
+secret isolation
+bounded cost
+provider portability
+language independence
+reproducibility
 ```
-
-Notebook code should not become production code directly.
-
-Reusable logic should be migrated into:
-
-```text
-modules/
-src/retainai/
-```
-
-## Branching Strategy
-
-Primary branches:
-
-```text
-main
-feature/mlops-foundation
-```
-
-Development work should be performed on feature branches and merged into the active development branch before reaching main.
-
-## Code Style
-
-Formatting tools:
-
-* black
-* isort
-* ruff
-
-Run:
-
-```bash
-python -m tox -e lint
-```
-
-before opening a pull request.
-
-## Testing
-
-Unit tests:
-
-```bash
-python -m tox -e py310
-```
-
-Integration tests should be added when new services or workflows are introduced.
-
-## Data Policy
-
-The IBM HR Analytics dataset is not redistributed by this repository.
-
-Users must download the dataset directly from Kaggle and comply with the dataset license and terms of use.
 
 ## Documentation
 
-Repository-facing documentation must be written in English.
+Update the relevant conceptual guide:
 
-Documentation should prioritize:
+```text
+docs/architecture/README.md
+docs/dashboard/README.md
+docs/data/README.md
+docs/eda/README.md
+docs/modeling/README.md
+docs/mlops/README.md
+docs/multicloud/README.md
+docs/prompts/README.md
+```
 
-* reproducibility
-* methodological transparency
-* architectural clarity
+Do not create permanent documents named after temporary iterations.
 
-## Future Roadmap
+## Tests
 
-RetainAI is expected to evolve toward:
+```bash
+python -m pytest -q --no-cov
+```
 
-* survival analysis
-* explainability
-* workforce intelligence
-* resume intelligence
-* psychometric intelligence
-* Amazon Bedrock integration
+## Terraform
 
-Contributions aligned with these areas are especially welcome.
+```bash
+terraform fmt
+terraform validate
+terraform plan -out=/tmp/reviewed.tfplan
+terraform show -no-color /tmp/reviewed.tfplan
+```
+
+Never apply unexpected deletion or replacement.
+
+Do not commit:
+
+```text
+terraform.tfvars
+*.tfstate
+*.tfplan
+credentials
+tokens
+API keys
+```
+
+## Application deployment
+
+```bash
+IMAGE_TAG="<immutable-tag>"   ./scripts/deploy_dashboard_cloud_run.sh
+```
+
+Preserve:
+
+```text
+service max = 1
+revision max = 1
+revision min = 0
+```
+
+Application delivery must not run Terraform.
+
+## Pull requests
+
+Include:
+
+```text
+problem and scope
+implementation summary
+tests
+infrastructure impact
+security and cost impact
+documentation impact
+rollback notes
+```
+
+Do not claim psychometric validity or autonomous employment decisions without
+appropriate evidence, data, governance, and review.

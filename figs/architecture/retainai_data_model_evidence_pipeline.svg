@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2700" height="1840" viewBox="0 0 2700 1840">
+<defs>
+<marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 z" fill="#475569"/></marker>
+<filter id="cardShadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.12"/></filter>
+</defs>
+<rect width="100%" height="100%" fill="#F8FAFC"/>
+<text x="56" y="68" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="700" fill="#111827">RetainAI — Data, Model, Evidence, and Advisor Evolution</text>
+<text x="56" y="101" font-family="Inter,Arial,sans-serif" font-size="17" fill="#64748B">Current analytical foundation in solid styling; cloud data, monitoring, retrieval, and advisor capabilities in dashed styling</text>
+<rect x="2380" y="46" width="264" height="44" rx="22" fill="#FAF5FF" stroke="#8B5CF6" stroke-width="1.8"/>
+<text x="2512.0" y="75" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#8B5CF6">
+<tspan x="2512.0" dy="0">CURRENT + EVOLUTION</tspan>
+</text>
+<rect x="50" y="145" width="820" height="1450" rx="32" fill="#F0FDF4" stroke="#16A34A" stroke-width="2.5"/>
+<text x="80" y="179" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#111827">
+<tspan x="80" dy="0">Current Data Foundation</tspan>
+</text>
+<text x="80" y="213" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="400" fill="#64748B">
+<tspan x="80" dy="0">Reproducible analytical path</tspan>
+</text>
+<rect x="910" y="145" width="820" height="1450" rx="32" fill="#FEFCE8" stroke="#CA8A04" stroke-width="2.5"/>
+<text x="940" y="179" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#111827">
+<tspan x="940" dy="0">Current Model and Evidence Layer</tspan>
+</text>
+<text x="940" y="213" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="400" fill="#64748B">
+<tspan x="940" dy="0">Prediction, survival, explainability, and artifacts</tspan>
+</text>
+<rect x="1770" y="145" width="880" height="1450" rx="32" fill="#FAF5FF" stroke="#8B5CF6" stroke-width="2.5" stroke-dasharray="10 8"/>
+<text x="1800" y="179" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#111827">
+<tspan x="1800" dy="0">Planned Cloud Knowledge Layer</tspan>
+</text>
+<text x="1800" y="213" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="400" fill="#64748B">
+<tspan x="1800" dy="0">Data lake, monitoring, vector retrieval, and advisor</tspan>
+</text>
+<rect x="90" y="260" width="340" height="140" rx="24" fill="#FFFFFF" stroke="#16A34A" stroke-width="2.5" filter="url(#cardShadow)"/>
+<rect x="108" y="284.0" width="92" height="92" rx="20" fill="#16A34A" stroke="#16A34A" stroke-width="0"/>
+<text x="154.0" y="339.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="154.0" dy="0">CSV</tspan>
+</text>
+<text x="218" y="300" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="218" dy="0">IBM HR benchmark</tspan>
+</text>
+<text x="218" y="334" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="218" dy="0">Kaggle or governed data</tspan>
+<tspan x="218" dy="20">source</tspan>
+</text>
+<rect x="328" y="368" width="90" height="22" rx="11" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+<text x="373.0" y="384" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#16A34A">
+<tspan x="373.0" dy="0">current</tspan>
+</text>
+<rect x="480" y="260" width="340" height="140" rx="24" fill="#FFFFFF" stroke="#16A34A" stroke-width="2.5" filter="url(#cardShadow)"/>
+<rect x="498" y="284.0" width="92" height="92" rx="20" fill="#16A34A" stroke="#16A34A" stroke-width="0"/>
+<text x="544.0" y="339.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="544.0" dy="0">RAW</tspan>
+</text>
+<text x="608" y="300" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="608" dy="0">Local raw zone</tspan>
+</text>
+<text x="608" y="334" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="608" dy="0">Source data unchanged</tspan>
+</text>
+<rect x="718" y="368" width="90" height="22" rx="11" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+<text x="763.0" y="384" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#16A34A">
+<tspan x="763.0" dy="0">current</tspan>
+</text>
+<rect x="90" y="515" width="340" height="150" rx="24" fill="#FFFFFF" stroke="#16A34A" stroke-width="2.5" filter="url(#cardShadow)"/>
+<rect x="108" y="544.0" width="92" height="92" rx="20" fill="#16A34A" stroke="#16A34A" stroke-width="0"/>
+<text x="154.0" y="599.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="154.0" dy="0">EDA</tspan>
+</text>
+<text x="218" y="555" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="218" dy="0">Quality and EDA</tspan>
+</text>
+<text x="218" y="589" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="218" dy="0">Schema, nulls,</tspan>
+<tspan x="218" dy="20">duplicates, leakage,</tspan>
+<tspan x="218" dy="20">cohorts</tspan>
+</text>
+<rect x="328" y="633" width="90" height="22" rx="11" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+<text x="373.0" y="649" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#16A34A">
+<tspan x="373.0" dy="0">current</tspan>
+</text>
+<rect x="480" y="515" width="340" height="150" rx="24" fill="#FFFFFF" stroke="#16A34A" stroke-width="2.5" filter="url(#cardShadow)"/>
+<rect x="498" y="544.0" width="92" height="92" rx="20" fill="#16A34A" stroke="#16A34A" stroke-width="0"/>
+<text x="544.0" y="599.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="544.0" dy="0">PROC</tspan>
+</text>
+<text x="608" y="555" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="608" dy="0">Processed data</tspan>
+</text>
+<text x="608" y="589" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="608" dy="0">Typed and reproducible</tspan>
+<tspan x="608" dy="20">transformations</tspan>
+</text>
+<rect x="718" y="633" width="90" height="22" rx="11" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+<text x="763.0" y="649" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#16A34A">
+<tspan x="763.0" dy="0">current</tspan>
+</text>
+<rect x="285" y="785" width="340" height="150" rx="24" fill="#FFFFFF" stroke="#16A34A" stroke-width="2.5" filter="url(#cardShadow)"/>
+<rect x="303" y="814.0" width="92" height="92" rx="20" fill="#16A34A" stroke="#16A34A" stroke-width="0"/>
+<text x="349.0" y="869.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="349.0" dy="0">SPLIT</tspan>
+</text>
+<text x="413" y="825" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="413" dy="0">Train ·</tspan>
+<tspan x="413" dy="25">validation · test</tspan>
+</text>
+<text x="413" y="859" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="413" dy="0">Versioned feature</tspan>
+<tspan x="413" dy="20">datasets</tspan>
+</text>
+<rect x="523" y="903" width="90" height="22" rx="11" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+<text x="568.0" y="919" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#16A34A">
+<tspan x="568.0" dy="0">current</tspan>
+</text>
+<polyline points="430,330.0 480,330.0" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+<polyline points="650.0,400 650.0,515" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+<polyline points="260.0,400 260.0,515" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+<polyline points="430,590.0 480,590.0" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+<polyline points="650.0,665 552.5,665 552.5,785 455.0,785" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+<rect x="950" y="255" width="340" height="150" rx="24" fill="#FFFFFF" stroke="#F97316" stroke-width="2.5" filter="url(#cardShadow)"/>
+<rect x="968" y="284.0" width="92" height="92" rx="20" fill="#F97316" stroke="#F97316" stroke-width="0"/>
+<text x="1014.0" y="339.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="1014.0" dy="0">ML</tspan>
+</text>
+<text x="1078" y="295" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="1078" dy="0">Attrition</tspan>
+<tspan x="1078" dy="25">classification</tspan>
+</text>
+<text x="1078" y="329" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="1078" dy="0">Risk estimation</tspan>
+</text>
+<rect x="1188" y="373" width="90" height="22" rx="11" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+<text x="1233.0" y="389" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#16A34A">
+<tspan x="1233.0" dy="0">current</tspan>
+</text>
+<rect x="1350" y="255" width="340" height="150" rx="24" fill="#FFFFFF" stroke="#F97316" stroke-width="2.5" filter="url(#cardShadow)"/>
+<rect x="1368" y="284.0" width="92" height="92" rx="20" fill="#F97316" stroke="#F97316" stroke-width="0"/>
+<text x="1414.0" y="339.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="1414.0" dy="0">TTE</tspan>
+</text>
+<text x="1478" y="295" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="1478" dy="0">Survival analysis</tspan>
+</text>
+<text x="1478" y="329" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="1478" dy="0">Time-to-event behavior</tspan>
+</text>
+<rect x="1588" y="373" width="90" height="22" rx="11" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+<text x="1633.0" y="389" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#16A34A">
+<tspan x="1633.0" dy="0">current</tspan>
+</text>
+<rect x="950" y="535" width="340" height="150" rx="24" fill="#FFFFFF" stroke="#CA8A04" stroke-width="2.5" filter="url(#cardShadow)"/>
+<rect x="968" y="564.0" width="92" height="92" rx="20" fill="#CA8A04" stroke="#CA8A04" stroke-width="0"/>
+<text x="1014.0" y="619.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="1014.0" dy="0">SHAP</tspan>
+</text>
+<text x="1078" y="575" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="1078" dy="0">SHAP evidence</tspan>
+</text>
+<text x="1078" y="609" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="1078" dy="0">Global and local drivers</tspan>
+</text>
+<rect x="1188" y="653" width="90" height="22" rx="11" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+<text x="1233.0" y="669" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#16A34A">
+<tspan x="1233.0" dy="0">current</tspan>
+</text>
+<rect x="1350" y="535" width="340" height="150" rx="24" fill="#FFFFFF" stroke="#CA8A04" stroke-width="2.5" filter="url(#cardShadow)"/>
+<rect x="1368" y="564.0" width="92" height="92" rx="20" fill="#CA8A04" stroke="#CA8A04" stroke-width="0"/>
+<text x="1414.0" y="619.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="1414.0" dy="0">EV</tspan>
+</text>
+<text x="1478" y="575" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="1478" dy="0">Evaluation</tspan>
+<tspan x="1478" dy="25">reports</tspan>
+</text>
+<text x="1478" y="609" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="1478" dy="0">Metrics, calibration,</tspan>
+<tspan x="1478" dy="20">limitations</tspan>
+</text>
+<rect x="1588" y="653" width="90" height="22" rx="11" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+<text x="1633.0" y="669" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#16A34A">
+<tspan x="1633.0" dy="0">current</tspan>
+</text>
+<rect x="950" y="815" width="340" height="150" rx="24" fill="#FFFFFF" stroke="#CA8A04" stroke-width="2.5" filter="url(#cardShadow)"/>
+<rect x="968" y="844.0" width="92" height="92" rx="20" fill="#CA8A04" stroke="#CA8A04" stroke-width="0"/>
+<text x="1014.0" y="899.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="1014.0" dy="0">MLF</tspan>
+</text>
+<text x="1078" y="855" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="1078" dy="0">MLflow registry</tspan>
+</text>
+<text x="1078" y="889" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="1078" dy="0">Runs, parameters,</tspan>
+<tspan x="1078" dy="20">metrics, models</tspan>
+</text>
+<rect x="1188" y="933" width="90" height="22" rx="11" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+<text x="1233.0" y="949" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#16A34A">
+<tspan x="1233.0" dy="0">current</tspan>
+</text>
+<rect x="1350" y="815" width="340" height="150" rx="24" fill="#FFFFFF" stroke="#CA8A04" stroke-width="2.5" filter="url(#cardShadow)"/>
+<rect x="1368" y="844.0" width="92" height="92" rx="20" fill="#CA8A04" stroke="#CA8A04" stroke-width="0"/>
+<text x="1414.0" y="899.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="1414.0" dy="0">DOC</tspan>
+</text>
+<text x="1478" y="855" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="1478" dy="0">Evidence</tspan>
+<tspan x="1478" dy="25">documents</tspan>
+</text>
+<text x="1478" y="889" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="1478" dy="0">Model cards, summaries,</tspan>
+<tspan x="1478" dy="20">policies</tspan>
+</text>
+<rect x="1588" y="933" width="90" height="22" rx="11" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+<text x="1633.0" y="949" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#16A34A">
+<tspan x="1633.0" dy="0">current</tspan>
+</text>
+<rect x="1145" y="1110" width="350" height="160" rx="24" fill="#FFFFFF" stroke="#4285F4" stroke-width="2.5" filter="url(#cardShadow)"/>
+<rect x="1163" y="1144.0" width="92" height="92" rx="20" fill="#FFFFFF" stroke="#4285F4" stroke-width="1.5"/>
+<image x="1176" y="1157.0" width="66" height="66" href="data:image/png;base64,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" preserveAspectRatio="xMidYMid meet"/>
+<text x="1273" y="1150" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="1273" dy="0">Dashboard and API</tspan>
+</text>
+<text x="1273" y="1184" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="1273" dy="0">Reviewable prediction and</tspan>
+<tspan x="1273" dy="20">explanation experience</tspan>
+</text>
+<rect x="1391.0" y="1238" width="92.0" height="22" rx="11" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+<text x="1437.0" y="1254" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#16A34A">
+<tspan x="1437.0" dy="0">deployed</tspan>
+</text>
+<polyline points="625,860.0 787.5,860.0 787.5,330.0 950,330.0" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+<polyline points="625,860.0 987.5,860.0 987.5,330.0 1350,330.0" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+<polyline points="1120.0,405 1120.0,535" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+<polyline points="1520.0,405 1520.0,535" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+<polyline points="1120.0,685 1120.0,815" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+<polyline points="1520.0,685 1520.0,815" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+<polyline points="1290,890.0 1350,890.0" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+<polyline points="1520.0,965 1420.0,965 1420.0,1110 1320.0,1110" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+<rect x="1810" y="235" width="370" height="160" rx="24" fill="#FFFFFF" stroke="#16A34A" stroke-width="2.5" stroke-dasharray="10 8" filter="url(#cardShadow)"/>
+<rect x="1828" y="269.0" width="92" height="92" rx="20" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.5"/>
+<image x="1841" y="282.0" width="66" height="66" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iODBweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgODAgODAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+SWNvbi1BcmNoaXRlY3R1cmUvNjQvQXJjaF9BbWF6b24tU2ltcGxlLVN0b3JhZ2UtU2VydmljZV82NDwvdGl0bGU+CiAgICA8ZyBpZD0iSWNvbi1BcmNoaXRlY3R1cmUvNjQvQXJjaF9BbWF6b24tU2ltcGxlLVN0b3JhZ2UtU2VydmljZV82NCIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Ikljb24tQXJjaGl0ZWN0dXJlLUJHLzY0L1N0b3JhZ2UiIGZpbGw9IiM3QUExMTYiPgogICAgICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlIiB4PSIwIiB5PSIwIiB3aWR0aD0iODAiIGhlaWdodD0iODAiPjwvcmVjdD4KICAgICAgICA8L2c+CiAgICAgICAgPGcgaWQ9Ikljb24tU2VydmljZS82NC9BbWF6b24tU2ltcGxlLVN0b3JhZ2UtU2VydmljZV82NCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTIuOTk5OTAwLCAxMS45OTk2MDApIiBmaWxsPSIjRkZGRkZGIj4KICAgICAgICAgICAgPHBhdGggZD0iTTQ3LjgzNiwzMC44OTMgTDQ4LjIyLDI4LjE4OSBDNTEuNzYxLDMwLjMxIDUxLjgwNywzMS4xODYgNTEuODA2MDEzMiwzMS4yMSBDNTEuOCwzMS4yMTUgNTEuMTk2LDMxLjcxOSA0Ny44MzYsMzAuODkzIEw0Ny44MzYsMzAuODkzIFogTTQ1Ljg5MywzMC4zNTMgQzM5Ljc3MywyOC41MDEgMzEuMjUsMjQuNTkxIDI3LjgwMSwyMi45NjEgQzI3LjgwMSwyMi45NDcgMjcuODA1LDIyLjkzNCAyNy44MDUsMjIuOTIgQzI3LjgwNSwyMS41OTUgMjYuNzI3LDIwLjUxNyAyNS40MDEsMjAuNTE3IEMyNC4wNzcsMjAuNTE3IDIyLjk5OSwyMS41OTUgMjIuOTk5LDIyLjkyIEMyMi45OTksMjQuMjQ1IDI0LjA3NywyNS4zMjMgMjUuNDAxLDI1LjMyMyBDMjUuOTgzLDI1LjMyMyAyNi41MTEsMjUuMTA2IDI2LjkyOCwyNC43NjEgQzMwLjk4NiwyNi42ODIgMzkuNDQzLDMwLjUzNSA0NS42MDgsMzIuMzU1IEw0My4xNyw0OS41NjEgQzQzLjE2Myw0OS42MDggNDMuMTYsNDkuNjU1IDQzLjE2LDQ5LjcwMiBDNDMuMTYsNTEuMjE3IDM2LjQ1Myw1NCAyNS40OTQsNTQgQzE0LjQxOSw1NCA3LjY0MSw1MS4yMTcgNy42NDEsNDkuNzAyIEM3LjY0MSw0OS42NTYgNy42MzgsNDkuNjExIDcuNjMyLDQ5LjU2NiBMMi41MzgsMTIuMzU5IEM2Ljk0NywxNS4zOTQgMTYuNDMsMTcgMjUuNSwxNyBDMzQuNTU2LDE3IDQ0LjAyMywxNS40IDQ4LjQ0MSwxMi4zNzQgTDQ1Ljg5MywzMC4zNTMgWiBNMiw4LjQ3OCBDMi4wNzIsNy4xNjIgOS42MzQsMiAyNS41LDIgQzQxLjM2NCwyIDQ4LjkyNyw3LjE2MSA0OSw4LjQ3OCBMNDksOC45MjcgQzQ4LjEzLDExLjg3OCAzOC4zMywxNSAyNS41LDE1IEMxMi42NDgsMTUgMi44NDMsMTEuODY4IDIsOC45MTMgTDIsOC40NzggWiBNNTEsOC41IEM1MSw1LjAzNSA0MS4wNjYsMCAyNS41LDAgQzkuOTM0LDAgMCw1LjAzNSAwLDguNSBMMC4wOTQsOS4yNTQgTDUuNjQyLDQ5Ljc3OCBDNS43NzUsNTQuMzEgMTcuODYxLDU2IDI1LjQ5NCw1NiBDMzQuOTY2LDU2IDQ1LjAyOSw1My44MjIgNDUuMTU5LDQ5Ljc4MSBMNDcuNTU1LDMyLjg4NCBDNDguODg4LDMzLjIwMyA0OS45ODUsMzMuMzY2IDUwLjg2NiwzMy4zNjYgQzUyLjA0OSwzMy4zNjYgNTIuODQ5LDMzLjA3NyA1My4zMzQsMzIuNDk5IEM1My43MzIsMzIuMDI1IDUzLjg4NCwzMS40NTEgNTMuNzcsMzAuODQgQzUzLjUxMSwyOS40NTYgNTEuODY4LDI3Ljk2NCA0OC41MjIsMjYuMDU1IEw1MC44OTgsOS4yOTMgTDUxLDguNSBaIiBpZD0iQW1hem9uLVNpbXBsZS1TdG9yYWdlLVNlcnZpY2UtSWNvbl82NF9TcXVpZCI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+" preserveAspectRatio="xMidYMid meet"/>
+<text x="1938" y="275" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="1938" dy="0">Amazon S3 data lake</tspan>
+</text>
+<text x="1938" y="309" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="1938" dy="0">raw · staging · analytics ·</tspan>
+<tspan x="1938" dy="20">features</tspan>
+</text>
+<rect x="2078" y="363" width="90" height="22" rx="11" fill="#FAF5FF" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="10 8"/>
+<text x="2123.0" y="379" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#8B5CF6">
+<tspan x="2123.0" dy="0">planned</tspan>
+</text>
+<rect x="2230" y="235" width="370" height="160" rx="24" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2.5" stroke-dasharray="10 8" filter="url(#cardShadow)"/>
+<rect x="2248" y="269.0" width="92" height="92" rx="20" fill="#8B5CF6" stroke="#8B5CF6" stroke-width="0"/>
+<text x="2294.0" y="324.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="2294.0" dy="0">MON</tspan>
+</text>
+<text x="2358" y="275" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="2358" dy="0">Monitoring and</tspan>
+<tspan x="2358" dy="25">drift</tspan>
+</text>
+<text x="2358" y="309" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="2358" dy="0">Data quality · predictions ·</tspan>
+<tspan x="2358" dy="20">performance</tspan>
+</text>
+<rect x="2498" y="363" width="90" height="22" rx="11" fill="#FAF5FF" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="10 8"/>
+<text x="2543.0" y="379" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#8B5CF6">
+<tspan x="2543.0" dy="0">v0.5</tspan>
+</text>
+<rect x="1810" y="535" width="370" height="160" rx="24" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2.5" stroke-dasharray="10 8" filter="url(#cardShadow)"/>
+<rect x="1828" y="569.0" width="92" height="92" rx="20" fill="#8B5CF6" stroke="#8B5CF6" stroke-width="0"/>
+<text x="1874.0" y="624.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="1874.0" dy="0">DOC</tspan>
+</text>
+<text x="1938" y="575" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="1938" dy="0">RAG evidence corpus</tspan>
+</text>
+<text x="1938" y="609" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="1938" dy="0">Drivers, cohorts, model</tspan>
+<tspan x="1938" dy="20">cards, responsible use</tspan>
+</text>
+<rect x="2078" y="663" width="90" height="22" rx="11" fill="#FAF5FF" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="10 8"/>
+<text x="2123.0" y="679" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#8B5CF6">
+<tspan x="2123.0" dy="0">planned</tspan>
+</text>
+<rect x="2230" y="535" width="370" height="160" rx="24" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2.5" stroke-dasharray="10 8" filter="url(#cardShadow)"/>
+<rect x="2248" y="569.0" width="92" height="92" rx="20" fill="#8B5CF6" stroke="#8B5CF6" stroke-width="0"/>
+<text x="2294.0" y="624.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="2294.0" dy="0">VEC</tspan>
+</text>
+<text x="2358" y="575" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="2358" dy="0">Vector connectors</tspan>
+</text>
+<text x="2358" y="609" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="2358" dy="0">FAISS + S3 or S3 Vectors /</tspan>
+<tspan x="2358" dy="20">Bedrock KB</tspan>
+</text>
+<rect x="2498" y="663" width="90" height="22" rx="11" fill="#FAF5FF" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="10 8"/>
+<text x="2543.0" y="679" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#8B5CF6">
+<tspan x="2543.0" dy="0">planned</tspan>
+</text>
+<rect x="1810" y="835" width="370" height="175" rx="24" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2.5" stroke-dasharray="10 8" filter="url(#cardShadow)"/>
+<rect x="1828" y="876.5" width="92" height="92" rx="20" fill="#8B5CF6" stroke="#8B5CF6" stroke-width="0"/>
+<text x="1874.0" y="931.5" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="1874.0" dy="0">AI</tspan>
+</text>
+<text x="1938" y="875" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="1938" dy="0">Retention Advisor</tspan>
+</text>
+<text x="1938" y="909" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="1938" dy="0">Retrieval, policy, quota,</tspan>
+<tspan x="1938" dy="20">locale, provider routing</tspan>
+</text>
+<rect x="2078" y="978" width="90" height="22" rx="11" fill="#FAF5FF" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="10 8"/>
+<text x="2123.0" y="994" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#8B5CF6">
+<tspan x="2123.0" dy="0">planned</tspan>
+</text>
+<rect x="2230" y="835" width="175" height="160" rx="24" fill="#FFFFFF" stroke="#0F766E" stroke-width="2.5" stroke-dasharray="10 8" filter="url(#cardShadow)"/>
+<rect x="2248" y="869.0" width="92" height="92" rx="20" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.5"/>
+<image x="2261" y="882.0" width="66" height="66" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iODBweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgODAgODAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+SWNvbi1BcmNoaXRlY3R1cmUvNjQvQXJjaF9BbWF6b24tQmVkcm9ja182NDwvdGl0bGU+CiAgICA8ZyBpZD0iSWNvbi1BcmNoaXRlY3R1cmUvNjQvQXJjaF9BbWF6b24tQmVkcm9ja182NCIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Ikljb24tQXJjaGl0ZWN0dXJlLUJHLzY0L01hY2hpbmUtTGVhcm5pbmciIGZpbGw9IiMwMUE4OEQiPgogICAgICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlIiB4PSIwIiB5PSIwIiB3aWR0aD0iODAiIGhlaWdodD0iODAiPjwvcmVjdD4KICAgICAgICA8L2c+CiAgICAgICAgPGcgaWQ9Ikljb24tU2VydmljZS82NC9BbWF6b24tQmVkcm9ja182NCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTIuMDAwMDAwLCAxMi4wMDAwMDApIiBmaWxsPSIjRkZGRkZGIj4KICAgICAgICAgICAgPHBhdGggZD0iTTUyLDI2Ljk5OTg5MTggQzUwLjg5NywyNi45OTk4OTE4IDUwLDI2LjEwMjg5MTggNTAsMjQuOTk5ODkxOCBDNTAsMjMuODk2ODkxOCA1MC44OTcsMjIuOTk5ODkxOCA1MiwyMi45OTk4OTE4IEM1My4xMDMsMjIuOTk5ODkxOCA1NCwyMy44OTY4OTE4IDU0LDI0Ljk5OTg5MTggQzU0LDI2LjEwMjg5MTggNTMuMTAzLDI2Ljk5OTg5MTggNTIsMjYuOTk5ODkxOCBMNTIsMjYuOTk5ODkxOCBaIE0yMC4xMTMsNTMuOTA3ODkxOCBMMTYuODY1LDUyLjAxMzg5MTggTDIzLjUzLDQ3Ljg0Nzg5MTggTDIyLjQ3LDQ2LjE1MTg5MTggTDE0LjkxMyw1MC44NzQ4OTE4IEw5LDQ3LjQyNTg5MTggTDksMzguNTM0ODkxOCBMMTQuNTU1LDM0LjgzMTg5MTggTDEzLjQ0NSwzMy4xNjc4OTE4IEw3Ljk1OSwzNi44MjQ4OTE4IEwyLDMzLjQxOTg5MTggTDIsMjguNTc5ODkxOCBMOC40OTYsMjQuODY3ODkxOCBMNy41MDQsMjMuMTMxODkxOCBMMiwyNi4yNzY4OTE4IEwyLDIyLjU3OTg5MTggTDgsMTkuMTUxODkxOCBMMTQsMjIuNTc5ODkxOCBMMTQsMjYuNDMzODkxOCBMOS40ODUsMjkuMTQyODkxOCBMMTAuNTE1LDMwLjg1Njg5MTggTDE1LDI4LjE2NTg5MTggTDE5LjQ4NSwzMC44NTY4OTE4IEwyMC41MTUsMjkuMTQyODkxOCBMMTYsMjYuNDMzODkxOCBMMTYsMjIuNTM0ODkxOCBMMjEuNTU1LDE4LjgzMTg5MTggQzIxLjgzMywxOC42NDU4OTE4IDIyLDE4LjMzMzg5MTggMjIsMTcuOTk5ODkxOCBMMjIsMTAuOTk5ODkxOCBMMjAsMTAuOTk5ODkxOCBMMjAsMTcuNDY0ODkxOCBMMTQuOTU5LDIwLjgyNDg5MTggTDksMTcuNDE5ODkxOCBMOSw4LjU3Mzg5MTgxIEwxNCw1LjY1Nzg5MTgxIEwxNCwxMy45OTk4OTE4IEwxNiwxMy45OTk4OTE4IEwxNiw0LjQ5MDg5MTgxIEwyMC4xMTMsMi4wOTE4OTE4MSBMMjgsNC43MjA4OTE4MSBMMjgsMzMuNDMzODkxOCBMMTMuNDg1LDQyLjE0Mjg5MTggTDE0LjUxNSw0My44NTY4OTE4IEwyOCwzNS43NjU4OTE4IEwyOCw1MS4yNzg4OTE4IEwyMC4xMTMsNTMuOTA3ODkxOCBaIE01MCwzNy45OTk4OTE4IEM1MCwzOS4xMDI4OTE4IDQ5LjEwMywzOS45OTk4OTE4IDQ4LDM5Ljk5OTg5MTggQzQ2Ljg5NywzOS45OTk4OTE4IDQ2LDM5LjEwMjg5MTggNDYsMzcuOTk5ODkxOCBDNDYsMzYuODk2ODkxOCA0Ni44OTcsMzUuOTk5ODkxOCA0OCwzNS45OTk4OTE4IEM0OS4xMDMsMzUuOTk5ODkxOCA1MCwzNi44OTY4OTE4IDUwLDM3Ljk5OTg5MTggTDUwLDM3Ljk5OTg5MTggWiBNNDAsNDcuOTk5ODkxOCBDNDAsNDkuMTAyODkxOCAzOS4xMDMsNDkuOTk5ODkxOCAzOCw0OS45OTk4OTE4IEMzNi44OTcsNDkuOTk5ODkxOCAzNiw0OS4xMDI4OTE4IDM2LDQ3Ljk5OTg5MTggQzM2LDQ2Ljg5Njg5MTggMzYuODk3LDQ1Ljk5OTg5MTggMzgsNDUuOTk5ODkxOCBDMzkuMTAzLDQ1Ljk5OTg5MTggNDAsNDYuODk2ODkxOCA0MCw0Ny45OTk4OTE4IEw0MCw0Ny45OTk4OTE4IFogTTM5LDcuOTk5ODkxODEgQzM5LDYuODk2ODkxODEgMzkuODk3LDUuOTk5ODkxODEgNDEsNS45OTk4OTE4MSBDNDIuMTAzLDUuOTk5ODkxODEgNDMsNi44OTY4OTE4MSA0Myw3Ljk5OTg5MTgxIEM0Myw5LjEwMjg5MTgxIDQyLjEwMyw5Ljk5OTg5MTgxIDQxLDkuOTk5ODkxODEgQzM5Ljg5Nyw5Ljk5OTg5MTgxIDM5LDkuMTAyODkxODEgMzksNy45OTk4OTE4MSBMMzksNy45OTk4OTE4MSBaIE01MiwyMC45OTk4OTE4IEM1MC4xNDEsMjAuOTk5ODkxOCA0OC41ODksMjIuMjc5ODkxOCA0OC4xNDIsMjMuOTk5ODkxOCBMMzAsMjMuOTk5ODkxOCBMMzAsMTguOTk5ODkxOCBMNDEsMTguOTk5ODkxOCBDNDEuNTUzLDE4Ljk5OTg5MTggNDIsMTguNTUxODkxOCA0MiwxNy45OTk4OTE4IEw0MiwxMS44NTc4OTE4IEM0My43MiwxMS40MTA4OTE4IDQ1LDkuODU3ODkxODEgNDUsNy45OTk4OTE4MSBDNDUsNS43OTM4OTE4MSA0My4yMDYsMy45OTk4OTE4MSA0MSwzLjk5OTg5MTgxIEMzOC43OTQsMy45OTk4OTE4MSAzNyw1Ljc5Mzg5MTgxIDM3LDcuOTk5ODkxODEgQzM3LDkuODU3ODkxODEgMzguMjgsMTEuNDEwODkxOCA0MCwxMS44NTc4OTE4IEw0MCwxNi45OTk4OTE4IEwzMCwxNi45OTk4OTE4IEwzMCwzLjk5OTg5MTgxIEMzMCwzLjU2ODg5MTgxIDI5LjcyNSwzLjE4Nzg5MTgxIDI5LjMxNiwzLjA1MDg5MTgxIEwyMC4zMTYsMC4wNTA4OTE4MTEgQzIwLjA0MiwtMC4wMzkxMDgxODkgMTkuNzQ0LC0wLjAwOTEwODE4OTA0IDE5LjQ5NiwwLjEzNTg5MTgxMSBMNy40OTYsNy4xMzU4OTE4MSBDNy4xODgsNy4zMTQ4OTE4MSA3LDcuNjQ0ODkxODEgNyw3Ljk5OTg5MTgxIEw3LDE3LjQxOTg5MTggTDAuNTA0LDIxLjEzMTg5MTggQzAuMTkyLDIxLjMwOTg5MTggMCwyMS42NDA4OTE4IDAsMjEuOTk5ODkxOCBMMCwzMy45OTk4OTE4IEMwLDM0LjM1ODg5MTggMC4xOTIsMzQuNjg5ODkxOCAwLjUwNCwzNC44Njc4OTE4IEw3LDM4LjU3OTg5MTggTDcsNDcuOTk5ODkxOCBDNyw0OC4zNTQ4OTE4IDcuMTg4LDQ4LjY4NDg5MTggNy40OTYsNDguODYzODkxOCBMMTkuNDk2LDU1Ljg2Mzg5MTggQzE5LjY1LDU1Ljk1Mzg5MTggMTkuODI1LDU1Ljk5OTg5MTggMjAsNTUuOTk5ODkxOCBDMjAuMTA2LDU1Ljk5OTg5MTggMjAuMjEzLDU1Ljk4Mjg5MTggMjAuMzE2LDU1Ljk0ODg5MTggTDI5LjMxNiw1Mi45NDg4OTE4IEMyOS43MjUsNTIuODExODkxOCAzMCw1Mi40MzA4OTE4IDMwLDUxLjk5OTg5MTggTDMwLDM5Ljk5OTg5MTggTDM3LDM5Ljk5OTg5MTggTDM3LDQ0LjE0MTg5MTggQzM1LjI4LDQ0LjU4ODg5MTggMzQsNDYuMTQxODkxOCAzNCw0Ny45OTk4OTE4IEMzNCw1MC4yMDU4OTE4IDM1Ljc5NCw1MS45OTk4OTE4IDM4LDUxLjk5OTg5MTggQzQwLjIwNiw1MS45OTk4OTE4IDQyLDUwLjIwNTg5MTggNDIsNDcuOTk5ODkxOCBDNDIsNDYuMTQxODkxOCA0MC43Miw0NC41ODg4OTE4IDM5LDQ0LjE0MTg5MTggTDM5LDM4Ljk5OTg5MTggQzM5LDM4LjQ0Nzg5MTggMzguNTUzLDM3Ljk5OTg5MTggMzgsMzcuOTk5ODkxOCBMMzAsMzcuOTk5ODkxOCBMMzAsMzIuOTk5ODkxOCBMNDIuNSwzMi45OTk4OTE4IEw0NC42MzgsMzUuODQ5ODkxOCBDNDQuMjM5LDM2LjQ3MTg5MTggNDQsMzcuMjA2ODkxOCA0NCwzNy45OTk4OTE4IEM0NCw0MC4yMDU4OTE4IDQ1Ljc5NCw0MS45OTk4OTE4IDQ4LDQxLjk5OTg5MTggQzUwLjIwNiw0MS45OTk4OTE4IDUyLDQwLjIwNTg5MTggNTIsMzcuOTk5ODkxOCBDNTIsMzUuNzkzODkxOCA1MC4yMDYsMzMuOTk5ODkxOCA0OCwzMy45OTk4OTE4IEM0Ny4zMTYsMzMuOTk5ODkxOCA0Ni42ODIsMzQuMTg3ODkxOCA0Ni4xMTksMzQuNDkxODkxOCBMNDMuOCwzMS4zOTk4OTE4IEM0My42MTEsMzEuMTQ3ODkxOCA0My4zMTQsMzAuOTk5ODkxOCA0MywzMC45OTk4OTE4IEwzMCwzMC45OTk4OTE4IEwzMCwyNS45OTk4OTE4IEw0OC4xNDIsMjUuOTk5ODkxOCBDNDguNTg5LDI3LjcxOTg5MTggNTAuMTQxLDI4Ljk5OTg5MTggNTIsMjguOTk5ODkxOCBDNTQuMjA2LDI4Ljk5OTg5MTggNTYsMjcuMjA1ODkxOCA1NiwyNC45OTk4OTE4IEM1NiwyMi43OTM4OTE4IDU0LjIwNiwyMC45OTk4OTE4IDUyLDIwLjk5OTg5MTggTDUyLDIwLjk5OTg5MTggWiIgaWQ9IkZpbGwtMSI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+" preserveAspectRatio="xMidYMid meet"/>
+<text x="2358" y="875" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="2358" dy="0">Bedrock</tspan>
+</text>
+<text x="2358" y="909" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="2358" dy="0">AWS</tspan>
+<tspan x="2358" dy="20">adapter</tspan>
+</text>
+<rect x="2301.0" y="963" width="92.0" height="22" rx="11" fill="#FAF5FF" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="10 8"/>
+<text x="2347.0" y="979" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#8B5CF6">
+<tspan x="2347.0" dy="0">disabled</tspan>
+</text>
+<rect x="2425" y="835" width="175" height="160" rx="24" fill="#FFFFFF" stroke="#4285F4" stroke-width="2.5" stroke-dasharray="10 8" filter="url(#cardShadow)"/>
+<rect x="2443" y="869.0" width="92" height="92" rx="20" fill="#4285F4" stroke="#4285F4" stroke-width="0"/>
+<text x="2489.0" y="924.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="2489.0" dy="0">GEM</tspan>
+</text>
+<text x="2553" y="875" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="2553" dy="0">Gemini</tspan>
+</text>
+<text x="2553" y="909" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="2553" dy="0">GCP</tspan>
+<tspan x="2553" dy="20">adapter</tspan>
+</text>
+<rect x="2496.0" y="963" width="92.0" height="22" rx="11" fill="#FAF5FF" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="10 8"/>
+<text x="2542.0" y="979" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#8B5CF6">
+<tspan x="2542.0" dy="0">disabled</tspan>
+</text>
+<rect x="2015" y="1160" width="370" height="160" rx="24" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2.5" stroke-dasharray="10 8" filter="url(#cardShadow)"/>
+<rect x="2033" y="1194.0" width="92" height="92" rx="20" fill="#8B5CF6" stroke="#8B5CF6" stroke-width="0"/>
+<text x="2079.0" y="1249.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">
+<tspan x="2079.0" dy="0">REP</tspan>
+</text>
+<text x="2143" y="1200" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#111827">
+<tspan x="2143" dy="0">Validation</tspan>
+<tspan x="2143" dy="25">dashboard</tspan>
+</text>
+<text x="2143" y="1234" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="2143" dy="0">Dataset · model · window ·</tspan>
+<tspan x="2143" dy="20">drift · limitations</tspan>
+</text>
+<rect x="2283" y="1288" width="90" height="22" rx="11" fill="#FAF5FF" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="10 8"/>
+<text x="2328.0" y="1304" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#8B5CF6">
+<tspan x="2328.0" dy="0">v0.5</tspan>
+</text>
+<polyline points="820,330.0 1315.0,330.0 1315.0,315.0 1810,315.0" fill="none" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8" marker-end="url(#arrowhead)"/>
+<rect x="1239.25" y="292.5" width="151.5" height="30" rx="15" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+<text x="1315.0" y="312.5" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" fill="#64748B">controlled sync</text>
+<polyline points="625,860.0 1217.5,860.0 1217.5,315.0 1810,315.0" fill="none" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8" marker-end="url(#arrowhead)"/>
+<polyline points="2180,315.0 2230,315.0" fill="none" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8" marker-end="url(#arrowhead)"/>
+<polyline points="1690,890.0 1750.0,890.0 1750.0,615.0 1810,615.0" fill="none" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8" marker-end="url(#arrowhead)"/>
+<rect x="1657.25" y="722.5" width="185.5" height="30" rx="15" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+<text x="1750.0" y="742.5" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" fill="#64748B">structured evidence</text>
+<polyline points="2180,615.0 2230,615.0" fill="none" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8" marker-end="url(#arrowhead)"/>
+<polyline points="2415.0,695 2205.0,695 2205.0,835 1995.0,835" fill="none" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8" marker-end="url(#arrowhead)"/>
+<rect x="2120.75" y="735.0" width="168.5" height="30" rx="15" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+<text x="2205.0" y="755.0" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" fill="#64748B">retrieved context</text>
+<polyline points="2180,922.5 2230,915.0" fill="none" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8" marker-end="url(#arrowhead)"/>
+<polyline points="2180,922.5 2425,915.0" fill="none" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8" marker-end="url(#arrowhead)"/>
+<polyline points="2415.0,395 2307.5,395 2307.5,1160 2200.0,1160" fill="none" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8" marker-end="url(#arrowhead)"/>
+<text x="1795" y="1400" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#8B5CF6">
+<tspan x="1795" dy="0">Evidence before generation</tspan>
+</text>
+<text x="1795" y="1440" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="400" fill="#64748B">
+<tspan x="1795" dy="0">Raw SHAP arrays are transformed into bounded, reviewable documents before retrieval</tspan>
+<tspan x="1795" dy="22">or provider calls.</tspan>
+</text>
+<polyline points="70,1730 145,1730" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="160" y="1736" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="160" dy="0">Implemented / deployed</tspan>
+</text>
+<polyline points="410,1730 485,1730" fill="none" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<text x="500" y="1736" text-anchor="start" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#64748B">
+<tspan x="500" dy="0">Planned / disabled</tspan>
+</text>
+<text x="2630" y="1736" text-anchor="end" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#64748B">
+<tspan x="2630" dy="0">RetainAI · Hubert Ronald</tspan>
+</text>
+</svg>
