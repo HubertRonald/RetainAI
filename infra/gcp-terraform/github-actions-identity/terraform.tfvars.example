@@ -1,0 +1,4 @@
+project_id = "coplayground"
+region     = "us-east4"
+
+cloud_run_runtime_service_account_email = "REPLACE_WITH_CLOUD_RUN_RUNTIME_SERVICE_ACCOUNT"

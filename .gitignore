@@ -321,7 +321,6 @@ infra/gcp-terraform/github-actions-identity/crash.log
 infra/gcp-terraform/github-actions-identity/crash.*.log
 infra/gcp-terraform/github-actions-identity/terraform.tfstate.backup
 infra/gcp-terraform/github-actions-identity/terraform.tfvars
-infra/gcp-terraform/github-actions-identity/terraform.tfvars.example
 
 # RetainAI AWS Terraform local files
 infra/aws-terraform/.terraform/
@@ -347,4 +346,3 @@ infra/aws-terraform/github-actions-identity/crash.log
 infra/aws-terraform/github-actions-identity/crash.*.log
 infra/aws-terraform/github-actions-identity/terraform.tfstate.backup
 infra/aws-terraform/github-actions-identity/terraform.tfvars
-infra/aws-terraform/github-actions-identity/terraform.tfvars.example
