@@ -113,3 +113,60 @@ English or Spanish text.
 - [Multicloud](../multicloud/README.md)
 - [Prompts](../prompts/README.md)
 - [Documentation index](../README.md)
+
+<!-- retainai:dashboard-contract:start -->
+
+## Dashboard contract
+
+The RetainAI dashboard consolidates the product-facing views and the runtime
+integration contract in one place.
+
+### Application pages
+
+The dashboard exposes four primary product pages:
+
+1. **Executive Overview**  
+   Executive-level retention indicators, risk summaries, and decision context.
+
+2. **Prediction Center**  
+   Employee-level prediction workflows and model-assisted retention analysis.
+
+3. **Explainability Explorer**  
+   SHAP-based feature attribution and explanation views for model decisions.
+
+4. **Survival Analytics**  
+   Time-to-event and retention-horizon analysis.
+
+### API domains
+
+The dashboard consumes the branded RetainAI backend through these API domains:
+
+```text
+/api/v1/overview
+/api/v1/predict
+/api/v1/explainability
+/api/v1/survival
+```
+
+The production API base URL is:
+
+```text
+https://api.retainai.hubertronald.dev
+```
+
+### Runtime modes
+
+The dashboard contract recognizes four runtime modes:
+
+| Mode | Purpose |
+|---|---|
+| `local` | Local development using local files and local execution. |
+| `api` | Dashboard integration with the deployed RetainAI API. |
+| `s3` | Data or artifact access through Amazon S3-backed workflows. |
+| `aws` | AWS-oriented runtime integrations, including Lambda and related services. |
+
+The currently deployed dashboard uses the `api` mode against the branded
+backend. The `local`, `s3`, and `aws` modes remain documented compatibility and
+evolution paths for development, artifacts, and cloud integrations.
+
+<!-- retainai:dashboard-contract:end -->
